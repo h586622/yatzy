@@ -30,7 +30,7 @@ public class PassordUtil {
     
     // ^.{10,}$ betyr at lengden må være minst 10 chars. Ikke noe annet.
 //    private static final String VALID_PASSWORD_PATTERN = "^.{10,}$";
-    private static final String VALID_PASSWORD_PATTERN = "^.{3,}$";
+    private static final String VALID_PASSWORD_PATTERN = "^.{10,}$";
     
     /**
      * Denne metoden genererer en passordstreng for sikker lagring av passord.
@@ -108,8 +108,7 @@ public class PassordUtil {
 
     private byte[] hentUtSaltFraKryptertStreng(String kryptert) {
         byte[] saltPlusDigest = Base64.getDecoder().decode(kryptert);
-        byte[] salt = Arrays.copyOf(saltPlusDigest, SALT_LENGTH);
-        return salt;
+        return Arrays.copyOf(saltPlusDigest, SALT_LENGTH);
     }
     
     private byte[] leggSammen(byte[] tabell1, byte[] tabell2) {

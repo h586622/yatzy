@@ -1,4 +1,4 @@
-package no.gruppe6.yatzy.test;
+package test;
 
 import static org.junit.Assert.*;
 
