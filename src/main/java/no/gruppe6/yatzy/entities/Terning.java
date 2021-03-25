@@ -16,6 +16,9 @@ public class Terning {
 		this.navn = navn;
 		this.verdi = verdi;
 	}
+	public Terning(int tall) {
+		this.verdi = tall;
+	}
 	
 	public int rull() {
 		verdi = (int) (Math.random() * 6 + 1);

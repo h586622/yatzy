@@ -2,7 +2,7 @@ package no.gruppe6.yatzy.entities;
 
 public class Kopp {
 	
-	private Terning[] terninger;
+	public Terning[] terninger;
 	
 	public Kopp() {
 		terninger = new Terning[5];
