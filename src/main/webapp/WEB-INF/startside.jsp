@@ -35,7 +35,7 @@
 			
 </fieldset>	
 
-<form action="logginn" method="get">
+<form action="LoggUtServlet" method="get">
 <input type="submit" value="Logg ut"/>
 
 </form>
