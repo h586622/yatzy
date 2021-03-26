@@ -8,11 +8,11 @@
 </head>
 <body>
 	
-	<form action="startside" method="get">
+	<form action="logginn" method="post">
 		<fieldset>
 			<legend>Logg inn for å spille yatzy</legend>
 			<p>
-				Brukernavn: <input type="text" name="username" />
+				Brukernavn: <input type="text" name="brukernavn" />
 				</p>
 				<p>
 				Passord: <input type="password" name="passord" />

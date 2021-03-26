@@ -6,6 +6,7 @@ import no.gruppe6.yatzy.entities.Paameldingsskjema;
 import no.gruppe6.yatzy.util.LoggInnUt;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
@@ -27,7 +28,7 @@ import javax.servlet.http.HttpServletResponse;
 	    protected void doGet(HttpServletRequest request,
 	            HttpServletResponse response) throws ServletException, IOException {
 
-	        request.getRequestDispatcher("WEB-INF/nybruker.jsp")
+	        request.getRequestDispatcher("WEB-INF/startside.jsp")
 	        		.forward(request, response);
 	    }
 
@@ -40,7 +41,7 @@ import javax.servlet.http.HttpServletResponse;
 
 			if (skjema.allInputGyldig()) {
 				Bruker d = dbDAO.finnBrukerMedBrukernavn(skjema.getBrukernavn());
-				Bruker brukerEpost = dbDAO.finnBrukerMedEpost(skjema.getEpost());
+				List<Bruker> brukerEpost = dbDAO.finnBrukerMedEpost(skjema.getEpost());
 
 				if (d == null && brukerEpost == null) {
 					d = new Bruker(skjema);

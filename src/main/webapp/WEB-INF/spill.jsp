@@ -13,12 +13,19 @@
 	<form action=spill method="post">
 	
 	<input type="submit" value="Trill terninger">
+
+
 	
 	</form>
 	
 	<fieldset>
 	<p> Resultat av kast: </p>
-	</fieldset></fieldset>
+		<p>${kopp.terninger[0]}</p>
+	</fieldset>
+
+
+
+	</fieldset>
 	
 	<form action=startside method="get">
 	<input type="submit" value="Tilbake til startsiden">

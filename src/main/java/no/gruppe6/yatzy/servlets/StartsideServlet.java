@@ -10,7 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import javax.servlet.http.HttpSession;
 
 
 @WebServlet("/startside")
@@ -25,6 +25,7 @@ public class StartsideServlet extends HttpServlet {
 			throws ServletException, IOException {
 		
 		request.getRequestDispatcher("WEB-INF/startside.jsp").forward(request, response);
+
 	}
 
 	@Override
@@ -32,9 +33,19 @@ public class StartsideServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		//Logikk for � sjekke om spillnavnet er unikt
-		String nyttSpill = (String)request.getParameter("nyttspill");
-        System.out.println(nyttSpill);
-        response.sendRedirect("spill");
+
+		HttpSession sesjon = request.getSession(false);
+
+		if (sesjon == null || sesjon.getAttribute("username") == null) {
+			response.sendRedirect("logginn");
+		}
+
+
+
+
+		//String nyttSpill = (String)request.getParameter("nyttspill");
+        //System.out.println(nyttSpill);
+        //response.sendRedirect("spill");
 
 	}
 }

@@ -50,7 +50,7 @@ public class LoggInnServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request,
             HttpServletResponse response) throws ServletException, IOException {
-        String brukernavn = request.getParameter("mobil");
+        String brukernavn = request.getParameter("brukernavn");
         String passord = request.getParameter("passord");
         Bruker bruker = null;
 

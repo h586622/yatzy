@@ -25,6 +25,8 @@ public class Paameldingsskjema {
         this.etternavn = escapeHtml(request.getParameter("etternavn"));
         this.passord = escapeHtml(request.getParameter("passord"));
         this.passordRepetert = escapeHtml(request.getParameter("passordRepetert"));
+        this.epost = escapeHtml(request.getParameter("epost"));
+
     }
 
     public boolean allInputGyldig() {

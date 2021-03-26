@@ -32,10 +32,10 @@ public class BrukerDAO {
     }
 */
 
-    public Bruker finnBrukerMedEpost(String epost){
+    public List<Bruker> finnBrukerMedEpost(String epost){
         TypedQuery<Bruker> query = em.createQuery(
                 "SELECT b FROM Bruker b WHERE b.epost= '" + epost + "'", Bruker.class);
-        return query.getSingleResult();
+        return query.getResultList();
     }
 
 

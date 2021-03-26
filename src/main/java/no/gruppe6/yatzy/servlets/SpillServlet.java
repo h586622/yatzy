@@ -1,5 +1,7 @@
 package no.gruppe6.yatzy.servlets;
 
+import no.gruppe6.yatzy.entities.Kopp;
+
 import java.io.IOException;
 
 import javax.servlet.ServletException;
@@ -26,10 +28,17 @@ public class SpillServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request,
             HttpServletResponse response) throws ServletException, IOException {
     	
-        String nyttspill = (String) request.getParameter("nyttspill");
+        //String nyttspill = (String) request.getParameter("nyttspill");
         // M� opprette spill med navnet dersom det er unikt
-        System.out.println(nyttspill);
-        request.getSession().setAttribute("nyttspill", nyttspill);
+        //System.out.println(nyttspill);
+
+        Kopp kopp = new Kopp();
+        kopp.rullKopp();
+        //String koppString = kopp.toString();
+        //System.out.println(koppString);
+
+        request.getSession().setAttribute("kopp" , kopp);
+        //request.getSession().setAttribute("nyttspill", nyttspill);
         response.sendRedirect("spill");
         
         
