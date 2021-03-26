@@ -36,19 +36,19 @@ import javax.servlet.http.HttpServletResponse;
 	    protected void doPost(HttpServletRequest request,
 	            HttpServletResponse response) throws ServletException, IOException {
 
-			request.setCharacterEncoding("UTF-8");
+			request.setCharacterEncoding("ISO-8859-1");
 			Paameldingsskjema skjema = new Paameldingsskjema(request);
 
 			if (skjema.allInputGyldig()) {
 				Bruker d = dbDAO.finnBrukerMedBrukernavn(skjema.getBrukernavn());
 				List<Bruker> brukerEpost = dbDAO.finnBrukerMedEpost(skjema.getEpost());
 
-				if (d == null && brukerEpost == null) {
+				if (d == null && brukerEpost.size() == 0) {
 					d = new Bruker(skjema);
 					dbDAO.lagreBruker(d);
 					LoggInnUt.loggInn(request, d);
 					response.sendRedirect("startside");
-				} else if(brukerEpost == null){
+				} else if(brukerEpost.size() == 0){
 					skjema.ikkeUniktBrukernavn();
 					request.getSession().setAttribute("skjema", skjema);
 					response.sendRedirect("nybruker");

@@ -37,11 +37,11 @@ public class Paameldingsskjema {
 
     public void settOppFeilmeldinger() {
         if(!Validator.isValidFirstName(fornavn)) {
-            fornavn = "";
+           // fornavn = "";
             fornavnFeilmelding = "Ugyldig fornavn";
         }
         if(!Validator.isValidLastName(etternavn)) {
-            etternavn ="";
+            //etternavn ="";
             etternavnFeilmelding = "Ugyldig etternavn";
         }
         if(!Validator.passordSjekk(passord)) {
@@ -177,5 +177,21 @@ public class Paameldingsskjema {
         return resultat;
     }
 
-
+    @Override
+    public String toString() {
+        return "Paameldingsskjema{" +
+                "brukernavn='" + brukernavn + '\'' +
+                ", fornavn='" + fornavn + '\'' +
+                ", etternavn='" + etternavn + '\'' +
+                ", epost='" + epost + '\'' +
+                ", passord='" + passord + '\'' +
+                ", passordRepetert='" + passordRepetert + '\'' +
+                ", brukernavnFeilmelding='" + brukernavnFeilmelding + '\'' +
+                ", epostFeilmelding='" + epostFeilmelding + '\'' +
+                ", fornavnFeilmelding='" + fornavnFeilmelding + '\'' +
+                ", etternavnFeilmelding='" + etternavnFeilmelding + '\'' +
+                ", passordFeilmelding='" + passordFeilmelding + '\'' +
+                ", passordRepetertFeilmelding='" + passordRepetertFeilmelding + '\'' +
+                '}';
+    }
 }
