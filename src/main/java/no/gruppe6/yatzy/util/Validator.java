@@ -1,6 +1,9 @@
 package no.gruppe6.yatzy.util;
 
 public class Validator {
+
+    private static final String GYLDIG_FORNAVN = "^[A-ZÆØÅ][-a-zA-ZæøåÆØÅ ]{1,19}$";
+    private static final String GYLDIG_ETTERNAVN = "^[A-ZÆØÅ][-a-zA-ZæøåÆØÅ]{1,19}$";
 	
 	public static boolean sjekkEpost(String epost) {
 		
@@ -12,7 +15,7 @@ public class Validator {
   //  Passord m� inneholde en stor bokstav, ett tall, ett tegn og m� v�re minst 6 tegn
       public static boolean passordSjekk(String passord) {
   	
-      	String pattern = "^(?=.*[0-9])(?=.*[a-z���])(?=.*[A-Z���])(?=.*[!@#$%&^+=]).{6,20}$";
+      	String pattern = "^(?=.*[0-9])(?=.*[a-zæøå])(?=.*[A-ZÆØÅ])(?=.*[!@#$%&^+=]).{6,20}$";
       	return passord.matches(pattern);
       	
       	
@@ -41,7 +44,29 @@ public class Validator {
                   + ANY_LETTER_OR_DIGIT + THREE_TIMES 
                   + ANY_LETTER_OR_DIGIT + ZERO_OR_MORE_TIMES + "$");
       }
-  
+
+    public static boolean isValidRepeatedPassword(String passord, String repetertPassord) {
+
+        if(repetertPassord == null || passord == null)
+            return false;
+
+        return repetertPassord.equals(passord);
+    }
+
+    public static boolean isValidFirstName(String fornavn) {
+        if (fornavn == null)
+            return false;
+
+        return fornavn.matches(GYLDIG_FORNAVN);
+
+    }
+
+    public static boolean isValidLastName(String etternavn) {
+        if (etternavn == null)
+            return false;
+
+        return etternavn.matches(GYLDIG_ETTERNAVN);
+    }
       
 
 }

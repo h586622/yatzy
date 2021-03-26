@@ -8,8 +8,6 @@ import java.util.List;
 public class Bruker {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
     private String brukernavn;
     private String fornavn;
     private String etternavn;
@@ -23,10 +21,20 @@ public class Bruker {
     @OneToMany(mappedBy = "brukerTur")
     private List<Spill> spillTur;
 
-    public Bruker(String brukernavn, String epost, Passord passord) {
+    public Bruker(String brukernavn, String fornavn, String etternavn, String epost, Passord passord) {
         this.brukernavn = brukernavn;
         this.epost = epost;
         this.passord = passord;
+        this.fornavn = fornavn;
+        this.etternavn = etternavn;
+    }
+
+    public Bruker(Paameldingsskjema skjema){
+        this.brukernavn = skjema.getBrukernavn();
+        this.fornavn = skjema.getFornavn();
+        this.etternavn = skjema.getEtternavn();
+        this.epost = skjema.getEpost();
+        this.passord = Passord.lagPassord(skjema.getPassord());
     }
 
     public Bruker() {
