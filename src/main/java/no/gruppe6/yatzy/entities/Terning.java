@@ -36,8 +36,12 @@ public class Terning {
 	public void setNavn(String navn) {
 		this.navn = navn;
 	}
-	
-	
-	
 
+	@Override
+	public String toString() {
+		return "Terning{" +
+				"navn=" + navn +
+				", verdi='" + verdi + '\'' +
+				'}';
+	}
 }

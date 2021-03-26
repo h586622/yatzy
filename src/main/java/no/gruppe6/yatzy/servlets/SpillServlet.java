@@ -1,6 +1,8 @@
 package no.gruppe6.yatzy.servlets;
 
 import no.gruppe6.yatzy.entities.Kopp;
+import no.gruppe6.yatzy.entities.Terning;
+import no.gruppe6.yatzy.util.YatzyUtil;
 
 import java.io.IOException;
 
@@ -34,10 +36,14 @@ public class SpillServlet extends HttpServlet {
 
         Kopp kopp = new Kopp();
         kopp.rullKopp();
+        int res = YatzyUtil.sjekkKast(kopp,1);
         //String koppString = kopp.toString();
         //System.out.println(koppString);
+        String[] terningverdier = kopp.terningVerdi();
 
-        request.getSession().setAttribute("kopp" , kopp);
+        request.getSession().setAttribute("kopp" , terningverdier);
+        request.getSession().setAttribute("resultat" , res);
+
         //request.getSession().setAttribute("nyttspill", nyttspill);
         response.sendRedirect("spill");
         

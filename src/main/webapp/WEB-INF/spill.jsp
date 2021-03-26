@@ -20,8 +20,14 @@
 	
 	<fieldset>
 	<p> Resultat av kast: </p>
-		<p>${kopp.terninger[0]}</p>
-	</fieldset>
+		<p>${kopp[0]}</p>
+		<p>${kopp[1]}</p>
+		<p>${kopp[2]}</p>
+		<p>${kopp[3]}</p>
+		<p>${kopp[4]}</p>
+		<p>"Resultat av kast: " ${resultat}</p>
+
+    </fieldset>
 
 
 

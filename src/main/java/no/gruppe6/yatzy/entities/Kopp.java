@@ -18,6 +18,15 @@ public class Kopp {
 		}
 		return koppString;
 	}
+
+	public String[] terningVerdi(){
+		String[] tab = new String[5];
+		for (int i = 0; i < tab.length; i++) {
+			tab[i] = terninger[i].toString();
+		}
+		return tab;
+	}
+
 	
 	public void rullKopp() {
 		for (Terning t : terninger) {
