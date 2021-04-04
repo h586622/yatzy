@@ -18,7 +18,17 @@ public class BrukerDAO {
        return em.find(Bruker.class, brukernavn);
     }
 
+    public List<Kast> finnAlleKast(){
+       return em.createQuery("SELECT k FROM Kast k", Kast.class).getResultList();
+    }
+
     public void lagreBruker(Bruker b){
         em.persist(b);
     }
+
+    public void lagreKast(Kast k){
+        em.persist(k);
     }
+
+
+}

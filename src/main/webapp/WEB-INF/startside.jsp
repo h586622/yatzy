@@ -12,7 +12,7 @@
  
  <fieldset>
  
- 		<form action="spill" method="post">
+ 		<form action="Lobby" method="post">
 			
 			<input type="submit" value="Opprett Spill" />
 			Navn på spill:<input type="text" name="nyttspill"/>
@@ -35,7 +35,7 @@
 			
 </fieldset>	
 
-<form action="logginn" method="get">
+<form action="LoggUtServlet" method="get">
 <input type="submit" value="Logg ut"/>
 
 </form>

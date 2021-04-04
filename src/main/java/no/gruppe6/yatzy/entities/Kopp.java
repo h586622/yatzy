@@ -2,7 +2,7 @@ package no.gruppe6.yatzy.entities;
 
 public class Kopp {
 	
-	private Terning[] terninger;
+	public Terning[] terninger;
 	
 	public Kopp() {
 		terninger = new Terning[5];
@@ -18,6 +18,15 @@ public class Kopp {
 		}
 		return koppString;
 	}
+
+	public String[] terningVerdi(){
+		String[] tab = new String[5];
+		for (int i = 0; i < tab.length; i++) {
+			tab[i] = terninger[i].toString();
+		}
+		return tab;
+	}
+
 	
 	public void rullKopp() {
 		for (Terning t : terninger) {

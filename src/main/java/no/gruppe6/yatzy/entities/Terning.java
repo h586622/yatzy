@@ -16,6 +16,9 @@ public class Terning {
 		this.navn = navn;
 		this.verdi = verdi;
 	}
+	public Terning(int tall) {
+		this.verdi = tall;
+	}
 	
 	public int rull() {
 		verdi = (int) (Math.random() * 6 + 1);
@@ -33,8 +36,12 @@ public class Terning {
 	public void setNavn(String navn) {
 		this.navn = navn;
 	}
-	
-	
-	
 
+	@Override
+	public String toString() {
+		return "Terning{" +
+				"navn=" + navn +
+				", verdi='" + verdi + '\'' +
+				'}';
+	}
 }

@@ -21,13 +21,13 @@
 				Brukernavn: <input type="text" name="brukernavn" />
 				</p>
 				<p>
-				Epostadresse: <input type="text" name="epostadresse" />
+				Epostadresse: <input type="text" name="epost" />
 				</p>
 				<p>
 				Passord: <input type="password" name="passord" />
 				</p>
 				<p>
-				Gjenta passord: <input type="password" name="gjentattPassord" />
+				Gjenta passord: <input type="password" name="passordRepetert" />
 				</p>
 			
 			<p>
