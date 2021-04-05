@@ -6,9 +6,9 @@
 </head>
 <body>
 
-    <h2>${spill.spillnavn}</h2>
+    <h2>${spill.navn}</h2>
 
-<p>Host: ${spill.spilltur}</p>
+<p>Host: ${spill.brukerTur}</p>
 
 <c:forEach  items="${spill.spilldeltagelseList}" var="d">
 <p>
