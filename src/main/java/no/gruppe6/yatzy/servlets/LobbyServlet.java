@@ -12,7 +12,7 @@ public class LobbyServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        request.getRequestDispatcher("WEB-INF/Lobby.jsp").forward(request, response);
+        request.getRequestDispatcher("pages/Lobby.jsp").forward(request, response);
 
     }
 

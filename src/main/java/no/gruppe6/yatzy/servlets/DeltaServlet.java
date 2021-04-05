@@ -25,7 +25,7 @@ public class DeltaServlet extends HttpServlet {
     	ledigeSpill.add("Spill 3");
     	
     	request.setAttribute("ledigeSpill", ledigeSpill);
-        request.getRequestDispatcher("WEB-INF/delta.jsp")
+        request.getRequestDispatcher("pages/delta.jsp")
         		.forward(request, response);
     }
 

@@ -30,7 +30,7 @@ public class LoggUtServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		LoggInnUt.loggUt(request);
 
-		request.getRequestDispatcher("WEB-INF/logginn.jsp").forward(request, response);
+		request.getRequestDispatcher("pageslogginn.jsp").forward(request, response);
 	}
 
 
