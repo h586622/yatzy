@@ -1,10 +1,13 @@
 package no.gruppe6.yatzy.dao;
 import no.gruppe6.yatzy.entities.Bruker;
 import no.gruppe6.yatzy.entities.Kast;
+
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
 
+@Stateless
 public class TerningDAO {
 
     @PersistenceContext(name = "yatzyPU")

@@ -22,7 +22,7 @@ public class Spill {
     private List<Spilldeltagelse> spilldeltagelseList;
 
     @ManyToOne
-    @JoinColumn(name = "tur", referencedColumnName = "brukernavn")
+    @JoinColumn(name = "tur", referencedColumnName = "id")
     private Bruker brukerTur;
 
 

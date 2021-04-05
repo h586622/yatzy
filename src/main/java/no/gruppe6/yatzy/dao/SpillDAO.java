@@ -2,10 +2,12 @@ package no.gruppe6.yatzy.dao;
 
 import no.gruppe6.yatzy.entities.Spill;
 
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
 
+@Stateless
 public class SpillDAO {
 
     @PersistenceContext(name = "yatzyPU")
