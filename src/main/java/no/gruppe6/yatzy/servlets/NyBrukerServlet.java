@@ -28,7 +28,7 @@ import javax.servlet.http.HttpServletResponse;
 	    protected void doGet(HttpServletRequest request,
 	            HttpServletResponse response) throws ServletException, IOException {
 
-	        request.getRequestDispatcher("WEB-INF/nybruker.jsp")
+	        request.getRequestDispatcher("pages/nybruker.jsp")
 	        		.forward(request, response);
 	    }
 

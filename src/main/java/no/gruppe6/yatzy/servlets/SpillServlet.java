@@ -22,7 +22,7 @@ public class SpillServlet extends HttpServlet {
 
     	request.getSession().setAttribute("spill", request.getSession().getAttribute("nyttspill"));
     	
-        request.getRequestDispatcher("WEB-INF/spill.jsp")
+        request.getRequestDispatcher("pages/spill.jsp")
         		.forward(request, response);
     }
 

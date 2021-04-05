@@ -23,7 +23,7 @@ public class SpectateServlet extends HttpServlet {
     	aktiveSpill.add("Spill 3");
     	
     	request.setAttribute("aktiveSpill", aktiveSpill);
-        request.getRequestDispatcher("WEB-INF/spectate.jsp")
+        request.getRequestDispatcher("pages/spectate.jsp")
         		.forward(request, response);
 	}
 

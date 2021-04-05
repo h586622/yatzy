@@ -14,7 +14,7 @@ public class HistorikkServlet extends HttpServlet {
    
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		request.getRequestDispatcher("WEB-INF/historikk.jsp")
+		request.getRequestDispatcher("pages/historikk.jsp")
 	 		.forward(request, response);
 	
 	}
