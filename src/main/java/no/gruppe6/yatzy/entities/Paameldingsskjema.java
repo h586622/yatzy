@@ -37,11 +37,11 @@ public class Paameldingsskjema {
 
     public void settOppFeilmeldinger() {
         if(!Validator.isValidFirstName(fornavn)) {
-           // fornavn = "";
+            fornavn = "";
             fornavnFeilmelding = "Ugyldig fornavn";
         }
         if(!Validator.isValidLastName(etternavn)) {
-            //etternavn ="";
+            etternavn ="";
             etternavnFeilmelding = "Ugyldig etternavn";
         }
         if(!Validator.passordSjekk(passord)) {
