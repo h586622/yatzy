@@ -30,6 +30,5 @@ public class StartServlet extends HttpServlet {
         spillDAO.lagreSpill(spill);
         request.setAttribute("spill", id);
         response.sendRedirect("spill");
-
     }
 }

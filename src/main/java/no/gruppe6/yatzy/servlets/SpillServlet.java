@@ -33,7 +33,8 @@ public class SpillServlet extends HttpServlet {
 
             //Her bør det gjøres sjekk på om bruker er spectator, deltager med tur eller deltager uten tur.
             Bruker bruker = (Bruker) sesjon.getAttribute("bruker");
-            int id = Integer.parseInt(request.getParameter("spill"));
+            String ids = request.getParameter("spillid");
+            int id = Integer.parseInt(ids);
 
             Spill spill = (Spill) spillDAO.hentSpill(id);
 

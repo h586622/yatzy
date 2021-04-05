@@ -10,7 +10,7 @@
 
 <p>Host: ${spill.brukerTur}</p>
 
-<c:forEach  items="${spill.spilldeltagelseList}" var="d">
+<c:forEach  var="d" items="${spill.spilldeltagelseList}" >
 <p>
     Spiller: ${d.bruker.brukernavn}
 </p>
@@ -18,7 +18,7 @@
 
 <form action="start" method="post">
 
-    <input type="hidden" id="spill" name="spill" value="${spill.id}">
+    <input type="hidden" id="spillid" name="spillid" value="${spill.id}">
     <input type="submit" value="Start spill">
 
 </form>

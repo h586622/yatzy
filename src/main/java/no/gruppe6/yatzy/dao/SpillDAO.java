@@ -44,5 +44,18 @@ public class SpillDAO {
                 .setParameter(1, spillId).getResultList();
     }
 
-    public void lagreSpill (Spill s) { em.persist(s);}
+    public Spill hentSpillMedNavn(String navn){
+        return (Spill) em.createQuery("SELECT s from Spill s where s.navn = ?1")
+                .setParameter(1,navn).getSingleResult();
+    }
+
+    public void lagreNySpilldeltagelse(Spilldeltagelse spilldeltagelse){
+        em.persist(spilldeltagelse);
+    }
+
+    public void lagreSpill (Spill s) { em.merge(s);}
+
+    public void lagreNyttSpill(Spill spill){
+        em.persist(spill);
+    }
 }
