@@ -41,6 +41,9 @@ public class LobbyServlet extends HttpServlet {
                 Spill spill = new Spill();
                 spill.setNavn(spillnavn);
                 spill.setBrukerTur(bruker);
+                spill.setSpillstatus("ledig");
+
+                sesjon.setAttribute("spill", spill.getId());
 
                 Spilldeltagelse spilldeltagelse = new Spilldeltagelse();
                 spilldeltagelse.setBruker(bruker);

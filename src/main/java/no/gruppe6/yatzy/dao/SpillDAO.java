@@ -20,7 +20,7 @@ public class SpillDAO {
     }
 
     public List<Spill> hentTilgjengeligeSpill() {
-        return em.createQuery("SELECT s FROM Spill s WHERE s.spillstatus = 'tilgjengelig'", Spill.class).getResultList();
+        return em.createQuery("SELECT s FROM Spill s WHERE s.spillstatus = 'ledig'", Spill.class).getResultList();
     }
 
     public List<Spill> hentAktiveSpill() {
