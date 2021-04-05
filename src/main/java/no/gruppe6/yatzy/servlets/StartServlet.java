@@ -23,10 +23,11 @@ public class StartServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        int id = Integer.parseInt(request.getParameter("id"));
+        int id = Integer.parseInt(request.getParameter("spill"));
 
         Spill spill = spillDAO.hentSpill(id);
         spill.setSpillstatus("aktiv");
+        spillDAO.lagreSpill(spill);
         request.setAttribute("spill", id);
         response.sendRedirect("spill");
 

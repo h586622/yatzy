@@ -22,7 +22,7 @@ public class LobbyServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        Spill spill = spillDAO.hentSpill((int) request.getAttribute("id"));
+        Spill spill = (Spill)request.getAttribute("spill");
 
         request.setAttribute("spill", spill);
 
@@ -52,12 +52,13 @@ public class LobbyServlet extends HttpServlet {
                 spill.setSpillstatus("ledig");
                 spillDAO.lagreSpill(spill);
 
-                request.setAttribute("id", spill.getId());
+
 
                 Spilldeltagelse spilldeltagelse = new Spilldeltagelse();
                 spilldeltagelse.setBruker(bruker);
                 spilldeltagelse.setSpill(spill);
                 spillDAO.lagreSpillDeltagelse(spilldeltagelse);
+                request.setAttribute("spill", spill);
             }
             response.sendRedirect("Lobby");
         }
