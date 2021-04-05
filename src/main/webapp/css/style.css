@@ -1,0 +1,102 @@
+body {
+    background-color: #94D9E9;
+}
+
+#logo {
+    width: 500px;
+    height: 169px;
+    padding-top: 30px;
+    margin: auto;
+    text-align: center;
+}
+
+#logginnboks {
+    width: 550px;
+    height: 350px;
+    background: #51AFC5;
+    border-radius: 31px;
+    margin: auto;
+    padding: 10px;
+    text-align: center;
+}
+
+#registrerboks {
+    width: 550px;
+    height: 500px;
+    background: #51AFC5;
+    border-radius: 31px;
+    margin: auto;
+    padding: 10px;
+    text-align: center;
+}
+
+#tekst1 {
+    width: 600px;
+    color: white;
+    position: absolute;
+    font-family: Roboto Condensed;
+    font-weight: Regular;
+    font-size: 30px;
+    opacity: 1;
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 30px;
+    margin-bottom: 50px;
+
+}
+
+#inputfelt {
+    padding-top: 30px;
+}
+
+#inputogknapp {
+    padding-top: 80px;
+}
+
+input[type=text], select {
+    width: 60%;
+    padding: 12px 60px;
+    margin: 8px 0;
+    display: inline-block;
+    border: none;
+    border-radius: 31px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+input[type=password], select {
+    width: 60%;
+    padding: 14px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: none;
+    border-radius: 31px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+input[type=submit] {
+    width: 60%;
+    background-color: #0E819B;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 31px;
+    cursor: pointer;
+}
+
+input[type=submit]:hover {
+    background-color: #0B667A;
+}
+
+a {
+    color: white;
+    font-family: Roboto;
+    font-style: Italic;
+    font-size: 15px;
+}
+
+a:hover {
+    color: #0E819B;
+}
