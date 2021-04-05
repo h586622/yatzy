@@ -8,9 +8,6 @@ import java.util.List;
 public class Bruker {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-
     private String brukernavn;
     private String fornavn;
     private String etternavn;
@@ -44,9 +41,6 @@ public class Bruker {
 
     }
 
-    public int getId(){
-        return id;
-    }
     public String getFornavn() {
         return fornavn;
     }
