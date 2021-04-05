@@ -3,13 +3,17 @@ package test;
 import no.gruppe6.yatzy.dao.BrukerDAO;
 import no.gruppe6.yatzy.entities.Bruker;
 import no.gruppe6.yatzy.entities.Passord;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.jupiter.api.BeforeEach;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 
+import javax.ejb.EJB;
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import javax.transaction.Transactional;
 
 import java.util.ArrayList;
@@ -21,37 +25,42 @@ import static org.junit.Assert.*;
 
 public class BrukerDAOTest {
 
-   // @Autowired
+    //@Autowired
+    @EJB
     private BrukerDAO bdao;
 
+
+
     @BeforeEach
-    private void setup(){
+    public void setUp(){
+        EntityManager em = mock(EntityManager.class);
         bdao = new BrukerDAO();
+        bdao.setEntityManager(em);
         Passord pass = Passord.lagPassord("123!Arne");
         Bruker testBruker = new Bruker("Testbruker", "Arne", "Hansen", "arne@hansen.no", pass);
     }
-/*
+
     @Test
     public void testFinnBrukerMedBrukernavnEmFind(){
 
-
-
-
+        Passord pass = Passord.lagPassord("123!Arne");
+        Bruker testBruker = new Bruker("Testbruker", "Arne", "Hansen", "arne@hansen.no", pass);
 
         EntityManager em = mock(EntityManager.class);
-        when(em.find(Bruker.class,1L)).thenReturn(testBruker);
+        when(em.find(Bruker.class,"Testbruker")).thenReturn(testBruker);
+        bdao = new BrukerDAO();
+        bdao.setEntityManager(em);
 
-        BrukerDAO brukerDAO = new BrukerDAO();
-        brukerDAO.setEntityManager(em);
-
-        List<Bruker> testBrukerListe = new ArrayList<Bruker>();
-        testBrukerListe.add(testBruker);
-        List<Bruker> nyBrukerListe = brukerDAO.finnBrukerMedBrukernavn("Testbruker");
-        assertEquals(testBrukerListe, nyBrukerListe);
+        Bruker nyBruker = bdao.finnBrukerMedBrukernavn("Testbruker");
+        assertEquals("Testbruker", nyBruker.getBrukernavn());
+        assertEquals(testBruker.getBrukernavn(), nyBruker.getBrukernavn());
+        assertEquals(testBruker.getFornavn(), nyBruker.getFornavn());
+        assertEquals(testBruker.getEtternavn(), nyBruker.getEtternavn());
+        assertEquals(testBruker.getEpost(), nyBruker.getEpost());
 
 
     }
-*/
+/*
     @Test
     @Transactional
     @Rollback(true)
@@ -61,6 +70,9 @@ public class BrukerDAOTest {
         Bruker testBruker = new Bruker("Testbruker", "Arne", "Hansen", "arne@hansen.no", pass);
 
         bdao = new BrukerDAO();
+        EntityManager em = mock(EntityManager.class);
+        bdao.setEntityManager(em);
+
         bdao.lagreBruker(testBruker);
 
         Bruker ny = bdao.finnBrukerMedBrukernavn("Testbruker");
@@ -71,7 +83,5 @@ public class BrukerDAOTest {
         assertEquals(testBruker.getEpost(), ny.getEpost());
 
     }
-
-
-
+    */
 }

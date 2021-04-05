@@ -38,4 +38,7 @@ public class BrukerDAO {
     }
 
 
+    public void setEntityManager(EntityManager em) {
+        this.em = em;
+    }
 }
