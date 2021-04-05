@@ -6,6 +6,7 @@ import no.gruppe6.yatzy.entities.Kast;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 import java.util.List;
 
 @Stateless
@@ -28,6 +29,12 @@ public class BrukerDAO {
 
     public void lagreKast(Kast k){
         em.persist(k);
+    }
+
+    public List<Bruker> finnBrukerMedEpost(String epost){
+        TypedQuery<Bruker> query = em.createQuery(
+                "SELECT b FROM Bruker b WHERE b.epost= '" + epost + "'", Bruker.class);
+        return query.getResultList();
     }
 
 
