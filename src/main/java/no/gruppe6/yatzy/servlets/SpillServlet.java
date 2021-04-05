@@ -35,13 +35,13 @@ public class SpillServlet extends HttpServlet {
         //System.out.println(nyttspill);
 
         Kopp kopp = new Kopp();
-        kopp.rullKopp();
+       // kopp.rullKopp();
         int res = YatzyUtil.sjekkKast(kopp,1);
         //String koppString = kopp.toString();
         //System.out.println(koppString);
-        String[] terningverdier = kopp.terningVerdi();
+      //  String[] terningverdier = kopp.terningVerdi();
 
-        request.getSession().setAttribute("kopp" , terningverdier);
+       // request.getSession().setAttribute("kopp" , terningverdier);
         request.getSession().setAttribute("resultat" , res);
 
         //request.getSession().setAttribute("nyttspill", nyttspill);

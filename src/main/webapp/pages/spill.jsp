@@ -17,7 +17,7 @@
 
 	
 	</form>
-	
+	<!-- Bare for spillere som det er sin tur -->
 	<fieldset>
 	<p> Resultat av kast: </p>
 		<p>${kopp[0]}</p>
@@ -26,7 +26,6 @@
 		<p>${kopp[3]}</p>
 		<p>${kopp[4]}</p>
 		<p>"Resultat av kast: " ${resultat}</p>
-
     </fieldset>
 
 

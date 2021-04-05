@@ -33,8 +33,8 @@ public class YatzyUtil {
 
 	private static int enkleRuter(Kopp kopp, int runde) {
 		int resultat = 0;
-		for(Terning t : kopp.getTerninger()) {
-			if (t.getVerdi() == runde) {
+		for(int t : kopp.hentTerninger()) {
+			if (t == runde) {
 				resultat += runde;
 			}
 		}
@@ -44,11 +44,11 @@ public class YatzyUtil {
 	private static int ettPar(Kopp kopp) {
 		int hoyestePar = 0;
 		int nyttPar = 0;
-		Terning[] terninger = kopp.getTerninger();
+		int[] terninger = kopp.hentTerninger();
 		for (int i = 0; i<5;i++) {
 			for (int k = i+1;k<5;k++) {
-				if (terninger[i].getVerdi() == terninger[k].getVerdi())
-					nyttPar = terninger[i].getVerdi() *2;
+				if (terninger[i] == terninger[k])
+					nyttPar = terninger[i] *2;
 				if (nyttPar > hoyestePar)
 					hoyestePar = nyttPar;
 			}
@@ -59,11 +59,11 @@ public class YatzyUtil {
 		int hoytPar = ettPar(kopp);
 		int lavtPar = 0;
 		int nyttPar = 0;
-		Terning[] terninger = kopp.getTerninger();
+		int[] terninger = kopp.hentTerninger();
 		for (int i = 0; i<5;i++) {
 			for (int k = i+1;k<5;k++) {
-				if (terninger[i].getVerdi() == terninger[k].getVerdi())
-					nyttPar = terninger[i].getVerdi() *2;
+				if (terninger[i] == terninger[k])
+					nyttPar = terninger[i] *2;
 				if (nyttPar < hoytPar)
 					lavtPar = nyttPar;
 			}
@@ -78,13 +78,13 @@ public class YatzyUtil {
 
 	private static int treLike(Kopp kopp) {
 		int treLike = 0;
-		Terning[] terninger = kopp.getTerninger();
+		int[] terninger = kopp.hentTerninger();
 		for (int i = 0;i<5;i++) {
 			for (int k=i+1;k<5;k++) {
-				if (terninger[i].getVerdi() == terninger[k].getVerdi()) {
+				if (terninger[i] == terninger[k]) {
 					for (int t = k+1;t<5;t++) {
-						if (terninger[t].getVerdi() == terninger[k].getVerdi())
-							treLike = terninger[t].getVerdi() * 3;
+						if (terninger[t] == terninger[k])
+							treLike = terninger[t] * 3;
 					}
 				}
 			}
@@ -93,15 +93,15 @@ public class YatzyUtil {
 	}
 	private static int fireLike(Kopp kopp) {
 		int fireLike = 0;
-		Terning[] terninger = kopp.getTerninger();
+		int[] terninger = kopp.hentTerninger();
 		for (int i = 0;i<5;i++) {
 			for (int k=i+1;k<5;k++) {
-				if (terninger[i].getVerdi() == terninger[k].getVerdi()) {
+				if (terninger[i] == terninger[k]) {
 					for (int t = k+1;t<5;t++) {
-						if (terninger[t].getVerdi() == terninger[k].getVerdi())
+						if (terninger[t] == terninger[k])
 							for (int s = t+1;s<5;s++) {
-								if (terninger[s].getVerdi() == terninger[t].getVerdi())
-									fireLike = terninger[t].getVerdi() * 4;
+								if (terninger[s] == terninger[t])
+									fireLike = terninger[t] * 4;
 
 							}
 					}
@@ -111,10 +111,10 @@ public class YatzyUtil {
 		return fireLike;
 	}
 	private static int litenStraight(Kopp kopp) {
-		Terning[] terninger = kopp.getTerninger();
+		int[] terninger = kopp.hentTerninger();
 		if(sjanse(kopp) == 15){
 			for (int i = 0;i<4;i++){
-				if (terninger[i].getVerdi() == terninger[i+1].getVerdi())
+				if (terninger[i] == terninger[i+1])
 					return 0;
 			}
 			return 15;
@@ -122,10 +122,10 @@ public class YatzyUtil {
 			return 0;
 	}
 	private static int storStraight(Kopp kopp) {
-		Terning[] terninger = kopp.getTerninger();
+		int[] terninger = kopp.hentTerninger();
 		if(sjanse(kopp) == 20){
 			for (int i = 0;i<4;i++){
-				if (terninger[i].getVerdi() == terninger[i+1].getVerdi())
+				if (terninger[i] == terninger[i+1])
 					return 0;
 			}
 
@@ -137,15 +137,15 @@ public class YatzyUtil {
 		int trelike = treLike(kopp);
 		int par = 0;
 		int tempVerdi = 0;
-		Terning[] terninger = kopp.getTerninger();
+		int[] terninger = kopp.hentTerninger();
 		if(trelike > 0) {
 			int likverdi = trelike/3;
 			for (int i = 0 ; i<5;i++){
-				if (terninger[i].getVerdi() != likverdi ){
+				if (terninger[i] != likverdi ){
 					if(tempVerdi == 0)
-						tempVerdi = terninger[i].getVerdi();
+						tempVerdi = terninger[i];
 					else
-						if (terninger[i].getVerdi() == tempVerdi)
+						if (terninger[i] == tempVerdi)
 							par = tempVerdi*2;
 
 				}
@@ -158,13 +158,13 @@ public class YatzyUtil {
 			return 0;
 	}
 	private static int sjanse(Kopp kopp) {
-		Terning[] terninger = kopp.getTerninger();
-		return terninger[0].getVerdi() + terninger[1].getVerdi() + terninger[2].getVerdi() + terninger[3].getVerdi() + terninger[4].getVerdi();
+		int[] terninger = kopp.hentTerninger();
+		return terninger[0] + terninger[1] + terninger[2] + terninger[3] + terninger[4];
 	}
 	private static int yatzy(Kopp kopp) {
 
-		Terning[] terninger = kopp.getTerninger();
-		if (terninger[0].getVerdi() == terninger[1].getVerdi() && terninger[0].getVerdi() == terninger[2].getVerdi() && terninger[0].getVerdi() == terninger[3].getVerdi() && terninger[4].getVerdi() == terninger[0].getVerdi())
+		int[] terninger = kopp.hentTerninger();
+		if (terninger[0] == terninger[1] && terninger[0] == terninger[2] && terninger[0] == terninger[3] && terninger[4] == terninger[0])
 			return 50;
 		else
 			return 0;

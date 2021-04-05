@@ -12,11 +12,9 @@ public class Spill {
     private int id;
     private String navn;
     private String spillstatus;
-    private int terning1;
-    private int terning2;
-    private int terning3;
-    private int terning4;
-    private int terning5;
+
+    @Embedded
+    private Kopp kopp;
 
     @OneToMany(mappedBy = "spill")
     private List<Spilldeltagelse> spilldeltagelseList;
@@ -26,7 +24,14 @@ public class Spill {
     private Bruker brukerTur;
 
 
-    public Spill(){}
+    public Spill() {
+    }
+
+    public Spill(Bruker bruker, String navn) {
+        this.brukerTur = bruker;
+        this.navn = navn;
+        this.kopp = new Kopp();
+    }
 
     public List<Spilldeltagelse> getSpilldeltagelseList() {
         return spilldeltagelseList;
@@ -62,45 +67,5 @@ public class Spill {
 
     public void setSpillstatus(String spillstatus) {
         this.spillstatus = spillstatus;
-    }
-
-    public int getTerning1() {
-        return terning1;
-    }
-
-    public void setTerning1(int terning1) {
-        this.terning1 = terning1;
-    }
-
-    public int getTerning2() {
-        return terning2;
-    }
-
-    public void setTerning2(int terning2) {
-        this.terning2 = terning2;
-    }
-
-    public int getTerning3() {
-        return terning3;
-    }
-
-    public void setTerning3(int terning3) {
-        this.terning3 = terning3;
-    }
-
-    public int getTerning4() {
-        return terning4;
-    }
-
-    public void setTerning4(int terning4) {
-        this.terning4 = terning4;
-    }
-
-    public int getTerning5() {
-        return terning5;
-    }
-
-    public void setTerning5(int terning5) {
-        this.terning5 = terning5;
     }
 }
