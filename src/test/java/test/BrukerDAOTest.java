@@ -83,5 +83,20 @@ public class BrukerDAOTest {
         assertEquals(testBruker.getEpost(), ny.getEpost());
 
     }
-    */
+
+    @Test
+    public void testFinnBruker(){
+
+        BrukerDAO bdao2;
+        bdao2 = new BrukerDAO();
+        EntityManagerFactory em2 = Persistence.createEntityManagerFactory("test");
+        EntityManager em3 = em2.createEntityManager();
+        bdao2.setEntityManager(em3);
+        Bruker ny = bdao2.finnBrukerMedBrukernavn("Test1");
+        assertNotNull(ny);
+
+    }
+*/
+
+
 }
