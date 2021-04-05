@@ -22,9 +22,9 @@
 			<input type="text" name="fornavn" placeholder="Fornavn" />
 			<input type="text" name="etternavn" placeholder="Etternavn" />
 			<input type="text" name="brukernavn" placeholder="Brukernavn" />
-			<input type="text" name="epostadresse" placeholder="E-post" />
+			<input type="text" name="epost" placeholder="E-post" />
 			<input type="password" name="passord" placeholder="Passord" />
-			<input type="password" name="gjentattPassord" placeholder="Gjenta passord" />
+			<input type="password" name="passordRepetert" placeholder="Gjenta passord" />
 			<input type="submit" value="Registrer" />
 		</div>
 	</form>

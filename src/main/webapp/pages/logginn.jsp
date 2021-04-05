@@ -18,7 +18,7 @@
 	<form action="logginn" method="post">
 		<div id="tekst1">Logg inn for a spille yatzy</div>
 		<div id="inputogknapp">
-			<input type="text" name="username" placeholder="Brukernavn" />
+			<input type="text" name="brukernavn" placeholder="Brukernavn" />
 			<input type="password" name="passord" placeholder="Passord" />
 			<input type="submit" value="Logg inn" />
 		</div>
