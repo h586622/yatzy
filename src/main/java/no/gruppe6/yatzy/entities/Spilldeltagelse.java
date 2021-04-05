@@ -24,6 +24,11 @@ public class Spilldeltagelse {
     private int hus;
     private int sjanse;
     private int yatzy;
+    private int bonus;
+    private int totalSum;
+    private int sumbonus;
+    private int runde;
+    private int kast;
 
     @ManyToOne
     @JoinColumn(name="brukernavn", referencedColumnName = "brukernavn")
@@ -34,6 +39,62 @@ public class Spilldeltagelse {
     private Spill spill;
 
     public Spilldeltagelse(){}
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getBonus() {
+        return bonus;
+    }
+
+    public void setBonus(int bonus) {
+        this.bonus = bonus;
+    }
+
+    public int getKast() {
+        return kast;
+    }
+
+    public int getSum() {
+        return totalSum;
+    }
+
+    public void setSum(int sum) {
+        this.totalSum = sum;
+    }
+
+    public void setKast(int kast) {
+        this.kast = kast;
+    }
+
+    public int getRunde() {
+        return runde;
+    }
+
+    public void setRunde(int runde) {
+        this.runde = runde;
+    }
+
+    public int getTotalSum() {
+        return totalSum;
+    }
+
+    public void setTotalSum(int totalSum) {
+        this.totalSum = totalSum;
+    }
+
+    public int getSumbonus() {
+        return sumbonus;
+    }
+
+    public void setSumbonus(int sumbonus) {
+        this.sumbonus = sumbonus;
+    }
 
     public int getEnere() {
         return enere;

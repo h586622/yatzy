@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -14,7 +15,7 @@
 <c:forEach  items="${ledigeSpill}" var="d">
  <p>
  <form action=spill method="post">
-  {d} <input type = "submit" name ="{d}" value= "Delta"> 
+  ${d} <input type = "submit" name ="${d}" value= "Delta">
  </form>
 </p>
 </c:forEach>

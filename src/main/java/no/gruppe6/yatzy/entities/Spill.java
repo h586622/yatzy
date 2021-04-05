@@ -41,6 +41,14 @@ public class Spill {
         this.spilldeltagelseList = spilldeltagelseList;
     }
 
+    public Kopp getKopp() {
+        return kopp;
+    }
+
+    public void setKopp(Kopp kopp) {
+        this.kopp = kopp;
+    }
+
     public Bruker getBrukerTur() {
         return brukerTur;
     }

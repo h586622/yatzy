@@ -1,10 +1,4 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: HVL
-  Date: 24/03/2021
-  Time: 14:11
-  To change this template use File | Settings | File Templates.
---%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -12,11 +6,15 @@
 </head>
 <body>
 
-<fieldset>
-    <p>${spillnavn}</p>
+    <h2>${spill.spillnavn}</h2>
 
+<p>Host: ${spill.spilltur}</p>
 
-</fieldset>
+<c:forEach  items="${spill.spilldeltagelseList}" var="d">
+<p>
+    Spiller: ${d.bruker.brukernavn}
+</p>
+</c:forEach>
 
 <form action=spill method="post">
 
