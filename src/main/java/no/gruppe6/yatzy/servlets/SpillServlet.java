@@ -31,12 +31,13 @@ public class SpillServlet extends HttpServlet {
         if (!LoggInnUt.isLoggedIn(request)) response.sendRedirect("logginn?requiresLogin");
         else {
 
+            //Her bør det gjøres sjekk på om bruker er spectator, deltager med tur eller deltager uten tur.
             Bruker bruker = (Bruker) sesjon.getAttribute("bruker");
             int id = Integer.parseInt(request.getParameter("spill"));
 
             Spill spill = (Spill) spillDAO.hentSpill(id);
 
-        request.getSession().setAttribute("spill", request.getSession().getAttribute("nyttspill"));
+        request.setAttribute("spill", spill);
 
         request.getRequestDispatcher("pages/spill.jsp")
                 .forward(request, response);
