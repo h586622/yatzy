@@ -4,38 +4,30 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
+	<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed&display=swap" rel="stylesheet" />
+	<link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet" />
+	<link rel="stylesheet" href="css/style.css" />
 <title>Login</title>
 </head>
 <body>
-	
+
+<div id="logo">
+	<img src="logo.png" alt="logo" style='max-width:450px;'>
+</div>
+
+<div id=registrerboks>
 	<form action="nybruker" method="post">
-		<fieldset>
-			<legend>Du er bare et par steg unna et slag yatzy</legend>
-			<p>
-				Fornavn: <input type="text" name="fornavn" />
-				</p>
-				<p>
-				Etternavn: <input type="text" name="etternavn" />
-				</p>
-				<p>
-				Brukernavn: <input type="text" name="brukernavn" />
-				</p>
-				<p>
-				Epostadresse: <input type="text" name="epost" />
-				</p>
-				<p>
-				Passord: <input type="password" name="passord" />
-				</p>
-				<p>
-				Gjenta passord: <input type="password" name="passordRepetert" />
-				</p>
-			
-			<p>
-				<input type="submit" value="Registrer" />
-			</p>
-			
-			
-		</fieldset>
+		<div id="tekst1">Du er bare et par steg unna et slag yatzy</div>
+		<div id="inputogknapp">
+			<input type="text" name="fornavn" placeholder="Fornavn" />
+			<input type="text" name="etternavn" placeholder="Etternavn" />
+			<input type="text" name="brukernavn" placeholder="Brukernavn" />
+			<input type="text" name="epostadresse" placeholder="E-post" />
+			<input type="password" name="passord" placeholder="Passord" />
+			<input type="password" name="gjentattPassord" placeholder="Gjenta passord" />
+			<input type="submit" value="Registrer" />
+		</div>
 	</form>
+</div>
 </body>
 </html>
