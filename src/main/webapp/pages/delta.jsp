@@ -14,13 +14,13 @@
 
 <c:forEach  items="${ledigeSpill}" var="d">
  <p>
- <form action="delta" method="get">
+ <form action="delta" method="post">
   ${d} <input type = "submit" name ="${d}" value= "Delta">
 	  <input type="hidden" id="spill" name="spill" value="${spill.id}">
  </form>
 </p>
 </c:forEach>
-	<form action=startside method="get">
+	<form action="startside" method="get">
 	<input type="submit" value="Tilbake til startsiden">
 	</form>
 	</body>
