@@ -26,7 +26,7 @@ public class Spilldeltagelse {
     private int yatzy;
 
     @ManyToOne
-    @JoinColumn(name="brukerid", referencedColumnName = "brukernavn")
+    @JoinColumn(name="brukernavn", referencedColumnName = "brukernavn")
     private Bruker bruker;
 
     @ManyToOne

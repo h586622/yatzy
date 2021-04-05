@@ -18,19 +18,18 @@ public class BrukerDAO {
     public Bruker finnBrukerMedBrukernavn(String brukernavn){
        return em.find(Bruker.class, brukernavn);
     }
-/*
-    public List<Kast> finnAlleKast(){
-       return em.createQuery("SELECT k FROM Kast k", Kast.class).getResultList();
-    }
-*/
+
+    public List<Kast> finnAlleKast (Bruker bruker){
+        String brukernavn = bruker.getBrukernavn();
+        return em.createQuery("SELECT s FROM Spill s WHERE s.navn = 'brukernavn'", Kast.class).getResultList(); }
+
     public void lagreBruker(Bruker b){
         em.persist(b);
     }
-/*
+
     public void lagreKast(Kast k){
         em.persist(k);
     }
-*/
 
     public List<Bruker> finnBrukerMedEpost(String epost){
         TypedQuery<Bruker> query = em.createQuery(
