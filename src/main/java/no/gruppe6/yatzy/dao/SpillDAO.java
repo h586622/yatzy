@@ -19,17 +19,16 @@ public class SpillDAO {
 
     }
 
-    public List<Spill> hentTilgjengeligeSpill(Spill s) {
+    public List<Spill> hentTilgjengeligeSpill() {
         return em.createQuery("SELECT s FROM Spill s WHERE s.spillstatus = 'tilgjengelig'", Spill.class).getResultList();
     }
 
-    public List<Spill> hentAktiveSpill(Spill s) {
+    public List<Spill> hentAktiveSpill() {
         return em.createQuery("SELECT s FROM Spill s WHERE s.spillstatus = 'aktiv'", Spill.class).getResultList();
     }
 
-    public Spill hentSpill(String spillnavn) {
-        return em.createQuery("SELECT s FROM Spill s WHERE s.navn = ?1", Spill.class).
-                setParameter(1, spillnavn).getSingleResult();
+    public Spill hentSpill(int id) {
+        return em.find(Spill.class, id);
     }
 
     public Spilldeltagelse hentSpillDeltagelse(int id){

@@ -14,8 +14,9 @@
  
  		<form action="Lobby" method="post">
 			
-			<input type="submit" value="Opprett Spill" />
+
 			Navn på spill:<input type="text" name="nyttspill"/>
+			<input type="submit" value="Opprett Spill" />
 			</form>
 			
  <form action="delta" method="get">

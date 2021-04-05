@@ -26,13 +26,16 @@ public class LobbyServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         HttpSession sesjon = request.getSession(false);
-
-        if (sesjon == null || sesjon.getAttribute("username") == null) {
+        System.out.println("test1");
+        if (sesjon == null || sesjon.getAttribute("bruker") == null) {
+            System.out.println("test2");
             response.sendRedirect("logginn");
         }else{
-            Bruker bruker = bdDao.finnBrukerMedBrukernavn((String) sesjon.getAttribute("username"));
+            Bruker bruker = (Bruker) sesjon.getAttribute("bruker");
             String spillnavn = request.getParameter("nyttspill");
+            System.out.println("test");
             if(spillnavn == null){
+                System.out.println("test");
                 response.sendRedirect("startside");
             }else{
                 Spill spill = new Spill();
@@ -45,7 +48,7 @@ public class LobbyServlet extends HttpServlet {
             }
             response.sendRedirect("Lobby");
         }
-
+        System.out.println("test3");
 
     }
 }

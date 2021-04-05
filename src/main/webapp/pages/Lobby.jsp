@@ -16,8 +16,9 @@
 </p>
 </c:forEach>
 
-<form action=spill method="post">
+<form action="start" method="post">
 
+    <input type="hidden" id="spill" name="spill" value="${spill.id}">
     <input type="submit" value="Start spill">
 
 </form>
