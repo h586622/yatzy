@@ -8,7 +8,7 @@ public class Validator {
 	public static boolean sjekkEpost(String epost) {
 		
 		String epostLower = epost.toLowerCase();
-		String pattern ="^[a-zA-Z0-9_!#$%&�*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$";
+		String pattern ="^[a-zA-Z0-9_!#$%&*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$";
 		return epostLower.matches(pattern);
 	}
          
