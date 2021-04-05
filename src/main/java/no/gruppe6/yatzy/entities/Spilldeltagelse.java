@@ -41,6 +41,13 @@ public class Spilldeltagelse {
     public Spilldeltagelse() {
     }
 
+    public Spilldeltagelse(Bruker bruker, Spill spill){
+        this.bruker = bruker;
+        this.spill = spill;
+        this.runde = 1;
+        this.kast = 0;
+    }
+
     public int getId() {
         return id;
     }

@@ -26,6 +26,9 @@ public class StartServlet extends HttpServlet {
         int id = Integer.parseInt(request.getParameter("id"));
 
         Spill spill = spillDAO.hentSpill(id);
+        spill.setSpillstatus("aktiv");
+        request.setAttribute("spill", id);
+        response.sendRedirect("spill");
 
     }
 }
