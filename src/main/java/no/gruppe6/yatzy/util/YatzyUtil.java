@@ -266,6 +266,6 @@ public class YatzyUtil {
     private static void avsluttSpill(Spilldeltagelse s) {
         int totalSum = s.getSumbonus() + s.getBonus() + s.getPar() + s.getTopar() + s.getTrelike() + s.getFirelike() +
                 s.getLitenstraight()  +  s.getStorstraight() + s.getHus() + s.getSjanse() + s.getYatzy();
-        s.setTotalSum(totalSum);
+        s.setTotalsum(totalSum);
     }
 }
