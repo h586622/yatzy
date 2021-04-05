@@ -12,9 +12,9 @@
 <body>
 
 <div id="logo">
-	<img src="logo.png" alt="logo" style='max-width:450px;'>
+	<img src="pictures/logo.png" alt="logo" style='max-width:450px;'>
 </div>
-	
+<div id="logginnboks">
 	<form action="logginn" method="post">
 		<div id="tekst1">Logg inn for a spille yatzy</div>
 		<div id="inputogknapp">
