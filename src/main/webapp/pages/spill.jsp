@@ -42,7 +42,7 @@
         </c:forEach>
         <td>Seksere</td>
         <c:forEach var="s" items="${spilldeltagelser}" >
-            <td>${s.enere}</td>
+            <td>${s.seksere}</td>
         </c:forEach>
         <td>Sum</td>
         <c:forEach var="s" items="${spilldeltagelser}" >
@@ -104,17 +104,19 @@
 
     <!-- Bare for spillere som det er sin tur -->
     <fieldset>
+        <p>Antallkast: ${spilldeltagelse.kast} </p>
+        <p>Runde: ${spilldeltagelse.runde}</p>
         <p> Resultat av kast: </p>
         <input type="checkbox" id="terning1" name="terninger" value="0">
-        <label for="terning1"> ${kopp.Terning1 == 0 ? kopp.Terning1 : "Ikke kastet"}</label><br>
+        <label for="terning1"> ${spill.kopp.terning1}</label><br>
         <input type="checkbox" id="terning2" name="terninger" value="1">
-        <label for="terning2"> (${kopp.Terning2} != null)? ${kopp.Terning2} : Ikke kastet</label><br>
+        <label for="terning2"> ${spill.kopp.terning2}</label><br>
         <input type="checkbox" id="terning3" name="terninger" value="2">
-        <label for="terning3"> (${kopp.Terning3} != null)? ${kopp.Terning3} : Ikke kastet</label><br><br>
+        <label for="terning3"> ${spill.kopp.terning3}</label><br><br>
         <input type="checkbox" id="terning4" name="terninger" value="3">
-        <label for="terning4"> (${kopp.Terning4} != null)? ${kopp.Terning4} : Ikke kastet</label><br><br>
+        <label for="terning4"> ${spill.kopp.terning4}</label><br><br>
         <input type="checkbox" id="terning5" name="terninger" value="4">
-        <label for="terning5"> (${kopp.Terning5} != null)? ${kopp.Terning5} : Ikke kastet</label><br><br>
+        <label for="terning5"> ${spill.kopp.terning5}</label><br><br>
     </fieldset>
     </form>
 </div>

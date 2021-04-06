@@ -40,7 +40,9 @@ public class SpillServlet extends HttpServlet {
 
             Spill spill = spillDAO.hentSpill(id);
             List<Spilldeltagelse> spilldeltagelser = spillDAO.hentSpillDeltagelseListe(spill);
+            Spilldeltagelse spilldeltagelse = spillDAO.hentSpillDeltagelseBrukerSpill(bruker, spill);
 
+            request.setAttribute("spilldeltagelse", spilldeltagelse);
             request.setAttribute("spill", spill);
             request.setAttribute("spilldeltagelser", spilldeltagelser);
 
@@ -76,7 +78,7 @@ public class SpillServlet extends HttpServlet {
             String[] checkedBokser = request.getParameterValues("terninger");
             boolean[] tester = new boolean[5];
 
-            if(checkedBokser != null){
+            if(checkedBokser != null && spilldeltagelse.getKast() > 0){
                 for(int i = 0; i<checkedBokser.length; i++){
                     tester[Integer.parseInt(checkedBokser[i])] = true;
                 }
@@ -90,13 +92,13 @@ public class SpillServlet extends HttpServlet {
 
             int res = YatzyUtil.sjekkKast(kopp, spilldeltagelse.getRunde());
 
-            spilldeltagelse.setKast(+1);
+            spilldeltagelse.setKast(spilldeltagelse.getKast()+1);
 
             if (spilldeltagelse.getKast() == 3) {
                 YatzyUtil.oppdaterVerdi(res, spilldeltagelse.getRunde(), spilldeltagelse);
                 spilldeltagelse.setKast(0);
                 //For å sette neste tur så bruker vi spillDeltagelseList til å hente neste index.
-                spilldeltagelse.setRunde(+1);
+                spilldeltagelse.setRunde(spilldeltagelse.getRunde()+1);
 
             }
 
