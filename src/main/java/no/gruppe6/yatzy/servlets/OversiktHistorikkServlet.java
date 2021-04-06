@@ -9,6 +9,8 @@ import no.gruppe6.yatzy.util.LoggInnUt;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.zip.ZipEntry;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -32,7 +34,11 @@ public class OversiktHistorikkServlet extends HttpServlet {
 			response.sendRedirect("logginn?requiresLogin");
 		} else {
 			Bruker b = (Bruker) sesjon.getAttribute("bruker");
-			List<Spilldeltagelse> spilldeltagelser =  dbDao.hentSpillDeltagelserMedBrukerid(b);
+			List<Spilldeltagelse> liste =  dbDao.hentSpillDeltagelserMedBrukerid(b);
+
+			List<Spilldeltagelse> spilldeltagelser = liste.stream()
+					.filter(d -> d.getSpill().getSpillstatus() == "avsluttet")
+					.collect(Collectors.toList());
 
 			request.setAttribute("spilldeltagelser", spilldeltagelser);
 

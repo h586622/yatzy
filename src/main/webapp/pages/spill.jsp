@@ -6,6 +6,23 @@
 <head>
     <meta charset="ISO-8859-1">
     <title>Spill</title>
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
 </head>
 <body>
 
@@ -13,87 +30,123 @@
 
 <div id="poeng">
 
-    <table>
-        <tr>
-            <th> Runde</th>
-            <c:forEach var="s" items="${spilldeltagelser}" >
-                <th>${s.bruker.brukernavn}</th>
+    <TABLE ID="spillbrett">
+        <TR>
+            <TH>Deltakere</TH>
+            <c:forEach items="${spilldeltagelser}" var="s">
+                <TH>${s.bruker.brukernavn}</TH> <!-- Spillere -->
             </c:forEach>
-        </tr>
-        <td>Enere</td>
-        <c:forEach var="s" items="${spilldeltagelser}" >
-            <td>${s.enere}</td>
-        </c:forEach>
-        <td>Toere</td>
-        <c:forEach var="s" items="${spilldeltagelser}" >
-            <td>${s.toere}</td>
-        </c:forEach>
-        <td>Treere</td>
-        <c:forEach var="s" items="${spilldeltagelser}" >
-            <td>${s.treere}</td>
-        </c:forEach>
-        <td>Firere</td>
-        <c:forEach var="s" items="${spilldeltagelser}" >
-            <td>${s.firere}</td>
-        </c:forEach>
-        <td>Femere</td>
-        <c:forEach var="s" items="${spilldeltagelser}" >
-            <td>${s.femere}</td>
-        </c:forEach>
-        <td>Seksere</td>
-        <c:forEach var="s" items="${spilldeltagelser}" >
-            <td>${s.seksere}</td>
-        </c:forEach>
-        <td>Sum</td>
-        <c:forEach var="s" items="${spilldeltagelser}" >
-            <td>${s.sumbonus}</td>
-        </c:forEach>
-        <td>Bonus</td>
-        <c:forEach var="s" items="${spilldeltagelser}" >
-            <td>${s.bonus}</td>
-        </c:forEach>
-        <td>Ett par</td>
-        <c:forEach var="s" items="${spilldeltagelser}" >
-            <td>${s.par}</td>
-        </c:forEach>
-        <td>To par</td>
-        <c:forEach var="s" items="${spilldeltagelser}" >
-            <td>${s.topar}</td>
-        </c:forEach>
-        <td>Tre like</td>
-        <c:forEach var="s" items="${spilldeltagelser}" >
-            <td>${s.trelike}</td>
-        </c:forEach>
-        <td>Fire like</td>
-        <c:forEach var="s" items="${spilldeltagelser}" >
-            <td>${s.firelike}</td>
-        </c:forEach>
-        <td>Liten straight</td>
-        <c:forEach var="s" items="${spilldeltagelser}" >
-            <td>${s.litenstraight}</td>
-        </c:forEach>
-        <td>Stor straight</td>
-        <c:forEach var="s" items="${spilldeltagelser}" >
-            <td>${s.storstraight}</td>
-        </c:forEach>
-        <td>Hus</td>
-        <c:forEach var="s" items="${spilldeltagelser}" >
-            <td>${s.hus}</td>
-        </c:forEach>
-        <td>Sjanse</td>
-        <c:forEach var="s" items="${spilldeltagelser}" >
-            <td>${s.sjanse}</td>
-        </c:forEach>
-        <td>Yatzy</td>
-        <c:forEach var="s" items="${spilldeltagelser}" >
-            <td>${s.yatzy}</td>
-        </c:forEach>
-        <td>Totalsum</td>
-        <c:forEach var="s" items="${spilldeltagelser}" >
-            <td>${s.totalsum}</td>
-        </c:forEach>
+        </TR>
+        <TR>
+            <TD>Ones</TD>
+            <c:forEach items="${spilldeltagelser}" var="s">
+                <TD>${s.enere}</TD> <!-- Spillere -->
+            </c:forEach>
+        </TR>
+        <TR>
+            <TD>Twos</TD>
+            <c:forEach items="${spilldeltagelser}" var="s">
+                <TD>${s.toere}</TD>
+            </c:forEach>
+        </TR>
+        <TR>
+            <TD>Threes</TD>
+            <c:forEach items="${spilldeltagelser}" var="s">
+                <TD>${s.treere}</TD> <!-- Spillere -->
+            </c:forEach>
+        </TR>
+        <TR>
+            <TD>Fours</TD>
+            <c:forEach items="${spilldeltagelser}" var="s">
+                <TD>${s.firere}</TD> <!-- Spillere -->
+            </c:forEach>
+        </TR>
+        <TR>
+            <TD>Fives</TD>
+            <c:forEach items="${spilldeltagelser}" var="s">
+                <TD>${s.femere}</TD> <!-- Spillere -->
+            </c:forEach>
+        </TR>
+        <TR>
+            <TD>Sixes</TD>
+            <c:forEach items="${spilldeltagelser}" var="s">
+                <TD>${s.seksere}</TD> <!-- Spillere -->
+            </c:forEach>
+        </TR>
+        <TR>
+            <TD>Sum</TD>
+            <c:forEach items="${spilldeltagelser}" var="s">
+                <TD>${s.sumbonus}</TD> <!-- Spillere -->
+            </c:forEach>
+        </TR>
+        <TR>
+            <TD>Bonus</TD>
+            <c:forEach items="${spilldeltagelser}" var="s">
+                <TD>${s.bonus}</TD> <!-- Spillere -->
+            </c:forEach>
+        </TR>
+        <TR>
+            <TD>Ett par</TD>
+            <c:forEach items="${spilldeltagelser}" var="s">
+                <TD>${s.par}</TD> <!-- Spillere -->
+            </c:forEach>
+        </TR>
+        <TR>
+            <TD>To par</TD>
+            <c:forEach items="${spilldeltagelser}" var="s">
+                <TD>${s.topar}</TD> <!-- Spillere -->
+            </c:forEach>
+        </TR>
+        <TR>
+            <TD>Tre like</TD>
+            <c:forEach items="${spilldeltagelser}" var="s">
+                <TD>${s.trelike}</TD> <!-- Spillere -->
+            </c:forEach>
+        </TR>
+        <TR>
+            <TD>Fire like</TD>
+            <c:forEach items="${spilldeltagelser}" var="s">
+                <TD>${s.firelike}</TD> <!-- Spillere -->
+            </c:forEach>
+        </TR>
+        <TR>
+            <TD>Liten straight</TD>
+            <c:forEach items="${spilldeltagelser}" var="s">
+                <TD>${s.litenstraight}</TD> <!-- Spillere -->
+            </c:forEach>
+        </TR>
+        <TR>
+            <TD>Stor straight</TD>
+            <c:forEach items="${spilldeltagelser}" var="s">
+                <TD>${s.storstraight}</TD> <!-- Spillere -->
+            </c:forEach>
+        </TR>
+        <TR>
+            <TD>Hus</TD>
+            <c:forEach items="${spilldeltagelser}" var="s">
+                <TD>${s.hus}</TD> <!-- Spillere -->
+            </c:forEach>
+        </TR>
+        <TR>
+            <TD>Sjanse</TD>
+            <c:forEach items="${spilldeltagelser}" var="s">
+                <TD>${s.sjanse}</TD> <!-- Spillere -->
+            </c:forEach>
+        </TR>
+        <TR>
+            <TD>Yatzy</TD>
+            <c:forEach items="${spilldeltagelser}" var="s">
+                <TD>${s.yatzy}</TD> <!-- Spillere -->
+            </c:forEach>
+        </TR>
+        <TR>
+            <TD>Total</TD>
+            <c:forEach items="${spilldeltagelser}" var="s">
+                <TD>${s.totalsum}</TD> <!-- Spillere -->
+            </c:forEach>
+        </TR>
 
-    </table>
+    </TABLE>
 </div>
 <div id="runde">
     <form action=spill method="post">

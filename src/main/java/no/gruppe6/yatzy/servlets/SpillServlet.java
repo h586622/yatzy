@@ -27,8 +27,6 @@ public class SpillServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request,
                          HttpServletResponse response) throws ServletException, IOException {
-
-
         if (!LoggInnUt.isLoggedIn(request)) {
             response.sendRedirect("logginn?requiresLogin");
         } else {
@@ -38,12 +36,18 @@ public class SpillServlet extends HttpServlet {
             String ids = request.getParameter("spill");
             int id = Integer.parseInt(ids);
             Spill spill = spillDAO.hentSpill(id);
+            System.out.println(spill.getSpillstatus());
             request.setAttribute("spill", spill);
             List<Spilldeltagelse> spilldeltagelser = spillDAO.hentSpillDeltagelseListe(spill);
             request.setAttribute("spilldeltagelser", spilldeltagelser);
 
             if (spill.getSpillstatus().equals("ledig")) {
-                request.getRequestDispatcher("pages/venteliste.jsp").forward(request, response);
+                if(spill.getBrukerTur().equals(bruker)){
+                    response.sendRedirect("Lobby?spill="+ spill.getId());
+                }else{
+                    request.getRequestDispatcher("pages/venteliste.jsp").forward(request, response);
+                }
+
             } else if (spill.getSpillstatus().equals("avsluttet")) {
                 //hent vinner + hele tabell
                 //send til avsluttet.jsp.

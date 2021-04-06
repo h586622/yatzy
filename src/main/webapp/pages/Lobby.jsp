@@ -36,7 +36,11 @@
 </div>
 
     <div id="oppdaterknapp">
-        <input type="submit" value="Oppdater" />
+        <form action="Lobby" method="get">
+            <input type="hidden" id="spill" name="spill" value="${spill.id}">
+            <input type="submit" value="Oppdater" />
+        </form>
+
     </div>
 
 <form action="LoggUtServlet" method="get">
