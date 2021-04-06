@@ -17,15 +17,16 @@ import java.util.List;
 public class LobbyServlet extends HttpServlet {
     @EJB
     private SpillDAO spillDAO;
+    @EJB
+    private BrukerDAO bdDao;
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         Spill spill = spillDAO.hentSpill(Integer.parseInt(request.getParameter("spill")));
-        List<Spilldeltagelse> spd = spill.getSpilldeltagelser();
-        System.out.println(spd.size());
-        spd.forEach(x -> System.out.println(x.getBruker().getBrukernavn()));
 
+        List<Spilldeltagelse> spilldeltagelser = spillDAO.hentSpillDeltagelseListe(spill.getId());
+        request.setAttribute("spilldeltagelser", spilldeltagelser);
         request.setAttribute("spill", spill);
 
         request.getRequestDispatcher("pages/Lobby.jsp").forward(request, response);

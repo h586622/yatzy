@@ -1,7 +1,7 @@
 package no.gruppe6.yatzy.entities;
 
 import javax.persistence.*;
-import java.util.List;
+
 
 @Entity
 @Table(schema = "yatzydb")
@@ -16,9 +16,6 @@ public class Spill {
     @Embedded
     private Kopp kopp;
 
-    @OneToMany(mappedBy = "spill")
-    private List<Spilldeltagelse> spilldeltagelser;
-
     @ManyToOne
     @JoinColumn(name = "tur", referencedColumnName = "brukernavn")
     private Bruker brukerTur;
@@ -31,14 +28,6 @@ public class Spill {
         this.brukerTur = bruker;
         this.navn = navn;
         this.kopp = new Kopp();
-    }
-
-    public List<Spilldeltagelse> getSpilldeltagelser() {
-        return spilldeltagelser;
-    }
-
-    public void setSpilldeltagelser(List<Spilldeltagelse> spilldeltagelser) {
-        this.spilldeltagelser = spilldeltagelser;
     }
 
     public Kopp getKopp() {
