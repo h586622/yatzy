@@ -4,9 +4,9 @@
 <title>Historikk</title>
 </head>
 <body>
-	
-			<h2>Her kan du se dine tidligere spill</h2>	
-			
+
+			<h2>Her kan du se dine tidligere spill</h2>
+
 			<fieldset>
 
 				<c:forEach items="${spilldeltagelser}" var="s">
