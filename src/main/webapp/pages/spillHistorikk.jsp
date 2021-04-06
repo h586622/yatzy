@@ -29,7 +29,7 @@
     </style>
 </head>
 <body>
-<TABLE ID="ScoreCard">
+<TABLE ID="spillbrett">
     <TR>
         <TH>Deltakere</TH>
         <c:forEach items="${spilldeltagelser}" var="s">
