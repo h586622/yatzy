@@ -38,6 +38,7 @@ public class Spilldeltagelse {
     @JoinColumn(name = "spillid", referencedColumnName = "id")
     private Spill spill;
 
+
     public Spilldeltagelse() {
     }
 

@@ -9,14 +9,14 @@
 </head>
 
 <body>
-	<h2> Velg i listen under hvilket spill du ønsker å delta i </h2>	
-    ${ledigeSpill}
+	<h2> Velg i listen under hvilket spill du ønsker å delta i </h2>
 
-<c:forEach  items="${ledigeSpill}" var="d">
+<c:forEach  var="d" items="${ledigeSpill}">
  <p>
  <form action="delta" method="post">
-  ${d} <input type = "submit" name ="${d}" value= "Delta">
-	  <input type="hidden" id="spill" name="spill" value="${spill.id}">
+	<input type="hidden" id="spill" name="spill" value="${d.id}">
+		${d.navn}
+	<input type = "submit" name ="" value= "Delta">
  </form>
 </p>
 </c:forEach>

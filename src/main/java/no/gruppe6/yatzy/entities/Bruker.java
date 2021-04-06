@@ -97,5 +97,9 @@ public class Bruker {
         this.passord = passord;
     }
 
-
+    @Override
+    public boolean equals(Object obj) {
+        Bruker b2 = (Bruker) obj;
+        return this.getBrukernavn().equals(b2.getBrukernavn());
+    }
 }
