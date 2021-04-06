@@ -54,6 +54,41 @@ public class YatzyUtil {
         return verdi;
     }
 
+    public static String rundeNavn(int runde) {
+        String rundenavn = "Du skal ha ";
+        switch (runde) {
+            case 1: rundenavn+="enere"; break;
+            case 2:rundenavn+="toere"; break;
+            case 3:rundenavn+="treere"; break;
+            case 4:rundenavn+="firere"; break;
+            case 5:rundenavn+="femere"; break;
+            case 6:rundenavn+="seksere"; break;
+            case 7:
+                rundenavn+="ett par"; break;
+            case 8:
+                rundenavn+="to par"; break;
+            case 9:
+                rundenavn+="tre like"; break;
+            case 10:
+                rundenavn+="fire like"; break;
+            case 11:
+                rundenavn+="liten straight (1,2,3,4,5)"; break;
+            case 12:
+                rundenavn+="stor straight (2,3,4,5,6)"; break;
+            case 13:
+                rundenavn+="hus (2+3)"; break;
+            case 14:
+                rundenavn+="sjanse"; break;
+            case 15:
+                rundenavn+="yatzy"; break;
+            default:
+                System.out.println("Noe gikk feil");
+                break;
+        }
+
+        return rundenavn;
+    }
+
     public static void oppdaterVerdi(int sum, int runde, Spilldeltagelse spilldeltagelse) {
         switch (runde) {
             case 1:

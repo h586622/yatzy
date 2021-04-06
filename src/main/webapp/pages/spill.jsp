@@ -105,7 +105,7 @@
     <!-- Bare for spillere som det er sin tur -->
     <fieldset>
         <p>Antallkast: ${spilldeltagelse.kast} </p>
-        <p>Runde: ${spilldeltagelse.runde}</p>
+        <p>Runde: ${rundenavn}</p>
         <p> Resultat av kast: </p>
         <input type="checkbox" id="terning1" name="terninger" value="0">
         <label for="terning1"> ${spill.kopp.terning1}</label><br>

@@ -42,6 +42,7 @@ public class SpillServlet extends HttpServlet {
             List<Spilldeltagelse> spilldeltagelser = spillDAO.hentSpillDeltagelseListe(spill);
             Spilldeltagelse spilldeltagelse = spillDAO.hentSpillDeltagelseBrukerSpill(bruker, spill);
 
+            request.setAttribute("rundenavn", YatzyUtil.rundeNavn(spilldeltagelse.getRunde()));
             request.setAttribute("spilldeltagelse", spilldeltagelse);
             request.setAttribute("spill", spill);
             request.setAttribute("spilldeltagelser", spilldeltagelser);
@@ -104,7 +105,6 @@ public class SpillServlet extends HttpServlet {
 
             spillDAO.lagreSpillDeltagelse(spilldeltagelse);
             spillDAO.lagreSpill(spill);
-
             // request.getSession().setAttribute("kopp" , terningverdier);
             request.getSession().setAttribute("resultat", res);
 
