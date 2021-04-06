@@ -45,6 +45,11 @@ public class SpillDAO {
                 .setParameter(1, spill).getResultList();
     }
 
+    public List<Spilldeltagelse> hentSpillDeltagelserMedBrukerid(Bruker bruker){
+        return em.createQuery("select s from Spilldeltagelse s where s.bruker = ?1")
+                .setParameter(1, bruker).getResultList();
+    }
+
     public Spilldeltagelse hentSpillDeltagelseBrukerSpill(Bruker bruker, Spill spill){
         return (Spilldeltagelse) em.createQuery("select s from Spilldeltagelse s where s.spill = ?1 AND s.bruker = ?2")
                 .setParameter(1, spill).setParameter(2, bruker).getSingleResult();
