@@ -1,5 +1,7 @@
 package no.gruppe6.yatzy.entities;
 
+import org.eclipse.persistence.annotations.CacheCoordinationType;
+
 import javax.persistence.*;
 
 @Entity
