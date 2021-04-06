@@ -40,12 +40,12 @@ public class SpillDAO {
         em.merge(spilldeltagelse);
     }
 
-    public List<Spilldeltagelse> hentSpillDeltagelseListe(Spill spill){
-        return em.createQuery("select s from Spilldeltagelse s where s.spill = ?1")
+    public List hentSpillDeltagelseListe(Spill spill){
+        return em.createQuery("select s from Spilldeltagelse s where s.spill = ?1 order by s.id")
                 .setParameter(1, spill).getResultList();
     }
 
-    public List<Spilldeltagelse> hentSpillDeltagelserMedBrukerid(Bruker bruker){
+    public List hentSpillDeltagelserMedBrukerid(Bruker bruker){
         return em.createQuery("select s from Spilldeltagelse s where s.bruker = ?1")
                 .setParameter(1, bruker).getResultList();
     }
