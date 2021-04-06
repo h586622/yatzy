@@ -1,9 +1,11 @@
 package no.gruppe6.yatzy.util;
 
 
+import no.gruppe6.yatzy.entities.Bruker;
 import no.gruppe6.yatzy.entities.Kopp;
 import no.gruppe6.yatzy.entities.Spilldeltagelse;
-import no.gruppe6.yatzy.entities.Terning;
+
+import java.util.List;
 
 public class YatzyUtil {
 
@@ -302,5 +304,17 @@ public class YatzyUtil {
         int totalSum = s.getSumbonus() + s.getBonus() + s.getPar() + s.getTopar() + s.getTrelike() + s.getFirelike() +
                 s.getLitenstraight()  +  s.getStorstraight() + s.getHus() + s.getSjanse() + s.getYatzy();
         s.setTotalsum(totalSum);
+    }
+
+
+    public static Bruker finnNeste(List<Spilldeltagelse> spilldeltagelser){
+
+        Spilldeltagelse neste = spilldeltagelser.get(0);
+
+        for(Spilldeltagelse sd : spilldeltagelser)
+            if(sd.getRunde() < neste.getRunde()) neste = sd;
+
+
+       return neste.getBruker();
     }
 }

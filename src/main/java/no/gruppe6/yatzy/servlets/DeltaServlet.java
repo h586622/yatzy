@@ -1,7 +1,10 @@
 package no.gruppe6.yatzy.servlets;
 
 import no.gruppe6.yatzy.dao.SpillDAO;
+import no.gruppe6.yatzy.entities.Bruker;
 import no.gruppe6.yatzy.entities.Spill;
+import no.gruppe6.yatzy.entities.Spilldeltagelse;
+import no.gruppe6.yatzy.util.LoggInnUt;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -37,8 +40,36 @@ public class DeltaServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request,
             HttpServletResponse response) throws ServletException, IOException {
-    
-    	
+
+        if(!LoggInnUt.isLoggedIn(request)){
+            response.sendRedirect("logginn?requiresLogin");
+        }else{
+            HttpSession sesjon = request.getSession(false);
+            Bruker bruker = (Bruker) sesjon.getAttribute("bruker");
+            String sid = request.getParameter("spill");
+            int id = Integer.parseInt(sid);
+            Spill spill = spillDAO.hentSpill(id);
+            List<Spilldeltagelse> spilldeltagelser = spillDAO.hentSpillDeltagelseListe(spill);
+
+            //Skal vi sjekke om spill er null?
+            if(!spill.getSpillstatus().equals("tilgjengelig") || spilldeltagelser.size() >= 6){
+                response.sendRedirect("delta?feilmelding=ikketilgjengelig");
+            }else{
+
+            Spilldeltagelse spilldeltagelse = new Spilldeltagelse(bruker, spill);
+            spillDAO.lagreNySpilldeltagelse(spilldeltagelse);
+
+            if(spilldeltagelser.size() >= 6) {
+                spill.setSpillstatus("aktiv");
+                spillDAO.lagreSpill(spill);
+            }
+
+            response.sendRedirect("spill?spill=" + spill.getId());
+            }
+
+        }
+
+
 
         
     }
