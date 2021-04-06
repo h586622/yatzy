@@ -14,7 +14,14 @@ public class Kopp {
 	public int Terning4;
 	public int Terning5;
 
-	public Kopp(){}
+	public Kopp(){
+		this.Terning1 = 0;
+		this.Terning2 = 0;
+		this.Terning3 = 0;
+		this.Terning4 = 0;
+		this.Terning5 = 0;
+
+	}
 
 	public Kopp(int terning1, int terning2, int terning3, int terning4, int terning5) {
 		this.Terning1 = terning1;
@@ -24,22 +31,22 @@ public class Kopp {
 		this.Terning5 = terning5;
 	}
 
-	public int[] rullKopp(boolean[] tester){
+	public void rullKopp(boolean[] tester){
+
 		Random rand = new Random();
 
 		int[] tab = hentTerninger();
 
 		for (int i = 0; i< tester.length; i++){
-			if (tester[i] == true) tab[i] = rand.nextInt(6);
+			if (!tester[i]) tab[i] = rand.nextInt(6);
 		}
 
-		Terning1 = tab[0];
-		Terning2 = tab[1];
-		Terning3 = tab[2];
-		Terning4 = tab[3];
-		Terning5 = tab[4];
+		this.Terning1 = tab[0];
+		this.Terning2 = tab[1];
+		this.Terning3 = tab[2];
+		this.Terning4 = tab[3];
+		this.Terning5 = tab[4];
 
-		return tab;
 	}
 
 

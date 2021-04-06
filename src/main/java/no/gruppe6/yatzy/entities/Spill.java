@@ -27,7 +27,7 @@ public class Spill {
     public Spill(Bruker bruker, String navn) {
         this.brukerTur = bruker;
         this.navn = navn;
-        this.kopp = new Kopp();
+        this.kopp = new Kopp(0,0,0,0,0);
     }
 
     public Kopp getKopp() {

@@ -3,6 +3,7 @@ package no.gruppe6.yatzy.servlets;
 import no.gruppe6.yatzy.dao.BrukerDAO;
 import no.gruppe6.yatzy.dao.SpillDAO;
 import no.gruppe6.yatzy.entities.Bruker;
+import no.gruppe6.yatzy.entities.Kopp;
 import no.gruppe6.yatzy.entities.Spill;
 import no.gruppe6.yatzy.entities.Spilldeltagelse;
 
@@ -24,8 +25,7 @@ public class LobbyServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         Spill spill = spillDAO.hentSpill(Integer.parseInt(request.getParameter("spill")));
-
-        List<Spilldeltagelse> spilldeltagelser = spillDAO.hentSpillDeltagelseListe(spill.getId());
+        List<Spilldeltagelse> spilldeltagelser = spillDAO.hentSpillDeltagelseListe(spill);
         request.setAttribute("spilldeltagelser", spilldeltagelser);
         request.setAttribute("spill", spill);
 
@@ -49,11 +49,14 @@ public class LobbyServlet extends HttpServlet {
                 spill.setNavn(spillnavn);
                 spill.setBrukerTur(bruker);
                 spill.setSpillstatus("ledig");
+                Kopp kopp = new Kopp();
+                spill.setKopp(kopp);
                 spillDAO.lagreNyttSpill(spill);
 
                 Spilldeltagelse spilldeltagelse = new Spilldeltagelse();
                 spilldeltagelse.setBruker(bruker);
                 spilldeltagelse.setSpill(spill);
+                spilldeltagelse.setRunde(1);
                 spillDAO.lagreNySpilldeltagelse(spilldeltagelse);
 
                 Spill spill2 = spillDAO.hentSpillMedNavn(spillnavn);

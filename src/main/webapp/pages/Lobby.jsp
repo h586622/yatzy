@@ -12,7 +12,7 @@
 <p>Host: ${spill.brukerTur.brukernavn}</p>
     <p>${spill.id}</p>
 
-<c:forEach  var="d" items="${spill.spilldeltagelser}" >
+<c:forEach  var="d" items="${spilldeltagelser}" >
 <p>
     Spiller: ${d.bruker.brukernavn}
 </p>

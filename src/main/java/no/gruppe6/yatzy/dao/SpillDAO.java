@@ -1,5 +1,6 @@
 package no.gruppe6.yatzy.dao;
 
+import no.gruppe6.yatzy.entities.Bruker;
 import no.gruppe6.yatzy.entities.Spill;
 import no.gruppe6.yatzy.entities.Spilldeltagelse;
 
@@ -39,9 +40,14 @@ public class SpillDAO {
         em.merge(spilldeltagelse);
     }
 
-    public List<Spilldeltagelse> hentSpillDeltagelseListe(int spillId){
+    public List hentSpillDeltagelseListe(Spill spill){
         return em.createQuery("select s from Spilldeltagelse s where s.spill = ?1")
-                .setParameter(1, spillId).getResultList();
+                .setParameter(1, spill).getResultList();
+    }
+
+    public Spilldeltagelse hentSpillDeltagelseBrukerSpill(Bruker bruker, Spill spill){
+        return (Spilldeltagelse) em.createQuery("select s from Spilldeltagelse s where s.spill = ?1 AND s.bruker = ?2")
+                .setParameter(1, spill).setParameter(2, bruker).getSingleResult();
     }
 
     public Spill hentSpillMedNavn(String navn){
