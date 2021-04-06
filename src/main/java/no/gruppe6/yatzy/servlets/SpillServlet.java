@@ -43,7 +43,12 @@ public class SpillServlet extends HttpServlet {
             request.setAttribute("spilldeltagelser", spilldeltagelser);
 
             if (spill.getSpillstatus().equals("ledig")) {
-                request.getRequestDispatcher("pages/venteliste.jsp").forward(request, response);
+                if(spill.getBrukerTur().equals(bruker)){
+                    response.sendRedirect("Lobby?spill="+ spill.getId());
+                }else{
+                    request.getRequestDispatcher("pages/venteliste.jsp").forward(request, response);
+                }
+
             } else if (spill.getSpillstatus().equals("avsluttet")) {
                 //hent vinner + hele tabell
                 //send til avsluttet.jsp.
