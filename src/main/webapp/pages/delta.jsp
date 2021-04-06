@@ -14,8 +14,9 @@
 <c:forEach  var="d" items="${ledigeSpill}">
  <p>
  <form action="delta" method="post">
-	<input type="hidden" id="spill" name="spill" value="${spill.id}">
-	<input type = "submit" name ="${d.navn}" value= "Delta">
+	<input type="hidden" id="spill" name="spill" value="${d.id}">
+		${d.navn}
+	<input type = "submit" name ="" value= "Delta">
  </form>
 </p>
 </c:forEach>

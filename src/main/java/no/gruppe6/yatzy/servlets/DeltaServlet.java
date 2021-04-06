@@ -52,7 +52,7 @@ public class DeltaServlet extends HttpServlet {
             List<Spilldeltagelse> spilldeltagelser = spillDAO.hentSpillDeltagelseListe(spill);
 
             //Skal vi sjekke om spill er null?
-            if(!spill.getSpillstatus().equals("tilgjengelig") || spilldeltagelser.size() >= 6){
+            if(!spill.getSpillstatus().equals("ledig") || spilldeltagelser.size() >= 6){
                 response.sendRedirect("delta?feilmelding=ikketilgjengelig");
             }else{
 

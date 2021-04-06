@@ -40,7 +40,7 @@ public class SpillServlet extends HttpServlet {
             Spill spill = spillDAO.hentSpill(id);
             request.setAttribute("spill", spill);
 
-            if (spill.getSpillstatus().equals("tilgjengelig")) {
+            if (spill.getSpillstatus().equals("ledig")) {
                 request.getRequestDispatcher("pages/venteside.jsp").forward(request, response);
             } else if (spill.getSpillstatus().equals("avsluttet")) {
                 //hent vinner + hele tabell
