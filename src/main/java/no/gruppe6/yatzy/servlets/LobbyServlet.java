@@ -11,19 +11,20 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
+import java.util.List;
 
 @WebServlet("/Lobby")
 public class LobbyServlet extends HttpServlet {
     @EJB
     private SpillDAO spillDAO;
-    @EJB
-    private BrukerDAO bdDao;
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         Spill spill = spillDAO.hentSpill(Integer.parseInt(request.getParameter("spill")));
-        System.out.println(spill.getId() + "ops");
+        List<Spilldeltagelse> spd = spill.getSpilldeltagelser();
+        System.out.println(spd.size());
+        spd.forEach(x -> System.out.println(x.getBruker().getBrukernavn()));
 
         request.setAttribute("spill", spill);
 
@@ -35,16 +36,12 @@ public class LobbyServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         HttpSession sesjon = request.getSession(false);
-        System.out.println("test1");
         if (sesjon == null || sesjon.getAttribute("bruker") == null) {
-            System.out.println("test2");
             response.sendRedirect("logginn");
         }else{
             Bruker bruker = (Bruker) sesjon.getAttribute("bruker");
             String spillnavn = request.getParameter("nyttspill");
-            System.out.println("test");
             if(spillnavn == null){
-                System.out.println("test");
                 response.sendRedirect("startside");
             }else{
                 Spill spill = new Spill();
@@ -52,8 +49,6 @@ public class LobbyServlet extends HttpServlet {
                 spill.setBrukerTur(bruker);
                 spill.setSpillstatus("ledig");
                 spillDAO.lagreNyttSpill(spill);
-
-
 
                 Spilldeltagelse spilldeltagelse = new Spilldeltagelse();
                 spilldeltagelse.setBruker(bruker);
@@ -66,7 +61,6 @@ public class LobbyServlet extends HttpServlet {
             }
 
         }
-        System.out.println("test3");
 
     }
 }

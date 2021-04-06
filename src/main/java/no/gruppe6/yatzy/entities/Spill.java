@@ -17,7 +17,7 @@ public class Spill {
     private Kopp kopp;
 
     @OneToMany(mappedBy = "spill")
-    private List<Spilldeltagelse> spilldeltagelseList;
+    private List<Spilldeltagelse> spilldeltagelser;
 
     @ManyToOne
     @JoinColumn(name = "tur", referencedColumnName = "brukernavn")
@@ -33,12 +33,12 @@ public class Spill {
         this.kopp = new Kopp();
     }
 
-    public List<Spilldeltagelse> getSpilldeltagelseList() {
-        return spilldeltagelseList;
+    public List<Spilldeltagelse> getSpilldeltagelser() {
+        return spilldeltagelser;
     }
 
-    public void setSpilldeltagelseList(List<Spilldeltagelse> spilldeltagelseList) {
-        this.spilldeltagelseList = spilldeltagelseList;
+    public void setSpilldeltagelser(List<Spilldeltagelse> spilldeltagelser) {
+        this.spilldeltagelser = spilldeltagelser;
     }
 
     public Kopp getKopp() {

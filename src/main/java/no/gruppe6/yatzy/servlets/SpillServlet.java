@@ -28,20 +28,22 @@ public class SpillServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request,
                          HttpServletResponse response) throws ServletException, IOException {
         HttpSession sesjon = request.getSession(false);
-        if (!LoggInnUt.isLoggedIn(request)) response.sendRedirect("logginn?requiresLogin");
-        else {
+        if (!LoggInnUt.isLoggedIn(request)) {
+            response.sendRedirect("logginn?requiresLogin");
+        } else {
 
             //Her bør det gjøres sjekk på om bruker er spectator, deltager med tur eller deltager uten tur.
             Bruker bruker = (Bruker) sesjon.getAttribute("bruker");
-            String ids = request.getParameter("spillid");
+
+            String ids = request.getParameter("spill");
             int id = Integer.parseInt(ids);
 
-            Spill spill = (Spill) spillDAO.hentSpill(id);
+            Spill spill = spillDAO.hentSpill(id);
 
-        request.setAttribute("spill", spill);
+            request.setAttribute("spill", spill);
 
-        request.getRequestDispatcher("pages/spill.jsp")
-                .forward(request, response);
+            request.getRequestDispatcher("pages/spill.jsp")
+                    .forward(request, response);
         }
     }
 

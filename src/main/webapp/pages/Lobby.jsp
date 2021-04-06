@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+         pageEncoding="ISO-8859-1"%>
 <html>
 <head>
     <title>Lobby</title>
@@ -8,9 +9,10 @@
 
     <h2>${spill.navn}</h2>
 
-<p>Host: ${spill.brukerTur}</p>
+<p>Host: ${spill.brukerTur.brukernavn}</p>
+    <p>${spill.id}</p>
 
-<c:forEach  var="d" items="${spill.spilldeltagelseList}" >
+<c:forEach  var="d" items="${spill.spilldeltagelser}" >
 <p>
     Spiller: ${d.bruker.brukernavn}
 </p>
