@@ -30,11 +30,16 @@ public class DeltaServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request,
             HttpServletResponse response) throws ServletException, IOException {
 
-        List<Spill> ledigeSpill = spillDAO.hentTilgjengeligeSpill();
-    	
-    	request.setAttribute("ledigeSpill", ledigeSpill);
-        request.getRequestDispatcher("pages/delta.jsp")
-        		.forward(request, response);
+        if(!LoggInnUt.isLoggedIn(request)){
+            response.sendRedirect("logginn?requiresLogin");
+        }else {
+
+            List<Spill> ledigeSpill = spillDAO.hentTilgjengeligeSpill();
+
+            request.setAttribute("ledigeSpill", ledigeSpill);
+            request.getRequestDispatcher("pages/delta.jsp")
+                    .forward(request, response);
+        }
     }
 
     @Override
