@@ -58,12 +58,16 @@ public class HistorikkServlet extends HttpServlet {
 		List<Spilldeltagelse> spilldeltagelser = dbDao.hentSpillDeltagelseListe(spill);
 
 		for (Spilldeltagelse s: spilldeltagelser) {
-			System.out.println(s.getSpill().getNavn());
+			System.out.println("Enere:" + s.getEnere());
 		}
 		System.out.println("Spillid : " + spillid);
 
-		
-		
+		request.setAttribute("spilldeltagelser", spilldeltagelser);
+
+		request.getRequestDispatcher("pages/spillHistorikk.jsp")
+				.forward(request, response);
+
+
 	}
 
 }

@@ -40,7 +40,7 @@ public class SpillDAO {
         em.merge(spilldeltagelse);
     }
 
-    public List hentSpillDeltagelseListe(Spill spill){
+    public List<Spilldeltagelse> hentSpillDeltagelseListe(Spill spill){
         return em.createQuery("select s from Spilldeltagelse s where s.spill = ?1")
                 .setParameter(1, spill).getResultList();
     }
