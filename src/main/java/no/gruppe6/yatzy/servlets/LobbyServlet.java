@@ -57,6 +57,7 @@ public class LobbyServlet extends HttpServlet {
 
                 Spill spill2 = spillDAO.hentSpillMedNavn(spillnavn);
 
+                request.setAttribute("spillid", spill2.getId());
                 response.sendRedirect("Lobby?spill="+ spill2.getId());
             }
 

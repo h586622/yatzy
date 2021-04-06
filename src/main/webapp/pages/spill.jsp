@@ -16,80 +16,80 @@
     <table>
         <tr>
             <th> Runde</th>
-            <c:forEach items="${spill.spilldeltagelselist}" var="s">
+            <c:forEach items="${spill.spilldeltagelser}" var="s">
                 <th>${s.bruker.brukernavn}</th>
             </c:forEach>
         </tr>
         <td>Enere</td>
-        <c:forEach items="${spill.spilldeltagelselist}" var="s">
+        <c:forEach items="${spill.spilldeltagelser}" var="s">
             <td>${s.enere}</td>
         </c:forEach>
         <td>Toere</td>
-        <c:forEach items="${spill.spilldeltagelselist}" var="s">
+        <c:forEach items="${spill.spilldeltagelser}" var="s">
             <td>${s.toere}</td>
         </c:forEach>
         <td>Treere</td>
-        <c:forEach items="${spill.spilldeltagelselist}" var="s">
+        <c:forEach items="${spill.spilldeltagelser}" var="s">
             <td>${s.treere}</td>
         </c:forEach>
         <td>Firere</td>
-        <c:forEach items="${spill.spilldeltagelselist}" var="s">
+        <c:forEach items="${spill.spilldeltagelser}" var="s">
             <td>${s.firere}</td>
         </c:forEach>
         <td>Femere</td>
-        <c:forEach items="${spill.spilldeltagelselist}" var="s">
+        <c:forEach items="${spill.spilldeltagelser}" var="s">
             <td>${s.femere}</td>
         </c:forEach>
         <td>Seksere</td>
-        <c:forEach items="${spill.spilldeltagelselist}" var="s">
+        <c:forEach items="${spill.spilldeltagelser}" var="s">
             <td>${s.enere}</td>
         </c:forEach>
         <td>Sum</td>
-        <c:forEach items="${spill.spilldeltagelselist}" var="s">
+        <c:forEach items="${spill.spilldeltagelser}" var="s">
             <td>${s.sumbonus}</td>
         </c:forEach>
         <td>Bonus</td>
-        <c:forEach items="${spill.spilldeltagelselist}" var="s">
+        <c:forEach items="${spill.spilldeltagelser}" var="s">
             <td>${s.bonus}</td>
         </c:forEach>
         <td>Ett par</td>
-        <c:forEach items="${spill.spilldeltagelselist}" var="s">
+        <c:forEach items="${spill.spilldeltagelser}" var="s">
             <td>${s.par}</td>
         </c:forEach>
         <td>To par</td>
-        <c:forEach items="${spill.spilldeltagelselist}" var="s">
+        <c:forEach items="${spill.spilldeltagelser}" var="s">
             <td>${s.topar}</td>
         </c:forEach>
         <td>Tre like</td>
-        <c:forEach items="${spill.spilldeltagelselist}" var="s">
+        <c:forEach items="${spill.spilldeltagelser}" var="s">
             <td>${s.trelike}</td>
         </c:forEach>
         <td>Fire like</td>
-        <c:forEach items="${spill.spilldeltagelselist}" var="s">
+        <c:forEach items="${spill.spilldeltagelser}" var="s">
             <td>${s.firelike}</td>
         </c:forEach>
         <td>Liten straight</td>
-        <c:forEach items="${spill.spilldeltagelselist}" var="s">
+        <c:forEach items="${spill.spilldeltagelser}" var="s">
             <td>${s.litenstraight}</td>
         </c:forEach>
         <td>Stor straight</td>
-        <c:forEach items="${spill.spilldeltagelselist}" var="s">
+        <c:forEach items="${spill.spilldeltagelser}" var="s">
             <td>${s.storstraight}</td>
         </c:forEach>
         <td>Hus</td>
-        <c:forEach items="${spill.spilldeltagelselist}" var="s">
+        <c:forEach items="${spill.spilldeltagelser}" var="s">
             <td>${s.hus}</td>
         </c:forEach>
         <td>Sjanse</td>
-        <c:forEach items="${spill.spilldeltagelselist}" var="s">
+        <c:forEach items="${spill.spilldeltagelser}" var="s">
             <td>${s.sjanse}</td>
         </c:forEach>
         <td>Yatzy</td>
-        <c:forEach items="${spill.spilldeltagelselist}" var="s">
+        <c:forEach items="${spill.spilldeltagelser}" var="s">
             <td>${s.yatzy}</td>
         </c:forEach>
         <td>Totalsum</td>
-        <c:forEach items="${spill.spilldeltagelselist}" var="s">
+        <c:forEach items="${spill.spilldeltagelser}" var="s">
             <td>${s.totalsum}</td>
         </c:forEach>
 
