@@ -232,4 +232,11 @@ public class Spilldeltagelse {
     public void setSpill(Spill spill) {
         this.spill = spill;
     }
+
+
+    @Override
+    public boolean equals(Object obj){
+        Spilldeltagelse spilldeltagelse = (Spilldeltagelse) obj;
+        return this.getId() == spilldeltagelse.getId();
+    }
 }

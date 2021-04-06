@@ -56,10 +56,10 @@ public class SpillServlet extends HttpServlet {
 
                 if (bruker.equals(tur)) {
                     forward += "spill.jsp";
-                } else if (spilldeltagelser.contains(bruker)) {
+                } else if (spilldeltagelser.contains(spilldeltagelse)) {
                     forward += "deltager.jsp";
                 } else {
-                    forward += "spectate.jsp";
+                    forward += "spectate.jsp"; //Spectate for dette spillet
 
                 }
 
