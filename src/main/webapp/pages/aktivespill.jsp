@@ -20,9 +20,8 @@
 <c:forEach var="s" items="${spilliste}">
 	<p>
 	<form action="spill" method="get">
-		<input type="hidden" id="spill" name="spill" value="${d.id}">
-			${d.navn}
-		<input type = "submit" name ="" value= "Gå inn">
+		<input type="hidden" id="spill" name="spill" value="${s.id}">
+		<input type = "submit" name ="" value= "${s.navn}">
 	</form>
 	</p>
 </c:forEach>
