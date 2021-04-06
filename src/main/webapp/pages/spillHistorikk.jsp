@@ -1,35 +1,41 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: HVL
-  Date: 06/04/2021
-  Time: 12:44
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <title>Lobby</title>
     <title>Spillhistorikk</title>
     <style>
         table {
-            font-family: arial, sans-serif;
+            font-family: Roboto Condensed;
+            color: #ffffff;
             border-collapse: collapse;
-            width: 100%;
+            width: 60%;
+            margin-left:20%;
+            margin-right:20%
         }
-
         td, th {
-            border: 1px solid #dddddd;
+            border: 1px solid #FFFFFF;
             text-align: left;
             padding: 8px;
         }
 
         tr:nth-child(even) {
-            background-color: #dddddd;
+            background-color: #FF8C00;
+        }
+        tr:nth-child(odd) {
+            background-color: #51AFC5;
         }
     </style>
 </head>
 <body>
-<TABLE ID="spillbrett">
+<div id="logo">
+    <img src="pictures/logo.png" alt="logo" style='max-width:450px;'>
+</div>
+<TABLE ID="ScoreCard">
     <TR>
         <TH>Deltakere</TH>
         <c:forEach items="${spilldeltagelser}" var="s">
@@ -147,6 +153,11 @@
 
 </TABLE>
 
+<form action="LoggUtServlet" method="get">
+    <div id="loggutknapp">
+        <input type="submit" value="Logg ut" />
+    </div>
+</form>
 
 </body>
 </html>
