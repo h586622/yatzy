@@ -39,16 +39,18 @@ public class SpillServlet extends HttpServlet {
             int id = Integer.parseInt(ids);
             Spill spill = spillDAO.hentSpill(id);
             request.setAttribute("spill", spill);
+            List<Spilldeltagelse> spilldeltagelser = spillDAO.hentSpillDeltagelseListe(spill);
+            request.setAttribute("spilldeltagelser", spilldeltagelser);
 
             if (spill.getSpillstatus().equals("ledig")) {
-                request.getRequestDispatcher("pages/venteside.jsp").forward(request, response);
+                request.getRequestDispatcher("pages/venteliste.jsp").forward(request, response);
             } else if (spill.getSpillstatus().equals("avsluttet")) {
                 //hent vinner + hele tabell
                 //send til avsluttet.jsp.
             } else {
 
                 String forward = "pages/";
-                List<Spilldeltagelse> spilldeltagelser = spillDAO.hentSpillDeltagelseListe(spill);
+
 
 
                 Bruker tur = spill.getBrukerTur();
@@ -59,14 +61,14 @@ public class SpillServlet extends HttpServlet {
                 } else if (spilldeltagelser.contains(spilldeltagelse)) {
                     forward += "deltager.jsp";
                 } else {
-                    forward += "spectate.jsp"; //Spectate for dette spillet
+                    forward += "spectator.jsp"; //Spectate for dette spillet
 
                 }
 
 
                 request.setAttribute("rundenavn", YatzyUtil.rundeNavn(spilldeltagelse.getRunde()));
                 request.setAttribute("spilldeltagelse", spilldeltagelse);
-                request.setAttribute("spilldeltagelser", spilldeltagelser);
+
 
                 request.getRequestDispatcher(forward)
                         .forward(request, response);
