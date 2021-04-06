@@ -122,7 +122,7 @@ public class SpillServlet extends HttpServlet {
                 spilldeltagelse.setRunde(spilldeltagelse.getRunde() + 1);
 
                 List<Spilldeltagelse> spilldeltagelser = spillDAO.hentSpillDeltagelseListe(spill);
-                spill.setBrukerTur(YatzyUtil.finnNeste(spilldeltagelser));
+                spill.setBrukerTur(YatzyUtil.finnNeste(spilldeltagelser, spill.getBrukerTur()));
             }
 
             Spilldeltagelse sd = spillDAO.hentSpillDeltagelseBrukerSpill(spill.getBrukerTur(), spill);

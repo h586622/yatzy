@@ -307,14 +307,22 @@ public class YatzyUtil {
     }
 
 
-    public static Bruker finnNeste(List<Spilldeltagelse> spilldeltagelser){
+    public static Bruker finnNeste(List<Spilldeltagelse> spilldeltagelser, Bruker bruker){
 
         Spilldeltagelse neste = spilldeltagelser.get(0);
+        if(bruker.equals(neste.getBruker()) && spilldeltagelser.get(1) != null ){
+            neste = spilldeltagelser.get(1);
+        }
+        System.out.println(neste.getBruker().getBrukernavn());
 
-        for(Spilldeltagelse sd : spilldeltagelser)
-            if(sd.getRunde() < neste.getRunde()) neste = sd;
+        for(Spilldeltagelse sd : spilldeltagelser){
+            if(sd.getRunde() < neste.getRunde()){
+                neste = sd;
+            }
+        }
 
 
-       return neste.getBruker();
+        System.out.println(neste.getBruker().getBrukernavn());
+        return neste.getBruker();
     }
 }
