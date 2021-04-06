@@ -30,6 +30,16 @@ body {
     text-align: center;
 }
 
+#startsideboks {
+    width: 550px;
+    height: 350px;
+    background: #51AFC5;
+    border-radius: 31px;
+    margin: auto;
+    padding: 10px;
+    text-align: center;
+}
+
 #tekst1 {
     width: 600px;
     color: white;
@@ -51,6 +61,13 @@ body {
 
 #inputogknapp {
     padding-top: 80px;
+}
+
+#loggutknapp {
+    width: 10%;
+    position:fixed;
+    right:2px;
+    bottom:10px;
 }
 
 input[type=text], select {

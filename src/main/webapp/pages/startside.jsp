@@ -1,44 +1,49 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+		 pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
-<title>Startside</title>
+	<meta charset="UTF-8">
+	<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed&display=swap" rel="stylesheet" />
+	<link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet" />
+	<link rel="stylesheet" type="text/css" href="css/style.css" />
+	<title>Startside</title>
 </head>
 <body>
-	
- <p> Her kan du se en oversikt over ledige spill samt opprette spill</p>
- 
- <fieldset>
- 
- 		<form action="Lobby" method="post">
-			
 
-			Navn på spill:<input type="text" name="nyttspill"/>
-			<input type="submit" value="Opprett Spill" />
-			</form>
-			
- <form action="delta" method="get">
-		
-			<input type="submit" value="Delta i spill" />
-			</form>
-			
-<form action="spectate" method="get">
-		
-			<input type="submit" value="Se på spill" />
-			</form>
+<div id="logo">
+	<img src="pictures/logo.png" alt="logo" style='max-width:450px;'>
+</div>
 
-<form action="historikk" method="get">
-		
-			<input type="submit" value="Se din historikk" />
-			</form>
-			
-</fieldset>	
+<div id="startsideboks">
 
-<form action="LoggUtServlet" method="get">
-<input type="submit" value="Logg ut"/>
+	<form action="Lobby" method="post">
+			<input type="text" name="nyttspill" placeholder="Navn på spill"/>
+			<input type="submit" value="Opprett spill" />
+	</form>
 
-</form>
-	
+	<form action="aktivespill" method="get">
+		<input type="submit" value="Dine aktive spill" />
+	</form>
+
+	<form action="delta" method="get">
+			<input type="submit" value="Se tilgjengelige spill" />
+	</form>
+
+	<form action="spectate" method="get">
+			<input type="submit" value="Finn spill å se på" />
+	</form>
+
+	<form action="historikk" method="get">
+			<input type="submit" value="Se på dine tidligere spill" />
+	</form>
+
+</div>
+
+	<form action="LoggUtServlet" method="get">
+		<div id="loggutknapp">
+			<input type="submit" value="Logg ut" />
+		</div>
+	</form>
 </body>
+</html>
