@@ -10,7 +10,7 @@
 			<fieldset>
 
 				<c:forEach items="${spilldeltagelser}" var="s">
-					<p>${s.spill.navn} <form action="historikk" method="post">
+					<p>${s.spill.navn} <form action="enkelHistorikk" method="get">
 					<input type="hidden" name="spillid" value="${s.spill.id}">
 					<input type="submit" value="Vis"/>
 				</form>
