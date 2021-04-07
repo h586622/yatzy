@@ -29,6 +29,10 @@ public class LobbyServlet extends HttpServlet {
         request.setAttribute("spilldeltagelser", spilldeltagelser);
         request.setAttribute("spill", spill);
 
+        for ( Spilldeltagelse s: spilldeltagelser) {
+            System.out.println(s.getBruker().getBrukernavn());
+        }
+
         request.getRequestDispatcher("pages/Lobby.jsp").forward(request, response);
 
     }

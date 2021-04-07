@@ -8,6 +8,7 @@ import no.gruppe6.yatzy.entities.Spilldeltagelse;
 import no.gruppe6.yatzy.util.LoggInnUt;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.zip.ZipEntry;
@@ -37,8 +38,17 @@ public class OversiktHistorikkServlet extends HttpServlet {
 			List<Spilldeltagelse> liste =  dbDao.hentSpillDeltagelserMedBrukerid(b);
 
 			List<Spilldeltagelse> spilldeltagelser = liste.stream()
-					.filter(d -> d.getSpill().getSpillstatus() == "avsluttet")
+					.filter(d -> d.getSpill().getSpillstatus().equals("avsluttet"))
 					.collect(Collectors.toList());
+
+			/*
+			List<Spilldeltagelse> avsluttedeSpill = new ArrayList<Spilldeltagelse>();
+			for (Spilldeltagelse s: liste) {
+				if(s.getSpill().getSpillstatus().equals("avsluttet"))
+					avsluttedeSpill.add(s);
+				
+			}
+			 */
 
 			request.setAttribute("spilldeltagelser", spilldeltagelser);
 
