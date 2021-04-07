@@ -332,6 +332,17 @@ public class YatzyUtil {
             }
         }
 
+        if(temp == 0) {
+            for (Spilldeltagelse s : spilldeltagelser) {
+                if (s.getId() < spiller) {
+                    temp = s.getId();
+                    if(temp < nesteId){
+                        nesteId = temp;
+                    }
+                }
+            }
+        }
+
         neste = finnBrukerMedIDDeltakelse(spilldeltagelser,nesteId);
         return neste;
         /*
