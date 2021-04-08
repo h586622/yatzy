@@ -5,7 +5,9 @@ import no.gruppe6.yatzy.entities.Bruker;
 import no.gruppe6.yatzy.entities.Kopp;
 import no.gruppe6.yatzy.entities.Spilldeltagelse;
 
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class YatzyUtil {
 
@@ -370,6 +372,18 @@ public class YatzyUtil {
                 return s.getBruker();
         }
         return null;
+    }
+
+    public static Bruker finnNeste2(List<Spilldeltagelse> spilldeltagelser, Spilldeltagelse spilldeltagelse){
+        spilldeltagelser.sort(Comparator.comparingInt(Spilldeltagelse::getId));
+        int index = spilldeltagelser.indexOf(spilldeltagelse);
+
+        if(index == spilldeltagelser.size()-1){
+            return spilldeltagelser.get(0).getBruker();
+        }else {
+            return spilldeltagelser.get(index+1).getBruker();
+        }
+
     }
 
 }
