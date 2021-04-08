@@ -16,15 +16,30 @@
 	<img src="pictures/logo.png" alt="logo" style='max-width:450px;'>
 </div>
 
-<div id="tekst1">Her kan du se dine aktive spill</div>
+<div id="overskrift">Her kan du se dine aktive spill</div>
+
 <c:forEach var="s" items="${spilliste}">
-	<p>
+
 	<form action="spill" method="get">
-		<input type="hidden" id="spill" name="spill" value="${s.id}">
-		<input type = "submit" name ="" value= "${s.navn}">
+		<div id="listeknapp">
+			<input type="hidden" id="spill" name="spill" value="${s.id}">
+			<input type = "submit" name ="" value= "${s.navn}">
+		</div>
 	</form>
-	</p>
+
 </c:forEach>
+
+<form action="LoggUtServlet" method="get">
+	<div id="loggutknapp">
+		<input type="submit" value="Logg ut" />
+	</div>
+</form>
+
+<form action="startside" method="get">
+	<div id="startsideknapp">
+		<input type="submit" value="Startside" />
+	</div>
+</form>
 
 </body>
 </html>

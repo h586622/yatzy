@@ -43,5 +43,11 @@
     </div>
 </form>
 
+    <form action="startside" method="get">
+        <div id="startsideknapp">
+            <input type="submit" value="Startside" />
+        </div>
+    </form>
+
 </body>
 </html>

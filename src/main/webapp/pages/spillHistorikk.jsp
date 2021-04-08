@@ -6,7 +6,6 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="css/style.css" />
-    <title>Lobby</title>
     <title>Spillhistorikk</title>
     <style>
         table {
@@ -156,6 +155,12 @@
 <form action="LoggUtServlet" method="get">
     <div id="loggutknapp">
         <input type="submit" value="Logg ut" />
+    </div>
+</form>
+
+<form action="startside" method="get">
+    <div id="startsideknapp">
+        <input type="submit" value="Startside" />
     </div>
 </form>
 

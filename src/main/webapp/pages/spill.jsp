@@ -1,35 +1,72 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-         pageEncoding="ISO-8859-1" %>
-<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="ISO-8859-1">
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
     <title>Spill</title>
     <style>
         table {
-            font-family: arial, sans-serif;
+            font-family: Roboto Condensed;
+            color: #ffffff;
             border-collapse: collapse;
-            width: 100%;
+            width: 30%;
+            float: right;
+            margin-right: 10%;
         }
 
         td, th {
-            border: 1px solid #dddddd;
+            border: 1px solid #FFFFFF;
             text-align: left;
             padding: 8px;
         }
 
         tr:nth-child(even) {
-            background-color: #dddddd;
+            background-color: #FF8C00;
+        }
+        tr:nth-child(odd) {
+            background-color: #51AFC5;
         }
     </style>
 </head>
 <body>
+<div id="logo">
+    <img src="pictures/logo.png" alt="logo" style='max-width:450px;'>
+</div>
+<div id="overskrift">Du er med i dette spillet: ${spill.navn}</div>
 
-<p> Du er med i dette spillet: ${spill.navn} </p>
+<div id="runde">
+    <div id="spillboks">
+    <form action=spill method="post">
+
+    <!-- Bare for spillere som det er sin tur -->
+
+        <div id="vanligtekst">Antallkast: ${spilldeltagelse.kast}</div>
+        <div id="vanligtekst">${rundenavn}</div>
+        <div id="vanligtekst">Resultat av kast:</div>
+        <input type="checkbox" id="terning1" name="terninger" value="0">
+        <label for="terning1"> ${spill.kopp.terning1}</label><br>
+        <input type="checkbox" id="terning2" name="terninger" value="1">
+        <label for="terning2"> ${spill.kopp.terning2}</label><br>
+        <input type="checkbox" id="terning3" name="terninger" value="2">
+        <label for="terning3"> ${spill.kopp.terning3}</label><br>
+        <input type="checkbox" id="terning4" name="terninger" value="3">
+        <label for="terning4"> ${spill.kopp.terning4}</label><br>
+        <input type="checkbox" id="terning5" name="terninger" value="4">
+        <label for="terning5"> ${spill.kopp.terning5}</label><br>
+
+        <div id="terningknapp">
+        <input type="hidden" id="spill" name="spill" value="${spill.id}">
+        <input type="submit" value="Trill terninger">
+        </div>
+
+    </form>
+    </div>
+</div>
 
 <div id="poeng">
-
     <TABLE ID="spillbrett">
         <TR>
             <TH>Deltakere</TH>
@@ -145,38 +182,28 @@
                 <TD>${s.totalsum}</TD> <!-- Spillere -->
             </c:forEach>
         </TR>
-
     </TABLE>
 </div>
-<div id="runde">
-    <form action=spill method="post">
-        <input type="hidden" id="spill" name="spill" value="${spill.id}">
-        <input type="submit" value="Trill terninger">
 
-
-
-    <!-- Bare for spillere som det er sin tur -->
-    <fieldset>
-        <p>Antallkast: ${spilldeltagelse.kast} </p>
-        <p>${rundenavn}</p>
-        <p> Resultat av kast: </p>
-        <input type="checkbox" id="terning1" name="terninger" value="0">
-        <label for="terning1"> ${spill.kopp.terning1}</label><br>
-        <input type="checkbox" id="terning2" name="terninger" value="1">
-        <label for="terning2"> ${spill.kopp.terning2}</label><br>
-        <input type="checkbox" id="terning3" name="terninger" value="2">
-        <label for="terning3"> ${spill.kopp.terning3}</label><br><br>
-        <input type="checkbox" id="terning4" name="terninger" value="3">
-        <label for="terning4"> ${spill.kopp.terning4}</label><br><br>
-        <input type="checkbox" id="terning5" name="terninger" value="4">
-        <label for="terning5"> ${spill.kopp.terning5}</label><br><br>
-    </fieldset>
-    </form>
-</div>
-
-<form action=startside method="get">
-    <input type="submit" value="Tilbake til startsiden">
+<form action="LoggUtServlet" method="get">
+    <div id="loggutknapp">
+        <input type="submit" value="Logg ut" />
+    </div>
 </form>
+
+<form action="startside" method="get">
+    <div id="startsideknapp">
+        <input type="submit" value="Startside" />
+    </div>
+</form>
+
+<div id="oppdaterknapp">
+    <form action="Lobby" method="get">
+        <input type="hidden" id="spill" name="spill" value="${spill.id}">
+        <input type="submit" value="Oppdater" />
+    </form>
+
+</div>
 
 </body>
 </html>

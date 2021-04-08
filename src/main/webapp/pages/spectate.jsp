@@ -1,30 +1,44 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+         pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
 <head>
-<meta charset="ISO-8859-1">
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
 <title>Spectate</title>
 </head>
-<legend>Velg i listen under hvilket spill du ønsker å se på </legend>	
 <body>
+<div id="logo">
+    <img src="pictures/logo.png" alt="logo" style='max-width:450px;'>
+</div>
+
+<div id="overskrift">Velg hvilket spill du ønsker å se på</div>
 	
-    ${aktiveSpill}
-    
-    <table><tr>
-<th>Spill</th>
-<th>Velg ønsket</th>
 
-</tr>
 <c:forEach var="d" items="${aktiveSpill}">
- <tr>
-<td>${d}</td>
-<td><form action="spill" method="post">
+<form action="spill" method="post">
+    <div id="listeknapp">
  <input type="hidden" name="spill" value="${d}" />
- <input type="submit" value="Se på spill" />
- </form></td> 
- </tr>
+ <input type="submit" value="${d.navn}" />
+    </div>
+</form>
 </c:forEach>
-</table>
 
-<form action=startside method="get">
-	<input type="submit" value="Tilbake til startsiden">
-	</form>
+<form action="LoggUtServlet" method="get">
+    <div id="loggutknapp">
+        <input type="submit" value="Logg ut" />
+    </div>
+</form>
+
+<form action="startside" method="get">
+    <div id="startsideknapp">
+        <input type="submit" value="Startside" />
+    </div>
+</form>
 	
 </body>
+
+</html>
