@@ -13,9 +13,7 @@ import javax.mail.internet.MimeMessage;
 
 public class JavaMailUtil {
 
-    private static Message message;
-
-    public static void setupMail(String recepient, String subject, String text) throws MessagingException {
+    public static void setupMail(String mottaker, String emne, String tekst) throws MessagingException {
         System.out.println("Klargjør melding");
 
         Properties properties = new Properties();
@@ -26,61 +24,37 @@ public class JavaMailUtil {
         properties.put("mail.smtp.port", "587");
 
         String senderMail = "erlendmatch@gmail.com";
-        String password = "RomvesenTelefon8111";
+        String passord = "RomvesenTelefon8111";
 
-        Session session = Session.getInstance(properties, new Authenticator() {
+        Session sesjon = Session.getInstance(properties, new Authenticator() {
             @Override
             protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication(senderMail, password);
+                return new PasswordAuthentication(senderMail, passord);
             }
 
         });
 
-        message = prepareMessage(session, senderMail, recepient, subject, text);
+        Message melding = prepareMessage(sesjon, senderMail, mottaker, emne, tekst);
 
+        Transport.send(melding);
 
+        System.out.println("Melding sendt");
 
     }
 
-    private static Message prepareMessage(Session session, String senderMail, String recepient, String subject,
-                                          String text) {
+    private static Message prepareMessage(Session sesjon, String senderMail, String mottaker, String emne,
+                                          String tekst) {
         try {
-            Message message = new MimeMessage(session);
+            Message message = new MimeMessage(sesjon);
             message.setFrom(new InternetAddress(senderMail));
-            message.setRecipient(Message.RecipientType.TO, new InternetAddress(recepient));
-            message.setSubject(subject);
-            message.setText(text);
+            message.setRecipient(Message.RecipientType.TO, new InternetAddress(mottaker));
+            message.setSubject(emne);
+            message.setText(tekst);
             return message;
         } catch (Exception e) {
             e.printStackTrace();
         }
         return null;
     }
-
-    public static void setSubject(String subject) {
-        try {
-            message.setSubject(subject);
-        } catch (MessagingException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public static void setText(String text) {
-        try {
-            message.setText(text);
-        } catch (MessagingException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public static void sendMail() {
-        try {
-            Transport.send(message);
-            System.out.println("Melding sendt");
-        } catch (MessagingException e) {
-            e.printStackTrace();
-        }
-    }
-
 
 }
