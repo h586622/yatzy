@@ -5,6 +5,9 @@
 <html>
 <head>
     <meta charset="ISO-8859-1">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
     <title>Spill</title>
 </head>
 <body>
