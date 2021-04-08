@@ -33,7 +33,9 @@
 </head>
 <body>
 <div id="logo">
-    <img src="pictures/logo.png" alt="logo" style='max-width:450px;'>
+    <a href="startside">
+        <img src="pictures/logo.png" alt="logo" style='max-width:450px;'>
+    </a>
 </div>
 <div id="overskrift">Du er med i dette spillet: ${spill.navn}</div>
 

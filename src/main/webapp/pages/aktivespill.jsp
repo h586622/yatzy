@@ -13,7 +13,9 @@
 <body>
 
 <div id="logo">
-	<img src="pictures/logo.png" alt="logo" style='max-width:450px;'>
+	<a href="startside">
+		<img src="pictures/logo.png" alt="logo" style='max-width:450px;'>
+	</a>
 </div>
 
 <div id="overskrift">Her kan du se dine aktive spill</div>
