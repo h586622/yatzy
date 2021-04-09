@@ -179,9 +179,12 @@
         <input type="submit" value="Oppdater"/>
     </form>
 </div>
-<form action=startside method="get">
-    <input type="submit" value="Tilbake til startsiden">
+<div id="purreknapp">
+<form action="mail" method="get">
+    <input type="hidden" id="spill" name="spill" value="${spill.id}">
+    <input type="submit" value="Purr">
 </form>
+</div>
 
 </body>
 </html>
