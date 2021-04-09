@@ -77,37 +77,37 @@
             </c:forEach>
         </TR>
         <TR>
-            <TD>Ones</TD>
+            <TD>Enere</TD>
             <c:forEach items="${spilldeltagelser}" var="s">
                 <TD>${s.enere}</TD> <!-- Spillere -->
             </c:forEach>
         </TR>
         <TR>
-            <TD>Twos</TD>
+            <TD>Toere</TD>
             <c:forEach items="${spilldeltagelser}" var="s">
                 <TD>${s.toere}</TD>
             </c:forEach>
         </TR>
         <TR>
-            <TD>Threes</TD>
+            <TD>Treere</TD>
             <c:forEach items="${spilldeltagelser}" var="s">
                 <TD>${s.treere}</TD> <!-- Spillere -->
             </c:forEach>
         </TR>
         <TR>
-            <TD>Fours</TD>
+            <TD>Firere</TD>
             <c:forEach items="${spilldeltagelser}" var="s">
                 <TD>${s.firere}</TD> <!-- Spillere -->
             </c:forEach>
         </TR>
         <TR>
-            <TD>Fives</TD>
+            <TD>Femmere</TD>
             <c:forEach items="${spilldeltagelser}" var="s">
                 <TD>${s.femere}</TD> <!-- Spillere -->
             </c:forEach>
         </TR>
         <TR>
-            <TD>Sixes</TD>
+            <TD>Seksere</TD>
             <c:forEach items="${spilldeltagelser}" var="s">
                 <TD>${s.seksere}</TD> <!-- Spillere -->
             </c:forEach>
