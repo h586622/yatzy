@@ -94,7 +94,7 @@ public class SpillServlet extends HttpServlet {
             String[] checkedBokser = request.getParameterValues("terninger");
             boolean[] tester = new boolean[5];
 
-            if (checkedBokser != null && spilldeltagelse.getKast() == 3) {
+            if (checkedBokser != null && spilldeltagelse.getKast() < 3) {
                 for (int i = 0; i < checkedBokser.length; i++) {
                     tester[Integer.parseInt(checkedBokser[i])] = true;
                 }
