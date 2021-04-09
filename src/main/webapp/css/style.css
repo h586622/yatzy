@@ -142,7 +142,7 @@ input[type=text], select {
     padding: 12px 60px;
     margin: 8px 0;
     display: inline-block;
-    border: none;
+
     border-radius: 31px;
     box-sizing: border-box;
     text-align: center;
@@ -153,7 +153,7 @@ input[type=password], select {
     padding: 14px 20px;
     margin: 8px 0;
     display: inline-block;
-    border: none;
+
     border-radius: 31px;
     box-sizing: border-box;
     text-align: center;
@@ -165,7 +165,7 @@ input[type=submit] {
     color: white;
     padding: 14px 20px;
     margin: 8px 0;
-    border: none;
+
     border-radius: 31px;
     cursor: pointer;
 }
