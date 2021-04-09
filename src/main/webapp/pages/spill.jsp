@@ -193,19 +193,6 @@
     </div>
 </form>
 
-<form action="startside" method="get">
-    <div id="startsideknapp">
-        <input type="submit" value="Startside" />
-    </div>
-</form>
-
-<div id="oppdaterknapp">
-    <form action="Lobby" method="get">
-        <input type="hidden" id="spill" name="spill" value="${spill.id}">
-        <input type="submit" value="Oppdater" />
-    </form>
-
-</div>
 
 </body>
 </html>
