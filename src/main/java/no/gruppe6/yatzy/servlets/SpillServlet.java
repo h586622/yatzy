@@ -115,15 +115,13 @@ public class SpillServlet extends HttpServlet {
                 spilldeltagelse.setRunde(spilldeltagelse.getRunde() + 1);
 
                 List<Spilldeltagelse> spilldeltagelser = spillDAO.hentSpillDeltagelseListe(spill);
-               // spill.setBrukerTur(YatzyUtil.finnNeste(spilldeltagelser, spill.getBrukerTur()));
-                spill.setBrukerTur(YatzyUtil.finnNeste2(spilldeltagelser, spilldeltagelse));
+                spill.setBrukerTur(YatzyUtil.finnNeste(spilldeltagelser, spilldeltagelse));
             }
 
             Spilldeltagelse sd = spillDAO.hentSpillDeltagelseBrukerSpill(spill.getBrukerTur(), spill);
 
             if(sd.getRunde() >= 16){
                 spill.setSpillstatus("avsluttet");
-                //sett vinner?
             }
             spillDAO.lagreSpillDeltagelse(spilldeltagelse);
             spillDAO.lagreSpill(spill);

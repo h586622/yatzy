@@ -308,73 +308,7 @@ public class YatzyUtil {
         s.setTotalsum(totalSum);
     }
 
-
-    public static Bruker finnNeste(List<Spilldeltagelse> spilldeltagelser, Bruker bruker){
-
-       // int spiller = bruker.get
-
-
-
-        int spiller = -1;
-        for (Spilldeltagelse s : spilldeltagelser) {
-            if(s.getBruker().getBrukernavn().equals(bruker.getBrukernavn())){
-                spiller = s.getId();
-            }
-        }
-
-        Bruker neste;
-        int temp = 0;
-        int nesteId = Integer.MAX_VALUE; // midelertidig løsning
-        for (Spilldeltagelse s : spilldeltagelser) {
-            if(s.getId() > spiller){
-                temp = s.getId();
-                if(temp < nesteId){
-                    nesteId = temp;
-                }
-            }
-        }
-
-        if(temp == 0) {
-            for (Spilldeltagelse s : spilldeltagelser) {
-                if (s.getId() < spiller) {
-                    temp = s.getId();
-                    if(temp < nesteId){
-                        nesteId = temp;
-                    }
-                }
-            }
-        }
-
-        neste = finnBrukerMedIDDeltakelse(spilldeltagelser,nesteId);
-        return neste;
-        /*
-        Spilldeltagelse neste = spilldeltagelser.get(0);
-        if(bruker.equals(neste.getBruker()) && spilldeltagelser.get(1) != null ){
-            neste = spilldeltagelser.get(1);
-        }
-        System.out.println(neste.getBruker().getBrukernavn());
-
-        for(Spilldeltagelse sd : spilldeltagelser){
-            if(sd.getRunde() < neste.getRunde()){
-                neste = sd;
-            }
-        }
-
-        */
-
-        //System.out.println(neste.getBruker().getBrukernavn());
-        //return neste.getBruker();
-    }
-
-    public static Bruker finnBrukerMedIDDeltakelse(List<Spilldeltagelse> deltagelser, int id){
-        for (Spilldeltagelse s : deltagelser){
-            if (s.getId() == id)
-                return s.getBruker();
-        }
-        return null;
-    }
-
-    public static Bruker finnNeste2(List<Spilldeltagelse> spilldeltagelser, Spilldeltagelse spilldeltagelse){
+    public static Bruker finnNeste(List<Spilldeltagelse> spilldeltagelser, Spilldeltagelse spilldeltagelse){
         spilldeltagelser.sort(Comparator.comparingInt(Spilldeltagelse::getId));
         int index = spilldeltagelser.indexOf(spilldeltagelse);
 

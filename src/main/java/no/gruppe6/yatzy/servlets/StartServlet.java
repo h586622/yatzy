@@ -33,7 +33,8 @@ public class StartServlet extends HttpServlet {
             String id = request.getParameter("spillid");
             int ids = Integer.parseInt(id);
             Spill spill = spillDAO.hentSpill(ids);
-            if(!bruker.equals(spill.getBrukerTur())){
+
+            if(bruker.equals(spill.getBrukerTur())){
                 spill.setSpillstatus("aktiv");
                 spillDAO.lagreSpill(spill);
             }

@@ -71,6 +71,8 @@ public class DeltaServlet extends HttpServlet {
                 if (spilldeltagelser.size() >= 6) {
                     spill.setSpillstatus("aktiv");
                     spillDAO.lagreSpill(spill);
+
+                    //Legg inn epost
                 }
 
                 response.sendRedirect("spill?spill=" + spill.getId());
