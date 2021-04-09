@@ -3,6 +3,7 @@ package no.gruppe6.yatzy.servlets;
 import no.gruppe6.yatzy.dao.SpillDAO;
 import no.gruppe6.yatzy.entities.Spill;
 import no.gruppe6.yatzy.entities.Spilldeltagelse;
+import no.gruppe6.yatzy.util.LoggInnUt;
 
 import javax.ejb.EJB;
 import javax.servlet.*;
@@ -20,13 +21,18 @@ public class EnkelHistorikkServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        int spillid = Integer.parseInt(request.getParameter("spillid"));
-        Spill spill = dbDao.hentSpill(spillid);
-        List<Spilldeltagelse> spilldeltagelser = dbDao.hentSpillDeltagelseListe(spill);
-        request.setAttribute("spilldeltagelser", spilldeltagelser);
+        if(!LoggInnUt.isLoggedIn(request)){
+            response.sendRedirect("logginn?requiresLogin");
+        }else{
+            int spillid = Integer.parseInt(request.getParameter("spillid"));
+            Spill spill = dbDao.hentSpill(spillid);
+            List<Spilldeltagelse> spilldeltagelser = dbDao.hentSpillDeltagelseListe(spill);
+            request.setAttribute("spilldeltagelser", spilldeltagelser);
 
-        request.getRequestDispatcher("pages/spillHistorikk.jsp")
-                .forward(request, response);
+            request.getRequestDispatcher("pages/spillHistorikk.jsp")
+                    .forward(request, response);
+        }
+
 
     }
 

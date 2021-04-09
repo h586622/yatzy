@@ -27,9 +27,13 @@ import javax.servlet.http.HttpServletResponse;
 	    @Override
 	    protected void doGet(HttpServletRequest request,
 	            HttpServletResponse response) throws ServletException, IOException {
+			if(LoggInnUt.isLoggedIn(request)){
+				response.sendRedirect("startside");
+			}else{
+				request.getRequestDispatcher("pages/nybruker.jsp")
+						.forward(request, response);
+			}
 
-	        request.getRequestDispatcher("pages/nybruker.jsp")
-	        		.forward(request, response);
 	    }
 
 	    @Override

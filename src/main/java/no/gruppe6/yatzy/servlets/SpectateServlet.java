@@ -2,6 +2,7 @@ package no.gruppe6.yatzy.servlets;
 
 import no.gruppe6.yatzy.dao.SpillDAO;
 import no.gruppe6.yatzy.entities.Spill;
+import no.gruppe6.yatzy.util.LoggInnUt;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -17,23 +18,22 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/spectate")
 public class SpectateServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-       
-   	@EJB
-	private SpillDAO spillDAO;
+    private static final long serialVersionUID = 1L;
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		List<Spill> aktiveSpill = spillDAO.hentAktiveSpill();
+    @EJB
+    private SpillDAO spillDAO;
 
-    	request.setAttribute("aktiveSpill", aktiveSpill);
-        request.getRequestDispatcher("pages/spectate.jsp")
-        		.forward(request, response);
-	}
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        if (!LoggInnUt.isLoggedIn(request)) {
+            response.sendRedirect("logginn?requiresLogin");
+        } else {
+            List<Spill> aktiveSpill = spillDAO.hentAktiveSpill();
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		
-	}
+            request.setAttribute("aktiveSpill", aktiveSpill);
 
+            request.getRequestDispatcher("pages/spectate.jsp")
+                    .forward(request, response);
+        }
+
+    }
 }
