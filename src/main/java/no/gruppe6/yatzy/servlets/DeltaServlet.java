@@ -9,6 +9,7 @@ import no.gruppe6.yatzy.util.LoggInnUt;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
@@ -28,11 +29,11 @@ public class DeltaServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request,
-            HttpServletResponse response) throws ServletException, IOException {
+                         HttpServletResponse response) throws ServletException, IOException {
 
-        if(!LoggInnUt.isLoggedIn(request)){
+        if (!LoggInnUt.isLoggedIn(request)) {
             response.sendRedirect("logginn?requiresLogin");
-        }else {
+        } else {
 
             List<Spill> ledigeSpill = spillDAO.hentTilgjengeligeSpill();
 
@@ -44,38 +45,39 @@ public class DeltaServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request,
-            HttpServletResponse response) throws ServletException, IOException {
+                          HttpServletResponse response) throws ServletException, IOException {
 
-        if(!LoggInnUt.isLoggedIn(request)){
+        if (!LoggInnUt.isLoggedIn(request)) {
             response.sendRedirect("logginn?requiresLogin");
-        }else{
+        } else {
             HttpSession sesjon = request.getSession(false);
             Bruker bruker = (Bruker) sesjon.getAttribute("bruker");
             String sid = request.getParameter("spill");
             int id = Integer.parseInt(sid);
             Spill spill = spillDAO.hentSpill(id);
             List<Spilldeltagelse> spilldeltagelser = spillDAO.hentSpillDeltagelseListe(spill);
+            List<Bruker> brukere = spilldeltagelser.stream().map(Spilldeltagelse::getBruker).collect(Collectors.toList());
 
             //Skal vi sjekke om spill er null?
-            if(!spill.getSpillstatus().equals("ledig") || spilldeltagelser.size() >= 6){
+            if (!spill.getSpillstatus().equals("ledig") || spilldeltagelser.size() >= 6) {
                 response.sendRedirect("delta?feilmelding=ikketilgjengelig");
-            }else{
+            } else if (brukere.contains(bruker)) {
+                response.sendRedirect("spill?spill=" + spill.getId());
+            } else {
 
-            Spilldeltagelse spilldeltagelse = new Spilldeltagelse(bruker, spill);
-            spillDAO.lagreNySpilldeltagelse(spilldeltagelse);
+                Spilldeltagelse spilldeltagelse = new Spilldeltagelse(bruker, spill);
+                spillDAO.lagreNySpilldeltagelse(spilldeltagelse);
 
-            if(spilldeltagelser.size() >= 6) {
-                spill.setSpillstatus("aktiv");
-                spillDAO.lagreSpill(spill);
-            }
+                if (spilldeltagelser.size() >= 6) {
+                    spill.setSpillstatus("aktiv");
+                    spillDAO.lagreSpill(spill);
+                }
 
-            response.sendRedirect("spill?spill=" + spill.getId());
+                response.sendRedirect("spill?spill=" + spill.getId());
             }
 
         }
 
 
-
-        
     }
 }

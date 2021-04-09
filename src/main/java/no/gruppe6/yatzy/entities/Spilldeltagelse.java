@@ -48,7 +48,7 @@ public class Spilldeltagelse {
         this.bruker = bruker;
         this.spill = spill;
         this.runde = 1;
-        this.kast = 0;
+        this.kast = 3;
     }
 
     public int getId() {

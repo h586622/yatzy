@@ -24,7 +24,6 @@ public class StartServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         String id = request.getParameter("spillid");
-        System.out.println(id + "hei");
         int ids = Integer.parseInt(id);
 
         Spill spill = spillDAO.hentSpill(ids);

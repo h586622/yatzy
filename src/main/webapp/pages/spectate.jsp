@@ -21,9 +21,9 @@
 	
 
 <c:forEach var="d" items="${aktiveSpill}">
-<form action="spill" method="post">
+<form action="spill" method="get">
     <div id="listeknapp">
- <input type="hidden" name="spill" value="${d}" />
+ <input type="hidden" name="spill" value="${d.id}" />
  <input type="submit" value="${d.navn}" />
     </div>
 </form>

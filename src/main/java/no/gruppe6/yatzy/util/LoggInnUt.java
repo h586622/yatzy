@@ -14,7 +14,7 @@ public class LoggInnUt {
 			sesjon.invalidate();
 		}
 		sesjon = request.getSession(true);
-		sesjon.setMaxInactiveInterval(120);
+		sesjon.setMaxInactiveInterval(500);
 
 		sesjon.setAttribute("bruker", bruker);
 	}

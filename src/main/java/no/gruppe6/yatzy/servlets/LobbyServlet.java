@@ -18,8 +18,6 @@ import java.util.List;
 public class LobbyServlet extends HttpServlet {
     @EJB
     private SpillDAO spillDAO;
-    @EJB
-    private BrukerDAO bdDao;
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -57,10 +55,7 @@ public class LobbyServlet extends HttpServlet {
                 spill.setKopp(kopp);
                 spillDAO.lagreNyttSpill(spill);
 
-                Spilldeltagelse spilldeltagelse = new Spilldeltagelse();
-                spilldeltagelse.setBruker(bruker);
-                spilldeltagelse.setSpill(spill);
-                spilldeltagelse.setRunde(1);
+                Spilldeltagelse spilldeltagelse = new Spilldeltagelse(bruker, spill);
                 spillDAO.lagreNySpilldeltagelse(spilldeltagelse);
 
                 Spill spill2 = spillDAO.hentSpillMedNavn(spillnavn);
