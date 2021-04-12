@@ -26,6 +26,13 @@ public class BrukerDAO {
     public void lagreBruker(Bruker b){
         em.persist(b);
     }
+
+    public void slettBruker(String brukernavn) {
+        Bruker bruker = em.find(Bruker.class, brukernavn);
+        if (bruker != null) {
+            em.remove(bruker);
+        }
+    }
 /*
     public void lagreKast(Kast k){
         em.persist(k);
@@ -38,5 +45,9 @@ public class BrukerDAO {
         return query.getResultList();
     }
 
+    public List<Bruker> hentAlleBrukere() {
 
+            TypedQuery<Bruker> query = em.createQuery("SELECT b FROM Bruker b", Bruker.class);
+            return query.getResultList();
+    }
 }

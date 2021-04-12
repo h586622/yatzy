@@ -9,13 +9,9 @@ import javax.servlet.http.HttpSession;
 public class LoggInnUt {
 	
 	public static void loggInn(HttpServletRequest request, Bruker bruker) {
-		HttpSession sesjon = request.getSession(false);
-		if (sesjon != null) {
-			sesjon.invalidate();
-		}
-		sesjon = request.getSession(true);
+		loggUt(request);
+		HttpSession sesjon = request.getSession(true);
 		sesjon.setMaxInactiveInterval(120);
-
 		sesjon.setAttribute("bruker", bruker);
 	}
 	
