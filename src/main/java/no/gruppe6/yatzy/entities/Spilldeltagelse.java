@@ -1,5 +1,7 @@
 package no.gruppe6.yatzy.entities;
 
+import org.eclipse.persistence.annotations.CacheCoordinationType;
+
 import javax.persistence.*;
 
 @Entity
@@ -24,16 +26,38 @@ public class Spilldeltagelse {
     private int hus;
     private int sjanse;
     private int yatzy;
+    private int bonus;
+    private int totalsum;
+    private int sumbonus;
+    private int runde;
+    private int kast;
 
     @ManyToOne
-    @JoinColumn(name="brukerid", referencedColumnName = "brukernavn")
+    @JoinColumn(name = "brukernavn", referencedColumnName = "brukernavn")
     private Bruker bruker;
 
     @ManyToOne
-    @JoinColumn(name="spillid", referencedColumnName = "id")
+    @JoinColumn(name = "spillid", referencedColumnName = "id")
     private Spill spill;
 
-    public Spilldeltagelse(){}
+
+    public Spilldeltagelse() {
+    }
+
+    public Spilldeltagelse(Bruker bruker, Spill spill){
+        this.bruker = bruker;
+        this.spill = spill;
+        this.runde = 1;
+        this.kast = 3;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public int getEnere() {
         return enere;
@@ -155,6 +179,46 @@ public class Spilldeltagelse {
         this.yatzy = yatzy;
     }
 
+    public int getBonus() {
+        return bonus;
+    }
+
+    public void setBonus(int bonus) {
+        this.bonus = bonus;
+    }
+
+    public int getTotalsum() {
+        return totalsum;
+    }
+
+    public void setTotalsum(int totalsum) {
+        this.totalsum = totalsum;
+    }
+
+    public int getSumbonus() {
+        return sumbonus;
+    }
+
+    public void setSumbonus(int sumbonus) {
+        this.sumbonus = sumbonus;
+    }
+
+    public int getRunde() {
+        return runde;
+    }
+
+    public void setRunde(int runde) {
+        this.runde = runde;
+    }
+
+    public int getKast() {
+        return kast;
+    }
+
+    public void setKast(int kast) {
+        this.kast = kast;
+    }
+
     public Bruker getBruker() {
         return bruker;
     }
@@ -169,5 +233,12 @@ public class Spilldeltagelse {
 
     public void setSpill(Spill spill) {
         this.spill = spill;
+    }
+
+
+    @Override
+    public boolean equals(Object obj){
+        Spilldeltagelse spilldeltagelse = (Spilldeltagelse) obj;
+        return this.getId() == spilldeltagelse.getId();
     }
 }

@@ -15,17 +15,15 @@ public class MockKopp extends Kopp {
     public MockKopp(int en, int to, int tre, int fire, int fem) {
 
         t1 = new Terning(en);
-        terninger[0] = t1;
+        terning1 = en;
         t2 = new Terning(to);
-        terninger[1] = t2;
+        terning2 = to;
         t3 = new Terning(tre);
-        terninger[2] = t3;
+        terning3 = tre;
         t4 = new Terning(fire);
-        terninger[3] = t4;
+        terning4 = fire;
         t5 = new Terning(fem);
-        terninger[4] = t5;
-
-
+        terning5 = fem;
     }
 
 }

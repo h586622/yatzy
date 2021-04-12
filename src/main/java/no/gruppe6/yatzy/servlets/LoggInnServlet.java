@@ -40,7 +40,7 @@ public class LoggInnServlet extends HttpServlet {
 
             request.setAttribute("loginMessage", loginMessage);
 
-            request.getRequestDispatcher("WEB-INF/logginn.jsp").forward(request, response);
+            request.getRequestDispatcher("pages/logginn.jsp").forward(request, response);
         }else{
             response.sendRedirect("startside");
         }

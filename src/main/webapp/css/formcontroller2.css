@@ -1,0 +1,59 @@
+.formcontroller_hidden {
+    display: none;
+}
+
+.formcontroller_validInput {
+    /* lysegrønn */
+    border-width: 5px;
+    border-style: solid;
+    border-color: rgb(200, 255, 200);
+}
+
+.formcontroller_invalidInput {
+    /* lyserød */
+    border-width: 5px;
+    border-style: solid;
+    border-color: rgb(255, 200, 200);
+
+}
+
+.formcontroller_strongPassword {
+    /* lysegrønn */
+    border-width: 5px;
+    border-style: solid;
+    border-color: rgb(200, 255, 200);
+}
+
+.formcontroller_mediumPassword {
+    /* lysegul */
+    border-width: 5px;
+    border-style: solid;
+    border-color: rgb(255, 255, 170);
+}
+
+.formcontroller_weakPassword {
+    /* lyserød */
+    border-width: 5px;
+    border-style: solid;
+    border-color: rgb(255, 200, 200)
+}
+
+.formcontroller_greenBorder {
+    border-width: 5px;
+    border-style: solid;
+    border-color: #37f837;
+
+}
+
+.formcontroller_redBorder {
+    border-width: 5px;
+    border-style: solid;
+    border-color: red;
+
+}
+.formcontroller_yellowBorder {
+    border-width: 5px;
+    border-style: solid;
+    border-color: yellow;
+
+}

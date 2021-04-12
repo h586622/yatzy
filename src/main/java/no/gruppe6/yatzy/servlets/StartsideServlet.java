@@ -1,6 +1,7 @@
 package no.gruppe6.yatzy.servlets;
 
 import no.gruppe6.yatzy.dao.BrukerDAO;
+import no.gruppe6.yatzy.util.LoggInnUt;
 
 import java.io.IOException;
 
@@ -23,29 +24,12 @@ public class StartsideServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
-		request.getRequestDispatcher("WEB-INF/startside.jsp").forward(request, response);
-
-	}
-
-	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-
-		//Logikk for � sjekke om spillnavnet er unikt
-
-		HttpSession sesjon = request.getSession(false);
-
-		if (sesjon == null || sesjon.getAttribute("username") == null) {
-			response.sendRedirect("logginn");
+		if(!LoggInnUt.isLoggedIn(request)){
+			response.sendRedirect("logginn?requiresLogin");
+		}else{
+			request.getRequestDispatcher("pages/startside.jsp").forward(request, response);
 		}
 
-
-
-
-		//String nyttSpill = (String)request.getParameter("nyttspill");
-        //System.out.println(nyttSpill);
-        //response.sendRedirect("spill");
 
 	}
 }
