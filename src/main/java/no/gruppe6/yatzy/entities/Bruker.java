@@ -18,10 +18,10 @@ public class Bruker {
     private Passord passord;
     private String epost;
 
-    @OneToMany(mappedBy = "bruker")
+    @OneToMany(mappedBy = "bruker", cascade=CascadeType.REMOVE)
     private List<Spilldeltagelse> spilldeltagelseList;
 
-    @OneToMany(mappedBy = "brukerTur")
+    @OneToMany(mappedBy = "brukerTur", cascade=CascadeType.REMOVE)
     private List<Spill> spillTur;
 
     /**

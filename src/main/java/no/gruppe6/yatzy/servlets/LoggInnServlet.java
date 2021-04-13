@@ -72,6 +72,7 @@ public class LoggInnServlet extends HttpServlet {
         String brukernavn = request.getParameter("brukernavn");
         String passord = request.getParameter("passord");
         Bruker bruker = null;
+        String admin = getServletContext().getInitParameter("Admin");
 
         if(Validator.isValidUsername(brukernavn) && Validator.passordSjekk(passord))
             bruker = dbDao.finnBrukerMedBrukernavn(brukernavn);
@@ -79,9 +80,13 @@ public class LoggInnServlet extends HttpServlet {
         if (bruker == null || !Passordhjelper.valider(passord, bruker.getPassord())) {
             response.sendRedirect("logginn?invalidUser");
 
-        }else {
+        } else {
             LoggInnUt.loggInn(request, bruker);
-            response.sendRedirect("startside");
+            if (brukernavn.equals(admin)) {
+                response.sendRedirect("admin");
+            } else {
+                response.sendRedirect("startside");
+            }
         }
          
 

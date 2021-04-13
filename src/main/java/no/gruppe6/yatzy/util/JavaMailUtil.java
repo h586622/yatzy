@@ -11,9 +11,21 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
+/**
+ * This class consists of the logic behind the mail util
+ */
 public class JavaMailUtil {
 
-    public static void setupMail(String mottaker, String emne, String tekst) throws MessagingException {
+    private static Message message;
+
+    /**
+     * A method to set up
+     * @param recepient is the receiver of the mail, as a String
+     * @param subject is the subject of the mail to be sent
+     * @param text is the content of the mail
+     * @throws MessagingException
+     */
+    public static void setupMail(String recepient, String subject, String text) throws MessagingException {
         System.out.println("Klargjør melding");
 
         Properties properties = new Properties();
@@ -24,37 +36,81 @@ public class JavaMailUtil {
         properties.put("mail.smtp.port", "587");
 
         String senderMail = "erlendmatch@gmail.com";
-        String passord = "RomvesenTelefon8111";
+        String password = "RomvesenTelefon8111";
 
-        Session sesjon = Session.getInstance(properties, new Authenticator() {
+        Session session = Session.getInstance(properties, new Authenticator() {
             @Override
             protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication(senderMail, passord);
+                return new PasswordAuthentication(senderMail, password);
             }
 
         });
 
-        Message melding = prepareMessage(sesjon, senderMail, mottaker, emne, tekst);
+        message = prepareMessage(session, senderMail, recepient, subject, text);
 
-        Transport.send(melding);
 
-        System.out.println("Melding sendt");
 
     }
 
-    private static Message prepareMessage(Session sesjon, String senderMail, String mottaker, String emne,
-                                          String tekst) {
+    /**
+     *
+     * @param session
+     * @param senderMail
+     * @param recepient
+     * @param subject
+     * @param text
+     * @return
+     */
+    private static Message prepareMessage(Session session, String senderMail, String recepient, String subject,
+                                          String text) {
         try {
-            Message message = new MimeMessage(sesjon);
+            Message message = new MimeMessage(session);
             message.setFrom(new InternetAddress(senderMail));
-            message.setRecipient(Message.RecipientType.TO, new InternetAddress(mottaker));
-            message.setSubject(emne);
-            message.setText(tekst);
+            message.setRecipient(Message.RecipientType.TO, new InternetAddress(recepient));
+            message.setSubject(subject);
+            message.setText(text);
             return message;
         } catch (Exception e) {
             e.printStackTrace();
         }
         return null;
     }
+
+    /**
+     * A method to set the subject of the mail to be sent
+     * @param subject is the subject each user can choose
+     */
+    public static void setSubject(String subject) {
+        try {
+            message.setSubject(subject);
+        } catch (MessagingException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * This method sets the text or content of the mail to be sent
+     * @param text is the content of the mail chosen by a user
+     */
+    public static void setText(String text) {
+        try {
+            message.setText(text);
+        } catch (MessagingException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * This method sends the finished mail to its recipient
+     */
+    public static void sendMail() {
+        try {
+            Transport.send(message);
+            System.out.println("Melding sendt");
+        } catch (MessagingException e) {
+            e.printStackTrace();
+        }
+    }
+
 
 }
