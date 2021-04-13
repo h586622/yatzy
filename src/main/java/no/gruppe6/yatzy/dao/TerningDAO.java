@@ -1,12 +1,13 @@
 package no.gruppe6.yatzy.dao;
-import no.gruppe6.yatzy.entities.Bruker;
 import no.gruppe6.yatzy.entities.Kast;
-
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
 
+/**
+ * This DAO access the database for the user's dice throws
+ */
 @Stateless
 public class TerningDAO {
 
@@ -19,16 +20,19 @@ public class TerningDAO {
      */
     public void lagreKast(Kast k){ em.persist(k); }
 
-        public void registrerSum (List<Integer> liste) {
-            int resultat = 0;
+    /**
+     *  This method saves the sum of all throws
+      * @param liste is the list of the throws represented by Integer
 
-            for (Integer integer : liste) {
-                resultat += integer;
-            }
-            em.persist(resultat);
-        }
 
-        public void registrerDelsum (List<Kast> liste) {
-        // er det behov for dette?
-        }
+     * public void registrerSum (List<Integer> liste) {
+     *             int resultat = 0;
+     *
+     *             for (Integer integer : liste) {
+     *                 resultat += integer;
+     *             }
+     *             em.persist(resultat);
+     *         }
+     */
+
 }

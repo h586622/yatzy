@@ -2,7 +2,9 @@ package no.gruppe6.yatzy.entities;
 
 import javax.persistence.*;
 
-
+/**
+ * This class handles the logic of a yatzy game that is being played
+ */
 @Entity
 @Table(schema = "yatzydb")
 public class Spill {
@@ -20,16 +22,26 @@ public class Spill {
     @JoinColumn(name = "tur", referencedColumnName = "brukernavn")
     private Bruker brukerTur;
 
-
+    /**
+     * Default constructor for the class Spill
+     */
     public Spill() {
     }
 
+    /**
+     * Constructor for the class Spill where each dice in the cup is given the value zero
+     * @param bruker is the user who is playing a yatzy game
+     * @param navn is the name of the game
+     */
     public Spill(Bruker bruker, String navn) {
         this.brukerTur = bruker;
         this.navn = navn;
         this.kopp = new Kopp(0,0,0,0,0);
     }
 
+    /**
+     * Getters and setters for the object variables
+     */
     public Kopp getKopp() {
         return kopp;
     }
