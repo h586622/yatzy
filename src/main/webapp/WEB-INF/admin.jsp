@@ -14,12 +14,12 @@
 <body>
     <p>Alle spillere</p>
     <fieldset>
-        <form method="post" action="admin">
             <c:forEach items="${brukere}" var="bruker">
+                <form method="post" action="admin">
                 <input type="hidden" name="slettDette" value="${bruker.brukernavn}">
-                <p><input type="submit" name="slett" value="Slett">${bruker.brukernavn}</p>
+                <p><input type="submit" name="slett" value="Slett"> ${bruker.brukernavn}</p>
+                </form>
             </c:forEach>
-        </form>
     </fieldset>
 
     <form action="LoggUtServlet" method="get">

@@ -10,6 +10,6 @@
 
     <context-param>
         <param-name>Admin</param-name>
-        <param-value>admin007</param-value>
+        <param-value>AdminSlett</param-value>
     </context-param>
 </web-app>

@@ -20,7 +20,6 @@ public class BrukerDAO {
      * @param brukernavn refers to the username
      * @return returns the username if it exists.
      */
-
     public Bruker finnBrukerMedBrukernavn(String brukernavn){
        return em.find(Bruker.class, brukernavn);
     }
@@ -30,7 +29,6 @@ public class BrukerDAO {
      * @param bruker Referse to the user you want to find
      * @return returns all throws a user has made
      */
-
     public List<Kast> finnAlleKast (Bruker bruker){
         String brukernavn = bruker.getBrukernavn();
         return em.createQuery("SELECT s FROM Spill s WHERE s.navn = 'brukernavn'", Kast.class).getResultList(); }
@@ -43,13 +41,16 @@ public class BrukerDAO {
         em.persist(b);
     }
 
+    /**
+     * This method deletes a user with its username.
+     * @param brukernavn The username of the user.
+     */
     public void slettBruker(String brukernavn) {
         Bruker bruker = em.find(Bruker.class, brukernavn);
         if (bruker != null) {
             em.remove(bruker);
         }
     }
-
 
     /**
      * Save the throw a user has made
@@ -70,6 +71,10 @@ public class BrukerDAO {
         return query.getResultList();
     }
 
+    /**
+     * This method gets all users.
+     * @return a list of all users.
+     */
     public List<Bruker> hentAlleBrukere() {
 
             TypedQuery<Bruker> query = em.createQuery("SELECT b FROM Bruker b", Bruker.class);

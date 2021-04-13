@@ -61,7 +61,7 @@ public class LoggInnServlet extends HttpServlet {
         if (bruker == null || !Passordhjelper.valider(passord, bruker.getPassord())) {
             response.sendRedirect("logginn?invalidUser");
 
-        }else {
+        } else {
             LoggInnUt.loggInn(request, bruker);
             if (brukernavn.equals(admin)) {
                 response.sendRedirect("admin");

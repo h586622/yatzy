@@ -50,6 +50,16 @@ public class SpillDAO {
                 .setParameter(1, bruker).getResultList();
     }
 
+    /**
+     * Removes a users game participation
+     * @param sp Spilldeltagelse object to be removed
+     */
+    public void fjernSpillDeltagelse(Spilldeltagelse sp) {
+        if (sp != null) {
+            em.remove(em.merge(sp));
+        }
+    }
+
     public Spilldeltagelse hentSpillDeltagelseBrukerSpill(Bruker bruker, Spill spill){
         return (Spilldeltagelse) em.createQuery("select s from Spilldeltagelse s where s.spill = ?1 AND s.bruker = ?2")
                 .setParameter(1, spill).setParameter(2, bruker).getSingleResult();
@@ -58,6 +68,11 @@ public class SpillDAO {
     public Spill hentSpillMedNavn(String navn){
         return (Spill) em.createQuery("SELECT s from Spill s where s.navn = ?1")
                 .setParameter(1,navn).getSingleResult();
+    }
+
+    public List hentSpillTurMedBrukerId(Bruker bruker) {
+        return em.createQuery("select s from Spill s where s.brukerTur = ?1")
+                .setParameter(1, bruker).getResultList();
     }
 
     public void lagreNySpilldeltagelse(Spilldeltagelse spilldeltagelse){
