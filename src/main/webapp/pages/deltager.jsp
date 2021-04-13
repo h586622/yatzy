@@ -24,7 +24,7 @@
         }
 
         tr:nth-child(even) {
-            background-color: #FF8C00;
+            background-color: #0E819B;
         }
         tr:nth-child(odd) {
             background-color: #51AFC5;
@@ -39,8 +39,7 @@
         <img src="pictures/logo.png" alt="logo" style='max-width:450px;'>
     </a>
 </div>
-<div id="overskrift"> Du er med i dette spillet: ${spill.navn} </div>
-<div id="overskrift">${spill.brukerTur.brukernavn} sin tur</div>
+<div id="overskriftspill"> Du er med i dette spillet: ${spill.navn}<br>${spill.brukerTur.brukernavn} sin tur</div>
 
 <div id="poeng">
     <TABLE ID="spillbrett">
@@ -162,29 +161,31 @@
 </div>
 <div id="runde">
     <div id="spillboks">
-    <!-- Bare for spillere som det er sin tur -->
-        <div id="vanligtekst">Antallkast: ${spilldeltagelse.kast}</div>
-        <div id="vanligtekst">${rundenavn}</div>
-        <div id="vanligtekst">Resultat av kast:</div>
-        <p>${spill.kopp.terning1}</p>
-        <p>${spill.kopp.terning2}</p>
-        <p>${spill.kopp.terning3}</p>
-        <p>${spill.kopp.terning4}</p>
-        <p>${spill.kopp.terning5}</p>
+        <!-- Bare for spillere som det er sin tur -->
+        <div id="vanligtekst">Antallkast: ${spilldeltagelse.kast}<br>${rundenavn}<br>Resultat av kast:<br></div>
+        <div id="terningresultattekst">${spill.kopp.terning1}<br>${spill.kopp.terning2}<br>
+            ${spill.kopp.terning3}<br>${spill.kopp.terning4}<br>${spill.kopp.terning5}<br></div>
+        <form action="mail" method="get">
+            <input type="hidden" id="spill" name="spill" value="${spill.id}">
+            <input type="submit" value="Purr">
+        </form>
+
     </div>
-    </div>
+</div>
 <div id="oppdaterknapp">
     <form action="spill" method="get">
         <input type="hidden" id="spill" name="spill" value="${spill.id}">
         <input type="submit" value="Oppdater"/>
     </form>
 </div>
-<div id="purreknapp">
-<form action="mail" method="get">
-    <input type="hidden" id="spill" name="spill" value="${spill.id}">
-    <input type="submit" value="Purr">
+
+<form action="LoggUtServlet" method="get">
+    <div id="loggutknapp">
+        <input type="submit" value="Logg ut" />
+    </div>
 </form>
-</div>
+
+
 
 </body>
 </html>
