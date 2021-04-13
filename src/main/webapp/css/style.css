@@ -42,7 +42,7 @@ body {
 
 #lobbyboks{
     width: 550px;
-    height: 300px;
+    height: 450px;
     background: #51AFC5;
     border-radius: 31px;
     margin: auto;
@@ -56,9 +56,10 @@ body {
     background: #51AFC5;
     border-radius: 31px;
     float: left;
-    padding: 10px;
+    padding: 20px;
     text-align: center;
     margin-left: 10%;
+    align-items: center;
 }
 
 #tekst1 {
@@ -81,6 +82,8 @@ body {
     font-family: Roboto Condensed;
     font-weight: normal;
     font-size: 30px;
+    text-align: center;
+    margin: 10px;
 }
 
 #overskrift{
@@ -91,7 +94,24 @@ body {
     font-weight: normal;
     font-size: 30px;
     margin-left: 37.5%;
+}
 
+#overskriftspill{
+    color: #0E819B;
+    padding-top: 5px;
+    padding-bottom: 10px;
+    font-family: Roboto Condensed;
+    font-weight: normal;
+    font-size: 30px;
+    text-align: center;
+}
+
+#terningresultattekst {
+    color: white;
+    font-family: Roboto Condensed;
+    font-weight: normal;
+    font-size: 24px;
+    text-align: center;
 }
 
 #inputfelt {
@@ -105,14 +125,16 @@ body {
 #listeknapp {
     padding-top: 5px;
     width: 25%;
-    margin-left:45%;
-
+    margin-left: 42%;
 }
 
 #terningknapp{
-    width:50%;
     position: center;
     font-size: medium;
+    text-align: center;
+    padding: 12px 60px;
+    margin-left: 45%;
+
 }
 
 #startsideknapp {
@@ -132,10 +154,18 @@ body {
 
 #oppdaterknapp {
     width: 10%;
-    position:fixed;
-    right:10%;
-    top:10px;
+    position: fixed;
+    right: 10%;
+    top: 10px;
+    text-align: center;
 }
+
+
+#spillterninger {
+    padding-top: 30%;
+    margin-top: 30%;
+}
+
 
 input[type=text], select {
     width: 60%;
@@ -184,3 +214,25 @@ a {
 a:hover {
     color: #0E819B;
 }
+
+div[data-info] {
+    width: 60%;
+    background-color: #0E819B;
+    color: white;
+    padding: 14px 20px;
+    margin: auto;
+    border: none;
+    border-radius: 31px;
+    cursor: pointer;
+    text-align: center;}
+
+div[data-info] p {
+    width: 60%;
+    background-color: #0E819B;
+    color: white;
+    padding: 14px 20px;
+    margin: auto;
+    border: none;
+    border-radius: 31px;
+    cursor: pointer;
+    text-align: center;}

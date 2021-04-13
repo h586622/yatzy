@@ -5,6 +5,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+/**
+ * This class implements the logic for the cup of dices
+ */
 @Embeddable
 public class Kopp {
 	

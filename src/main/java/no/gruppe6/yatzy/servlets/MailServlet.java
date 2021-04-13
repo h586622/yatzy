@@ -17,6 +17,9 @@ import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 
+/**
+ * Servlet implements class MailServlet
+ */
 @WebServlet("/mail")
 public class MailServlet extends HttpServlet {
 
@@ -35,8 +38,13 @@ public class MailServlet extends HttpServlet {
     }
 
 
-
-
+    /**
+     * this method notify the user by email when its their turn in an active game.
+     * @param request is an object which is being passed as an argument to the servlet's service methods
+     * @param response is an object for HttpServlets to return information to the client
+     * @throws ServletException Defines a general exception a servlet can throw when it encounters difficulty.
+     * @throws IOException It provides information to the caller of the method about the exception.
+     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 

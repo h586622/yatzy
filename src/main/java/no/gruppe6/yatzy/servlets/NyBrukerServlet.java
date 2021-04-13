@@ -15,6 +15,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ * Servlet implements class NyBrukerServlet
+ */
 
 	@WebServlet("/nybruker")
 	public class NyBrukerServlet extends HttpServlet {
@@ -23,6 +26,15 @@ import javax.servlet.http.HttpServletResponse;
 
 		@EJB
 		private BrukerDAO dbDAO;
+
+	/**
+	 *doGet method redirect the user from the logg in page to ether the frontpage if they logg in or to the page where
+	 * the user can register a new user.
+	 * @param request is an object which is being passed as an argument to the servlet's service methods
+	 * @param response is an object for HttpServlets to return information to the client
+	 * @throws ServletException Defines a general exception a servlet can throw when it encounters difficulty.
+	 * @throws IOException It provides information to the caller of the method about the exception.
+	 */
 
 	    @Override
 	    protected void doGet(HttpServletRequest request,
@@ -36,6 +48,15 @@ import javax.servlet.http.HttpServletResponse;
 
 	    }
 
+	/**
+	 * doPost makes a new schema, validates that the input from the user is in the correct format and redirects to
+	 * front page if all is correct and creates a new user in the database, if not the user gets error information
+	 * and is redirected to the registration form.
+	 * @param request is an object which is being passed as an argument to the servlet's service methods
+	 * @param response is an object for HttpServlets to return information to the client
+	 * @throws ServletException Defines a general exception a servlet can throw when it encounters difficulty.
+	 * @throws IOException It provides information to the caller of the method about the exception.
+	 */
 	    @Override
 	    protected void doPost(HttpServletRequest request,
 	            HttpServletResponse response) throws ServletException, IOException {

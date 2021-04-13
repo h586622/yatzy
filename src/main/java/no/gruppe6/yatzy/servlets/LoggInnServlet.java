@@ -15,6 +15,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+/**
+ * Servlet implements class LoggInnServlet
+ */
+
 @WebServlet("/logginn")
 public class LoggInnServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
@@ -22,6 +26,14 @@ public class LoggInnServlet extends HttpServlet {
 
     @EJB
     private BrukerDAO dbDao;
+
+    /**
+     * doGet that handles error messages the logg in functions.
+     * @param request is an object which is being passed as an argument to the servlet's service methods
+     * @param response is an object for HttpServlets to return information to the client
+     * @throws ServletException Defines a general exception a servlet can throw when it encounters difficulty.
+     * @throws IOException It provides information to the caller of the method about the exception.
+     */
 
     @Override
     protected void doGet(HttpServletRequest request,
@@ -46,6 +58,13 @@ public class LoggInnServlet extends HttpServlet {
         }
     }
 
+    /**
+     * doPost validate that the user exists in the database and the corresponding password
+     * @param request is an object which is being passed as an argument to the servlet's service methods
+     * @param response is an object for HttpServlets to return information to the client
+     * @throws ServletException Defines a general exception a servlet can throw when it encounters difficulty.
+     * @throws IOException It provides information to the caller of the method about the exception.
+     */
 
     @Override
     protected void doPost(HttpServletRequest request,
@@ -53,6 +72,7 @@ public class LoggInnServlet extends HttpServlet {
         String brukernavn = request.getParameter("brukernavn");
         String passord = request.getParameter("passord");
         Bruker bruker = null;
+        String admin = getServletContext().getInitParameter("Admin");
 
         if(Validator.isValidUsername(brukernavn) && Validator.passordSjekk(passord))
             bruker = dbDao.finnBrukerMedBrukernavn(brukernavn);
@@ -60,9 +80,13 @@ public class LoggInnServlet extends HttpServlet {
         if (bruker == null || !Passordhjelper.valider(passord, bruker.getPassord())) {
             response.sendRedirect("logginn?invalidUser");
 
-        }else {
+        } else {
             LoggInnUt.loggInn(request, bruker);
-            response.sendRedirect("startside");
+            if (brukernavn.equals(admin)) {
+                response.sendRedirect("admin");
+            } else {
+                response.sendRedirect("startside");
+            }
         }
          
 

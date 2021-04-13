@@ -15,11 +15,22 @@ import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.util.List;
 
+/**
+ * Servlet implements class LobbyServlet
+ */
+
 @WebServlet("/Lobby")
 public class LobbyServlet extends HttpServlet {
     @EJB
     private SpillDAO spillDAO;
 
+    /**
+     * doGet method that gets a game with a list of participants.
+     * @param request is an object which is being passed as an argument to the servlet's service methods
+     * @param response is an object for HttpServlets to return information to the client
+     * @throws ServletException Defines a general exception a servlet can throw when it encounters difficulty.
+     * @throws IOException It provides information to the caller of the method about the exception.
+     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if (!LoggInnUt.isLoggedIn(request)) {
@@ -38,6 +49,13 @@ public class LobbyServlet extends HttpServlet {
         }
     }
 
+    /**
+     * doPost method that lets the logged in user make a new game with a name and start this game.
+     * @param request is an object which is being passed as an argument to the servlet's service methods
+     * @param response is an object for HttpServlets to return information to the client
+     * @throws ServletException Defines a general exception a servlet can throw when it encounters difficulty.
+     * @throws IOException It provides information to the caller of the method about the exception.
+     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 

@@ -12,20 +12,23 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class LoggUtServlet
  */
+
 @WebServlet("/LoggUtServlet")
 public class LoggUtServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
+
     public LoggUtServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * this method handles the log out of the user
+	 * @param request is an object which is being passed as an argument to the servlet's service methods
+	 * @param response is an object for HttpServlets to return information to the client
+	 * @throws ServletException Defines a general exception a servlet can throw when it encounters difficulty.
+	 * @throws IOException It provides information to the caller of the method about the exception.
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		LoggInnUt.loggUt(request);

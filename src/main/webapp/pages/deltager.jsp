@@ -24,7 +24,7 @@
         }
 
         tr:nth-child(even) {
-            background-color: #FF8C00;
+            background-color: #0E819B;
         }
         tr:nth-child(odd) {
             background-color: #51AFC5;
@@ -39,8 +39,7 @@
         <img src="pictures/logo.png" alt="logo" style='max-width:450px;'>
     </a>
 </div>
-<div id="overskrift"> Du er med i dette spillet: ${spill.navn} </div>
-<div id="overskrift">${spill.brukerTur.brukernavn} sin tur</div>
+<div id="overskriftspill"> Du er med i dette spillet: ${spill.navn}<br>${spill.brukerTur.brukernavn} sin tur</div>
 
 <div id="poeng">
     <TABLE ID="spillbrett">
@@ -184,7 +183,8 @@
     <input type="hidden" id="spill" name="spill" value="${spill.id}">
     <input type="submit" value="Purr">
 </form>
-</div>
+
+
 
 </body>
 </html>

@@ -22,6 +22,16 @@ public class JavaMailUtil {
     private SpillDAO spillDao;
 
     public static void setupMail(String mottaker, String emne, String tekst) throws MessagingException {
+    private static Message message;
+
+    /**
+     * A method to set up
+     * @param recepient is the receiver of the mail, as a String
+     * @param subject is the subject of the mail to be sent
+     * @param text is the content of the mail
+     * @throws MessagingException
+     */
+    public static void setupMail(String recepient, String subject, String text) throws MessagingException {
         System.out.println("Klargjør melding");
 
         Properties properties = new Properties();
@@ -32,12 +42,12 @@ public class JavaMailUtil {
         properties.put("mail.smtp.port", "587");
 
         String senderMail = "erlendmatch@gmail.com";
-        String passord = "RomvesenTelefon8111";
+        String password = "RomvesenTelefon8111";
 
-        Session sesjon = Session.getInstance(properties, new Authenticator() {
+        Session session = Session.getInstance(properties, new Authenticator() {
             @Override
             protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication(senderMail, passord);
+                return new PasswordAuthentication(senderMail, password);
             }
 
         });

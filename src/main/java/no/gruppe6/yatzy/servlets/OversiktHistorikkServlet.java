@@ -20,13 +20,23 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-
+/**
+ * Servlet implements class OversiktHistorikkServlet
+ */
 @WebServlet("/historikk")
 public class OversiktHistorikkServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     @EJB
     private SpillDAO dbDao;
+
+    /**
+     * this method shows the users previous ended games.
+     * @param request is an object which is being passed as an argument to the servlet's service methods
+     * @param response is an object for HttpServlets to return information to the client
+     * @throws ServletException Defines a general exception a servlet can throw when it encounters difficulty.
+     * @throws IOException It provides information to the caller of the method about the exception.
+     */
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 

@@ -4,6 +4,9 @@ import no.gruppe6.yatzy.util.Validator;
 
 import javax.servlet.http.HttpServletRequest;
 
+/**
+ * This class handles the logic behind the registration of a user
+ */
 public class Paameldingsskjema {
 
     private String brukernavn;
@@ -75,7 +78,7 @@ public class Paameldingsskjema {
     }
 
     /**
-     * setts the error message for when a username is already taken
+     * sets the error message for when a username is already taken
      */
     public void ikkeUniktBrukernavn() {
         brukernavn = "";
