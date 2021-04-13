@@ -136,4 +136,23 @@ public class SpillDAO {
     public void lagreNyttSpill(Spill spill){
         em.persist(spill);
     }
+    /**
+     * Finds the games the user is set to active player.
+     * @param bruker
+     * @return List of all the games
+     */
+    public List hentSpillTurMedBrukerId(Bruker bruker) {
+        return em.createQuery("select s from Spill s where s.brukerTur = ?1")
+                .setParameter(1, bruker).getResultList();
+    }
+
+    /**
+     * Removes a users game participation
+     * @param sp Spilldeltagelse object to be removed
+     */
+    public void fjernSpillDeltagelse(Spilldeltagelse sp) {
+        if (sp != null) {
+            em.remove(em.merge(sp));
+        }
+    }
 }
