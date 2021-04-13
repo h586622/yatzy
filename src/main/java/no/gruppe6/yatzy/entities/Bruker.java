@@ -3,6 +3,9 @@ package no.gruppe6.yatzy.entities;
 import javax.persistence.*;
 import java.util.List;
 
+/**
+ * This class implements the logic for the users
+ */
 @Entity
 @Table(schema = "yatzydb")
 public class Bruker {
@@ -15,10 +18,10 @@ public class Bruker {
     private Passord passord;
     private String epost;
 
-    @OneToMany(mappedBy = "bruker")
+    @OneToMany(mappedBy = "bruker", cascade=CascadeType.REMOVE)
     private List<Spilldeltagelse> spilldeltagelseList;
 
-    @OneToMany(mappedBy = "brukerTur")
+    @OneToMany(mappedBy = "brukerTur", cascade=CascadeType.REMOVE)
     private List<Spill> spillTur;
 
     /**

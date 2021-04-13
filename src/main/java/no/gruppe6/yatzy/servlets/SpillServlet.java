@@ -17,6 +17,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+/**
+ * Servlet implements class SpillServlet
+ */
+
 @WebServlet("/spill")
 public class SpillServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
@@ -24,6 +28,15 @@ public class SpillServlet extends HttpServlet {
     @EJB
     private SpillDAO spillDAO;
 
+    /**
+     * doGet that lets the user join a game that is made, but not jet started, if the game is full(max players = 6)
+     * the user is put in a waiting list. The method also handles the different ways to pe part of a game (spectate, participant and turn).
+     * when the game is ended the method redirects to the game history.
+     * @param request is an object which is being passed as an argument to the servlet's service methods
+     * @param response is an object for HttpServlets to return information to the client
+     * @throws ServletException Defines a general exception a servlet can throw when it encounters difficulty.
+     * @throws IOException It provides information to the caller of the method about the exception.
+     */
     @Override
     protected void doGet(HttpServletRequest request,
                          HttpServletResponse response) throws ServletException, IOException {
@@ -75,6 +88,14 @@ public class SpillServlet extends HttpServlet {
         }
     }
 
+    /**
+     * doPost handles the game in progress, when its the users turn, the users throw is registered and ends the game after
+     * turn 16.
+     * @param request is an object which is being passed as an argument to the servlet's service methods
+     * @param response is an object for HttpServlets to return information to the client
+     * @throws ServletException Defines a general exception a servlet can throw when it encounters difficulty.
+     * @throws IOException It provides information to the caller of the method about the exception.
+     */
     @Override
     protected void doPost(HttpServletRequest request,
                           HttpServletResponse response) throws ServletException, IOException {

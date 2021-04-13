@@ -14,6 +14,9 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 
+/**
+ * Servlet implements class MailServlet
+ */
 @WebServlet("/mail")
 public class MailServlet extends HttpServlet {
 
@@ -23,8 +26,13 @@ public class MailServlet extends HttpServlet {
     private BrukerDAO brukerDao;
 
 
-
-
+    /**
+     * this method notify the user by email when its their turn in an active game.
+     * @param request is an object which is being passed as an argument to the servlet's service methods
+     * @param response is an object for HttpServlets to return information to the client
+     * @throws ServletException Defines a general exception a servlet can throw when it encounters difficulty.
+     * @throws IOException It provides information to the caller of the method about the exception.
+     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 

@@ -4,6 +4,9 @@ import org.eclipse.persistence.annotations.CacheCoordinationType;
 
 import javax.persistence.*;
 
+/**
+ * This class handles the implementation of the logic for a user who is playing yatzy
+ */
 @Entity
 @Table(schema = "yatzydb")
 public class Spilldeltagelse {
@@ -41,9 +44,18 @@ public class Spilldeltagelse {
     private Spill spill;
 
 
+    /**
+     * Default constructor for the class Spilldeltagelse
+     */
     public Spilldeltagelse() {
     }
 
+    /**
+     * Constructor for the class Spilldeltagelse where the round is given the value one and the
+     * thrown is given the value zero, meaning no dices has been rolled yet
+     * @param bruker is the current user who is participating in the current game
+     * @param spill is the current game
+     */
     public Spilldeltagelse(Bruker bruker, Spill spill){
         this.bruker = bruker;
         this.spill = spill;
@@ -51,6 +63,9 @@ public class Spilldeltagelse {
         this.kast = 3;
     }
 
+    /**
+     * Getters and setters for the object variables
+     */
     public int getId() {
         return id;
     }
@@ -235,7 +250,11 @@ public class Spilldeltagelse {
         this.spill = spill;
     }
 
-
+    /**
+     * This method checks if an object as Spilldeltagelse equals another object of Spilldeltagelse
+     * @param obj is the variable we want to compare
+     * @return true or false
+     */
     @Override
     public boolean equals(Object obj){
         Spilldeltagelse spilldeltagelse = (Spilldeltagelse) obj;
