@@ -29,9 +29,13 @@
 			<input type="text" name="epost" placeholder="E-post" id="epost"/>
 			<input type="password" name="passord" placeholder="Passord" id="passord"/>
 			<input type="password" name="passordRepetert" placeholder="Gjenta passord" id="passordRepetert"/>
-			<input type="submit" value="Registrer" />
+			<input type="submit" value="Registrer" onClick="sjekkSkjema()" id="knapp"/>
+			<div id="feilmeldingboks" data-info="submit" class="formcontroller_hidden" ></div>
+			<div id="passordInfo" data-info="passord" class="formcontroller_hidden" ></div>
 		</div>
+
 	</form>
+
 </div>
 </div>
 </body>

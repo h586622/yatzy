@@ -16,13 +16,9 @@ public class LoggInnUt {
 	 * @param bruker is the user who wants to sign in
 	 */
 	public static void loggInn(HttpServletRequest request, Bruker bruker) {
-		HttpSession sesjon = request.getSession(false);
-		if (sesjon != null) {
-			sesjon.invalidate();
-		}
-		sesjon = request.getSession(true);
-		sesjon.setMaxInactiveInterval(500);
-
+		loggUt(request);
+		HttpSession sesjon = request.getSession(true);
+		sesjon.setMaxInactiveInterval(120);
 		sesjon.setAttribute("bruker", bruker);
 	}
 

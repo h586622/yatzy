@@ -42,6 +42,17 @@ public class BrukerDAO {
     }
 
     /**
+     * This method deletes a user with its username.
+     * @param brukernavn The username of the user.
+     */
+    public void slettBruker(String brukernavn) {
+        Bruker bruker = em.find(Bruker.class, brukernavn);
+        if (bruker != null) {
+            em.remove(bruker);
+        }
+    }
+
+    /**
      * Save the throw a user has made
      * @param k refers to the trow
      */
@@ -60,6 +71,15 @@ public class BrukerDAO {
         return query.getResultList();
     }
 
+    /**
+     * This method gets all users.
+     * @return a list of all users.
+     */
+    public List<Bruker> hentAlleBrukere() {
+
+            TypedQuery<Bruker> query = em.createQuery("SELECT b FROM Bruker b", Bruker.class);
+            return query.getResultList();
+    }
     /**
      * Sets the entity
      * @param em refers to the entity
