@@ -3,6 +3,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initia-scale=1.0">
     <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="css/style.css" />
@@ -24,7 +25,7 @@
         }
 
         tr:nth-child(even) {
-            background-color: #FF8C00;
+            background-color: #0E819B;
         }
         tr:nth-child(odd) {
             background-color: #51AFC5;
@@ -37,34 +38,30 @@
         <img src="pictures/logo.png" alt="logo" style='max-width:450px;'>
     </a>
 </div>
-<div id="overskrift">Du er med i dette spillet: ${spill.navn}</div>
+<div id="overskriftspill">Du er med i dette spillet: ${spill.navn}<br>Det er din tur!</div>
 
 <div id="runde">
     <div id="spillboks">
-    <form action=spill method="post">
+        <form action=spill method="post">
 
-    <!-- Bare for spillere som det er sin tur -->
+            <!-- Bare for spillere som det er sin tur -->
 
-        <div id="vanligtekst">Antallkast: ${spilldeltagelse.kast}</div>
-        <div id="vanligtekst">${rundenavn}</div>
-        <div id="vanligtekst">Resultat av kast:</div>
-        <input type="checkbox" id="terning1" name="terninger" value="0">
-        <label for="terning1"> ${spill.kopp.terning1}</label><br>
-        <input type="checkbox" id="terning2" name="terninger" value="1">
-        <label for="terning2"> ${spill.kopp.terning2}</label><br>
-        <input type="checkbox" id="terning3" name="terninger" value="2">
-        <label for="terning3"> ${spill.kopp.terning3}</label><br>
-        <input type="checkbox" id="terning4" name="terninger" value="3">
-        <label for="terning4"> ${spill.kopp.terning4}</label><br>
-        <input type="checkbox" id="terning5" name="terninger" value="4">
-        <label for="terning5"> ${spill.kopp.terning5}</label><br>
-
-        <div id="terningknapp">
-        <input type="hidden" id="spill" name="spill" value="${spill.id}">
-        <input type="submit" value="Trill terninger">
-        </div>
-
-    </form>
+            <div id="vanligtekst">Antallkast: ${spilldeltagelse.kast}<br>${rundenavn}<br>Resultat av kast:<br></div>
+                <div id="terningresultattekst">
+                    <input type="checkbox" id="terning1" name="terninger" value="0">
+                    <label for="terning1"> ${spill.kopp.terning1}</label><br>
+                    <input type="checkbox" id="terning2" name="terninger" value="1">
+                    <label for="terning2"> ${spill.kopp.terning2}</label><br>
+                    <input type="checkbox" id="terning3" name="terninger" value="2">
+                    <label for="terning3"> ${spill.kopp.terning3}</label><br>
+                    <input type="checkbox" id="terning4" name="terninger" value="3">
+                    <label for="terning4"> ${spill.kopp.terning4}</label><br>
+                    <input type="checkbox" id="terning5" name="terninger" value="4">
+                    <label for="terning5"> ${spill.kopp.terning5}</label><br>
+                </div>
+            <input type="hidden" id="spill" name="spill" value="${spill.id}">
+            <input type="submit" value="Trill terninger">
+        </form>
     </div>
 </div>
 

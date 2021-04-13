@@ -23,7 +23,7 @@
         }
 
         tr:nth-child(even) {
-            background-color: #FF8C00;
+            background-color: #0E819B;
         }
         tr:nth-child(odd) {
             background-color: #51AFC5;
@@ -157,12 +157,6 @@
 <form action="LoggUtServlet" method="get">
     <div id="loggutknapp">
         <input type="submit" value="Logg ut" />
-    </div>
-</form>
-
-<form action="startside" method="get">
-    <div id="startsideknapp">
-        <input type="submit" value="Startside" />
     </div>
 </form>
 
