@@ -11,7 +11,9 @@ class validator {
         this.epost = this.rootElement.querySelector('input[id="epost"]');
         this.passord = this.rootElement.querySelector('input[id="passord"]');
         this.passordRepetert = this.rootElement.querySelector('input[id="passordRepetert"]');
-
+        this.feilmeldingboks = this.rootElement.querySelector('div[id="feilmeldingboks"]');
+        this.passordInfo = this.rootElement.querySelector('div[id="passordInfo"]');
+        this.knapp = this.rootElement.querySelector('input[id="knapp"]');
 
 
     }
@@ -24,11 +26,15 @@ class validator {
         this.epost.addEventListener("input", this.epostSjekk);
         this.passord.addEventListener("input", this.passordSjekk);
         this.passordRepetert.addEventListener("input", this.passordLikt);
+        this.knapp.addEventListener("click" , this.sjekkSkjema);
+        this.passord.addEventListener("mouseover", this.musOver);
+        this.passord.addEventListener("mouseout", this.musUt);
+
 
     }
 
     epostSjekk(){
-        if (epost.value.match("^/\\S+@\\S+\\.\\S+/")){
+        if (epost.value.match("^\\S+@\\S+$")){
             epost.classList.remove("formcontroller_redBorder")
             epost.classList.add("formcontroller_greenBorder")
         } else {
@@ -126,7 +132,7 @@ class validator {
 
     musOver() {
         passordInfo.classList.remove("formcontroller_hidden")
-        passordInfo.innerHTML = "Passord må inneholde en stor bokstav, ett tall, ett tegn og må være minst 6 tegn"
+        passordInfo.innerHTML = "Passord maa inneholde en stor bokstav, ett tall, ett tegn og maa vaere minst 6 tegn"
         console.log("mus inn")
     }
 
@@ -145,7 +151,7 @@ class validator {
         if (!etternavn.value.match("^[A-ZÆØÅ][A-Za-zÆØÅæøå\\-]{2,19}$")) {
             feilmelding += "Ugyldig etternavn \n"
         }
-        if (!epost.value.match("^/\\S+@\\S+\\.\\S+/")) {
+        if (!epost.value.match("^\\S+@\\S+$")) {
             feilmelding += "Ugyldig epostadresse \n"
         }
         if (!passord.value.match("^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{6,})")) {
@@ -160,7 +166,7 @@ class validator {
             console.log("stopper submit")
             feilmeldingboks.classList.remove("formcontroller_hidden")
             feilmeldingboks.innerHTML = feilmelding
-            //  event.preventDefault()
+            event.preventDefault()
         }
     }
 }

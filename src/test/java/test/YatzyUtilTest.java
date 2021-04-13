@@ -7,6 +7,10 @@ import static org.junit.Assert.*;
 
 public class YatzyUtilTest {
 
+    /**
+     * Method generates a "kopp" with 5 dice, sets dice to predefined value and checks that
+     * sjekkKast returns the correct result for round 7 - one pair
+     */
     @Test
     public void parTest() {
         Kopp k = new MockKopp(1,2,3,5,5);
@@ -23,6 +27,10 @@ public class YatzyUtilTest {
         assertEquals(2, res);
     }
 
+    /**
+     * Method generates a "kopp" with 5 dice, sets dice to predefined value and checks that
+     * sjekkKast returns the correct result for round 1-6 - categories aces to sixes
+     */
     @Test
     public void enereTilSeksereTest() {
 
@@ -47,6 +55,10 @@ public class YatzyUtilTest {
 
     }
 
+    /**
+     * Method generates a "kopp" with 5 dice, sets dice to predefined value and checks that
+     * sjekkKast returns the correct result for round 8 - two pairs
+     */
     @Test
     public void toParTest() {
         Kopp k = new MockKopp(1,1,4,4,5);
@@ -60,6 +72,10 @@ public class YatzyUtilTest {
         assertEquals(20, res);
     }
 
+    /**
+     * Method generates a "kopp" with 5 dice, sets dice to predefined value and checks that
+     * sjekkKast returns the correct result for round 9 - three of a kind
+     */
     @Test
     public void treLikeTest() {
         Kopp k = new MockKopp(4,1,4,4,5);
@@ -73,6 +89,10 @@ public class YatzyUtilTest {
         assertEquals(0, res);
     }
 
+    /**
+     * Method generates a "kopp" with 5 dice, sets dice to predefined value and checks that
+     * sjekkKast returns the correct result for round 10 - four of a kind
+     */
     @Test
     public void fireLikeTest() {
         Kopp k = new MockKopp(4,1,4,4,4);
@@ -84,6 +104,10 @@ public class YatzyUtilTest {
 
     }
 
+    /**
+     * Method generates a "kopp" with 5 dice, sets dice to predefined value and checks that
+     * sjekkKast returns the correct result for round 11 - small straight 1+2+3+4+5
+     */
     @Test
     public void litenStraightTest() {
         Kopp k = new MockKopp(4,1,4,4,4);
@@ -100,6 +124,10 @@ public class YatzyUtilTest {
         assertEquals(0,res);
     }
 
+    /**
+     * Method generates a "kopp" with 5 dice, sets dice to predefined value and checks that
+     * sjekkKast returns the correct result for round 12 - big straight 2+3+4+5+6
+     */
     @Test
     public void storStraightTest() {
         Kopp k = new MockKopp(4,1,4,4,4);
@@ -113,6 +141,10 @@ public class YatzyUtilTest {
         assertEquals(20,res);
     }
 
+    /**
+     * Method generates a "kopp" with 5 dice, sets dice to predefined value and checks that
+     * sjekkKast returns the correct result for round 13 - house a pair plus three of a kind
+     */
     @Test
     public void husTest() {
         Kopp k = new MockKopp(4,1,4,4,4);
@@ -127,6 +159,10 @@ public class YatzyUtilTest {
 
     }
 
+    /**
+     * Method generates a "kopp" with 5 dice, sets dice to predefined value and checks that
+     * sjekkKast returns the correct result for round 14  - chance, sum of all dice
+     */
     @Test
     public void sjanseTest() {
         Kopp k = new MockKopp(4,1,4,4,4);
@@ -139,7 +175,10 @@ public class YatzyUtilTest {
         res = YatzyUtil.sjekkKast(k, 14);
         assertEquals(12,res);
     }
-
+    /**
+     * Method generates a "kopp" with 5 dice, sets dice to predefined value and checks that
+     * sjekkKast returns the correct result for round 15 - Yatzee
+     */
     @Test
     public void yatzyTest() {
         Kopp k = new MockKopp(4,1,4,4,4);
