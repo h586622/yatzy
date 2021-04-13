@@ -8,6 +8,9 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import java.util.List;
+/**
+ * This DAO access the database for the users and their information
+ */
 
 @Stateless
 public class BrukerDAO {

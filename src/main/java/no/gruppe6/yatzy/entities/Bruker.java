@@ -3,6 +3,9 @@ package no.gruppe6.yatzy.entities;
 import javax.persistence.*;
 import java.util.List;
 
+/**
+ * This class implements the logic for the users
+ */
 @Entity
 @Table(schema = "yatzydb")
 public class Bruker {

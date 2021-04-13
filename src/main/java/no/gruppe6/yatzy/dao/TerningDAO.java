@@ -7,6 +7,9 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
 
+/**
+ * This class implements the logic for TerningDao
+ */
 @Stateless
 public class TerningDAO {
 

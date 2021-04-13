@@ -4,6 +4,9 @@ import no.gruppe6.yatzy.util.Validator;
 
 import javax.servlet.http.HttpServletRequest;
 
+/**
+ * This class implements the logic for registration schemas
+ */
 public class Paameldingsskjema {
 
     private String brukernavn;

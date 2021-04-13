@@ -11,6 +11,9 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 
+/**
+ * Servlet implements class StartServelt
+ */
 @WebServlet("/start")
 public class StartServlet extends HttpServlet {
 
@@ -22,6 +25,13 @@ public class StartServlet extends HttpServlet {
 
     }
 
+    /**
+     * This method lets thee user start their turn when the game is active.
+     * @param request is an object which is being passed as an argument to the servlet's service methods
+     * @param response is an object for HttpServlets to return information to the client
+     * @throws ServletException Defines a general exception a servlet can throw when it encounters difficulty.
+     * @throws IOException It provides information to the caller of the method about the exception.
+     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 

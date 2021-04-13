@@ -1,5 +1,8 @@
 package no.gruppe6.yatzy.entities;
 
+/**
+ * This class implements the logic for trows
+ */
 public class Kast {
 
     private int verdi;
