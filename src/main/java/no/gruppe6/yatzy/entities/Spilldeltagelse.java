@@ -247,7 +247,11 @@ public class Spilldeltagelse {
         this.spill = spill;
     }
 
-
+    /**
+     * This method checks if an object as Spilldeltagelse equals another object of Spilldeltagelse
+     * @param obj is the variable we want to compare
+     * @return true or false
+     */
     @Override
     public boolean equals(Object obj){
         Spilldeltagelse spilldeltagelse = (Spilldeltagelse) obj;

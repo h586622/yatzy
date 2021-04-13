@@ -29,12 +29,4 @@ public class TerningDAO {
             }
             em.persist(resultat);
         }
-
-    /**
-     * Genererer javadoc dersom man ser at metoden er nødvendig
-     * @param liste
-     */
-    public void registrerDelsum (List<Kast> liste) {
-        // er det behov for dette?
-        }
 }

@@ -75,7 +75,7 @@ public class Paameldingsskjema {
     }
 
     /**
-     * setts the error message for when a username is already taken
+     * sets the error message for when a username is already taken
      */
     public void ikkeUniktBrukernavn() {
         brukernavn = "";

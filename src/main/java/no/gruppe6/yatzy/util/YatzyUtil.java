@@ -12,6 +12,12 @@ import java.util.stream.Collectors;
 public class YatzyUtil {
 
 
+    /**
+     * This method checks the thrown of a user according to which scores it will get
+     * @param kopp holds the five dices that are being thrown
+     * @param runde is the current round
+     * @return the value of the dices
+     */
     public static int sjekkKast(Kopp kopp, int runde) {
         int verdi = 0;
         switch (runde) {
@@ -58,6 +64,12 @@ public class YatzyUtil {
         return verdi;
     }
 
+    /**
+     * This method handles the scores of a round when a game is being played, according to which values you should get
+     * to receive the highest amount of points
+     * @param runde is the current round
+     * @return the name of the round according to what dices you should roll to score the most points
+     */
     public static String rundeNavn(int runde) {
         String rundenavn = "Du skal ha ";
         switch (runde) {
@@ -93,6 +105,12 @@ public class YatzyUtil {
         return rundenavn;
     }
 
+    /**
+     * This method updates the value to a user according to which round the player is on in the game
+     * @param sum is the added value of the dices
+     * @param runde is the current round
+     * @param spilldeltagelse is the player to update the value of
+     */
     public static void oppdaterVerdi(int sum, int runde, Spilldeltagelse spilldeltagelse) {
         switch (runde) {
             case 1:
@@ -148,7 +166,13 @@ public class YatzyUtil {
         }
     }
 
-
+    /**
+     * This method checks the equality of dices in the first rounds when the goal is to get as many of the
+     * same dice according to which round the user is on
+     * @param kopp holds the five dices that are being thrown
+     * @param runde is the current round
+     * @return the result of thrown
+     */
     private static int enkleRuter(Kopp kopp, int runde) {
         int resultat = 0;
         for (int t : kopp.hentTerninger()) {
@@ -159,7 +183,11 @@ public class YatzyUtil {
         return resultat;
     }
 
-
+    /**
+     * This method checks if the dices being rolled is a pair, and returns the highest of the pairs if multiple
+     * @param kopp holds the five dices that are being thrown
+     * @return the highest pair
+     */
     private static int ettPar(Kopp kopp) {
         int hoyestePar = 0;
         int nyttPar = 0;
@@ -175,6 +203,11 @@ public class YatzyUtil {
         return hoyestePar;
     }
 
+    /**
+     * This method checks if the dices being rolled are two pairs, and returns the highest of the pairs if multiple
+     * @param kopp holds the five dices being thrown
+     * @return the two highest pairs
+     */
     private static int toPar(Kopp kopp) {
         int hoytPar = ettPar(kopp);
         int lavtPar = 0;
@@ -196,6 +229,11 @@ public class YatzyUtil {
         }
     }
 
+    /**
+     * This method checks if the dices being rolled consists of three equals
+     * @param kopp holds the five dices that are being thrown
+     * @return the three equals if that exists
+     */
     private static int treLike(Kopp kopp) {
         int treLike = 0;
         int[] terninger = kopp.hentTerninger();
@@ -212,6 +250,11 @@ public class YatzyUtil {
         return treLike;
     }
 
+    /**
+     * This method checks if the dices being rolled consists of four equals
+     * @param kopp holds the five dices that are being thrown
+     * @return the four equals if that exists
+     */
     private static int fireLike(Kopp kopp) {
         int fireLike = 0;
         int[] terninger = kopp.hentTerninger();
@@ -232,6 +275,12 @@ public class YatzyUtil {
         return fireLike;
     }
 
+    /**
+     * This method checks if the dices being rolled consists of a small straight, meaning the dices being rolled contains
+     * the value between 1 and 5
+     * @param kopp holds the five dices that are being thrown
+     * @return 15 if a user rolls a small straight, and zero if not
+     */
     private static int litenStraight(Kopp kopp) {
         int[] terninger = kopp.hentTerninger();
         if (sjanse(kopp) == 15) {
@@ -244,6 +293,12 @@ public class YatzyUtil {
             return 0;
     }
 
+    /**
+     * This method checks if the dices being rolled consists of a big straight, meaning the dices being rolled contains
+     * the value between 2 and 6
+     * @param kopp holds the five dices that are being thrown
+     * @return 20 if a user rolls a big straight, and zero if not
+     */
     private static int storStraight(Kopp kopp) {
         int[] terninger = kopp.hentTerninger();
         if (sjanse(kopp) == 20) {
@@ -257,6 +312,12 @@ public class YatzyUtil {
             return 0;
     }
 
+    /**
+     * This method checks if the dices being rolled consists of a full  house, meaning the dices being rolled contains
+     * of a set of three and a pair
+     * @param kopp holds the five dices that are being thrown
+     * @return the value of the eyes of the dices if they add up to a full house, zero if not
+     */
     private static int hus(Kopp kopp) {
         int trelike = treLike(kopp);
         int par = 0;
@@ -281,11 +342,21 @@ public class YatzyUtil {
             return 0;
     }
 
+    /**
+     * This method handles a situation when a user wants to do a chance
+     * @param kopp holds the five dices that are being thrown
+     * @return the sum of the value of all the dices
+     */
     private static int sjanse(Kopp kopp) {
         int[] terninger = kopp.hentTerninger();
         return terninger[0] + terninger[1] + terninger[2] + terninger[3] + terninger[4];
     }
 
+    /**
+     * This method checks if a user has thrown a yatzy, meaning all five dices has the same number of eyes
+     * @param kopp holds the five dices that are being thrown
+     * @return 50 if yatzy, 0 if not
+     */
     private static int yatzy(Kopp kopp) {
 
         int[] terninger = kopp.hentTerninger();
@@ -296,18 +367,33 @@ public class YatzyUtil {
 
     }
 
+    /**
+     * This method calculates the bonus after the first six throws, if the throws after being added sums up to
+     * fifty or more, another 50 is being given as a bonus, 0 bonus if not
+     * @param s is the player we check the throws to
+     */
     private static void kalkulerBonus(Spilldeltagelse s) {
         int sumbonus = s.getEnere() + s.getToere() + s.getTreere() + s.getFirere() + s.getFemere() + s.getSeksere();
         s.setSumbonus(sumbonus);
         s.setBonus(sumbonus >= 50 ? 50 : 0);
     }
 
+    /**
+     * This method finishes the game and adds up the total sum of points during the game
+     * @param s is the player we adds up the total points to
+     */
     private static void avsluttSpill(Spilldeltagelse s) {
         int totalSum = s.getSumbonus() + s.getBonus() + s.getPar() + s.getTopar() + s.getTrelike() + s.getFirelike() +
                 s.getLitenstraight()  +  s.getStorstraight() + s.getHus() + s.getSjanse() + s.getYatzy();
         s.setTotalsum(totalSum);
     }
 
+    /**
+     * This method calculates who's turn it is while a game is being played
+     * @param spilldeltagelser is the list of all the players in the game
+     * @param spilldeltagelse is the player who's turn it is now
+     * @return the next user, meaning the player who's turn it is now
+     */
     public static Bruker finnNeste(List<Spilldeltagelse> spilldeltagelser, Spilldeltagelse spilldeltagelse){
         spilldeltagelser.sort(Comparator.comparingInt(Spilldeltagelse::getId));
         int index = spilldeltagelser.indexOf(spilldeltagelse);

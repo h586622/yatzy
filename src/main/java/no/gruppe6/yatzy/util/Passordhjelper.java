@@ -14,7 +14,7 @@ public class Passordhjelper {
 
 	/**
 	 * This method generates a random salt to be used as a safe storing mechanism for passwords
-	 * @return
+	 * @return a random generated salt as a String
 	 */
 	public static String genererTilfeldigSalt() {
 	    SecureRandom sr;

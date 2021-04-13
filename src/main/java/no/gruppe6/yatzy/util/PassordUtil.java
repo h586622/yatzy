@@ -74,7 +74,14 @@ public class PassordUtil {
     
     /*--- Private hjelpemetoder ---*/
 
-	public String krypterMedSalt(byte[] salt, String password) {
+
+    /**
+     * Denne metoden krypterer passordet og saltet
+     * @param salt er saltet som byte
+     * @param password er passordet som skal krypteres
+     * @return det krypterte passordet sammen med saltet som en streng
+     */
+    public String krypterMedSalt(byte[] salt, String password) {
 		
 		String kryptert = null;
 		
@@ -97,7 +104,11 @@ public class PassordUtil {
 		
 	}
 
-    public byte[] genererTilfeldigSalt() {
+    /**
+     * Denne metoden genererer et tilfeldig salt bestående av byte
+     * @return saltet som byte
+     */
+	public byte[] genererTilfeldigSalt() {
         byte[] salt = new byte[SALT_LENGTH];
         // https://docs.oracle.com/javase/8/docs/technotes/guides/security/StandardNames.html#SecureRandom
         // for evt. SecureRandom.getInstance("SHA1PRNG"); => m� catche ex
@@ -106,11 +117,22 @@ public class PassordUtil {
         return salt;
     }
 
+    /**
+     * Denne metoden henter ut saltet fra en kryptert streng
+     * @param kryptert er den krypterte strengen saltet skal hentes ut fra
+     * @return saltet og lengden på saltet som en byte
+     */
     private byte[] hentUtSaltFraKryptertStreng(String kryptert) {
         byte[] saltPlusDigest = Base64.getDecoder().decode(kryptert);
         return Arrays.copyOf(saltPlusDigest, SALT_LENGTH);
     }
-    
+
+    /**
+     * Denne metoden legger sammen to tabeller bestående av byte
+     * @param tabell1 er den ene tabellen som skal legges sammen
+     * @param tabell2 er den andre tabellen som skal legges sammen
+     * @return tabellene bestående av byte lagt sammen
+     */
     private byte[] leggSammen(byte[] tabell1, byte[] tabell2) {
         byte[] enOgTo = new byte[tabell1.length + tabell2.length];
         System.arraycopy(tabell1, 0, enOgTo, 0, tabell1.length);

@@ -27,7 +27,7 @@ public class LoggInnUt {
 	/**
 	 * This method checks if a user is signed out
 	 * @param req is an object which is being passed as an argument to the servlet's service methods
-	 * @return
+	 * @return true or false
 	 */
 	public static boolean isLoggedIn(HttpServletRequest req) {
 		HttpSession sesjon = req.getSession(false);
