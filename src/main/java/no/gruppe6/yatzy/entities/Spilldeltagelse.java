@@ -39,9 +39,18 @@ public class Spilldeltagelse {
     private Spill spill;
 
 
+    /**
+     * Default constructor for the class Spilldeltagelse
+     */
     public Spilldeltagelse() {
     }
 
+    /**
+     * Constructor for the class Spilldeltagelse where the round is given the value one and the
+     * thrown is given the value zero, meaning no dices has been rolled yet
+     * @param bruker is the current user who is participating in the current game
+     * @param spill is the current game
+     */
     public Spilldeltagelse(Bruker bruker, Spill spill){
         this.bruker = bruker;
         this.spill = spill;
@@ -49,6 +58,9 @@ public class Spilldeltagelse {
         this.kast = 0;
     }
 
+    /**
+     * Getters and setters for the object variables
+     */
     public int getId() {
         return id;
     }

@@ -1,7 +1,5 @@
 package no.gruppe6.yatzy.dao;
-import no.gruppe6.yatzy.entities.Bruker;
 import no.gruppe6.yatzy.entities.Kast;
-
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -19,7 +17,11 @@ public class TerningDAO {
      */
     public void lagreKast(Kast k){ em.persist(k); }
 
-        public void registrerSum (List<Integer> liste) {
+    /**
+     *  This method saves the sum of all throws
+      * @param liste is the list of the throws represented by Integer
+     */
+    public void registrerSum (List<Integer> liste) {
             int resultat = 0;
 
             for (Integer integer : liste) {
@@ -28,7 +30,11 @@ public class TerningDAO {
             em.persist(resultat);
         }
 
-        public void registrerDelsum (List<Kast> liste) {
+    /**
+     * Genererer javadoc dersom man ser at metoden er nødvendig
+     * @param liste
+     */
+    public void registrerDelsum (List<Kast> liste) {
         // er det behov for dette?
         }
 }

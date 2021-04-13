@@ -15,6 +15,13 @@ public class JavaMailUtil {
 
     private static Message message;
 
+    /**
+     * A method to set up
+     * @param recepient is the receiver of the mail, as a String
+     * @param subject is the subject of the mail to be sent
+     * @param text is the content of the mail
+     * @throws MessagingException
+     */
     public static void setupMail(String recepient, String subject, String text) throws MessagingException {
         System.out.println("Klargjør melding");
 
@@ -42,6 +49,15 @@ public class JavaMailUtil {
 
     }
 
+    /**
+     *
+     * @param session
+     * @param senderMail
+     * @param recepient
+     * @param subject
+     * @param text
+     * @return
+     */
     private static Message prepareMessage(Session session, String senderMail, String recepient, String subject,
                                           String text) {
         try {
@@ -57,6 +73,10 @@ public class JavaMailUtil {
         return null;
     }
 
+    /**
+     * A method to set the subject of the mail to be sent
+     * @param subject is the subject each user can choose
+     */
     public static void setSubject(String subject) {
         try {
             message.setSubject(subject);
@@ -65,6 +85,10 @@ public class JavaMailUtil {
         }
     }
 
+    /**
+     * This method sets the text or content of the mail to be sent
+     * @param text is the content of the mail chosen by a user
+     */
     public static void setText(String text) {
         try {
             message.setText(text);
@@ -73,6 +97,9 @@ public class JavaMailUtil {
         }
     }
 
+    /**
+     * This method sends the finished mail to its recipient
+     */
     public static void sendMail() {
         try {
             Transport.send(message);
