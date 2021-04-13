@@ -12,6 +12,7 @@
         <class>no.gruppe6.yatzy.entities.Spilldeltagelse</class>
         <properties>
             <property name="eclipselink.weaving" value="false" />
+            <property name="eclipselink.cache.shared.default" value="false"/>
         </properties>
     </persistence-unit>
 </persistence>

@@ -19,6 +19,10 @@ public class Paameldingsskjema {
     private String passordFeilmelding;
     private String passordRepetertFeilmelding;
 
+    /**
+     * Constructor for the registration form
+     * @param request requests parameters from a servlet
+     */
     public Paameldingsskjema(HttpServletRequest request) {
         this.brukernavn = escapeHtml(request.getParameter("brukernavn"));
         this.fornavn = escapeHtml(request.getParameter("fornavn"));
@@ -29,12 +33,20 @@ public class Paameldingsskjema {
 
     }
 
+    /**
+     * This method validates the user input as a whole
+     * @return returns true or false depending on the validation of
+     * the different variables, if one fails, false is returned.
+     */
     public boolean allInputGyldig() {
         return Validator.isValidFirstName(fornavn) && Validator.isValidLastName(etternavn)
                 && Validator.passordSjekk(passord) && Validator.isValidRepeatedPassword(passord,passordRepetert)
                 && Validator.isValidUsername(brukernavn) && Validator.sjekkEpost(epost);
     }
 
+    /**
+     * This method sets the error messages for the validations.
+     */
     public void settOppFeilmeldinger() {
         if(!Validator.isValidFirstName(fornavn)) {
             fornavn = "";
@@ -62,15 +74,25 @@ public class Paameldingsskjema {
         }
     }
 
+    /**
+     * setts the error message for when a username is already taken
+     */
     public void ikkeUniktBrukernavn() {
         brukernavn = "";
         brukernavnFeilmelding = "Brukernavnet eksisterer i databasen fra før.";
     }
+
+    /**
+     * setts the error message for when a email is already registered
+     */
     public void ikkeUnikEpost() {
         epost = "";
         epostFeilmelding = "Epost eksisterer i databasen fra før.";
     }
 
+    /**
+     * Getters and setters for the object variables
+     */
     public String getBrukernavn() {
         return brukernavn;
     }
@@ -167,6 +189,11 @@ public class Paameldingsskjema {
         this.passordRepetertFeilmelding = passordRepetertFeilmelding;
     }
 
+    /**
+     * this method renders a string harmless for html disruption.
+     * @param s the string we want to render harmless
+     * @return returns a harmless string where the characters referenced are replaced with harmless characters.
+     */
     private String escapeHtml(String s) {
         String resultat = s;
         if(resultat== null)
@@ -177,6 +204,10 @@ public class Paameldingsskjema {
         return resultat;
     }
 
+    /**
+     * toString for the object variables
+     * @return a structured string with error messages.
+     */
     @Override
     public String toString() {
         return "Paameldingsskjema{" +

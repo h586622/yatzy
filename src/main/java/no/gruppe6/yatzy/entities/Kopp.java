@@ -14,6 +14,9 @@ public class Kopp {
 	public int terning4;
 	public int terning5;
 
+	/**
+	 * Default constructor for a cup of dices where all the dices gat a value of 0.
+	 */
 	public Kopp(){
 		this.terning1 = 0;
 		this.terning2 = 0;
@@ -23,6 +26,14 @@ public class Kopp {
 
 	}
 
+	/**
+	 * Constructor for a cup of dices.
+	 * @param terning1 Dice 1
+	 * @param terning2 Dice 2
+	 * @param terning3 Dice 3
+	 * @param terning4 Dice 4
+	 * @param terning5 Dice 5
+	 */
 	public Kopp(int terning1, int terning2, int terning3, int terning4, int terning5) {
 		this.terning1 = terning1;
 		this.terning2 = terning2;
@@ -31,6 +42,11 @@ public class Kopp {
 		this.terning5 = terning5;
 	}
 
+	/**
+	 *This method gives the dices a random number between 1-6
+	 * @param tester test for empty value, if the value is nonexistent its
+	 *                  assigned a random number between 1-6
+	 */
 	public void rullKopp(boolean[] tester){
 
 		Random rand = new Random();
@@ -50,6 +66,9 @@ public class Kopp {
 
 	}
 
+	/**
+	 * This method give all the dices in a cup the value of 0.
+	 */
 	public void resetKopp(){
 		this.terning1 = 0;
 		this.terning2 = 0;
@@ -58,11 +77,17 @@ public class Kopp {
 		this.terning5 = 0;
 	}
 
-
+	/**
+	 * Getter for table of integers
+	 * @return returns a table of dices as integers
+	 */
 	public int[] hentTerninger(){
 		return new int[]{terning1, terning2, terning3, terning4, terning5};
 	}
 
+	/**
+	 * Getters and setters for the object variables
+	 */
 	public int getTerning1() {
 		return terning1;
 	}

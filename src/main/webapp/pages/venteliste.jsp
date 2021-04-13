@@ -1,6 +1,6 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
          pageEncoding="ISO-8859-1"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,33 +24,32 @@
     <div id="vanligtekst">Host: ${spill.brukerTur.brukernavn}</div>
 
 
-<div id="vanligtekst">Påmeldte spillere: </div>
-<c:forEach  var="d" items="${spilldeltagelser}" >
-    <div id="vanligtekst">${d.bruker.brukernavn}</div>
-</c:forEach>
+    <div id="vanligtekst">Påmeldte spillere: </div>
+    <c:forEach  var="d" items="${spilldeltagelser}" >
+        <div id="vanligtekst">${d.bruker.brukernavn}</div>
+    </c:forEach>
 
 
-<form action="start" method="post">
-    <div id="inputogknapp">
-    <input type="hidden" id="spillid" name="spillid" value="${spill.id}">
-    <input type="submit" value="Start spill">
-    </div>
-</form>
+    <div id="vanligtekst">Venter på at host skal starte spillet </div>
+
+<div id="oppdaterknapp">
+    <form action="spill" method="get">
+    <input type="hidden" id="spill" name="spill" value="${spill.id}">
+    <input type="submit" value="Oppdater" />
+    </form>
 </div>
-
-    <div id="oppdaterknapp">
-        <form action="Lobby" method="get">
-            <input type="hidden" id="spill" name="spill" value="${spill.id}">
-            <input type="submit" value="Oppdater" />
-        </form>
-
-    </div>
 
 <form action="LoggUtServlet" method="get">
     <div id="loggutknapp">
         <input type="submit" value="Logg ut" />
     </div>
 </form>
+
+    <form action="startside" method="get">
+        <div id="startsideknapp">
+            <input type="submit" value="Startside" />
+        </div>
+    </form>
 
 </body>
 </html>

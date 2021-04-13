@@ -8,7 +8,10 @@ import no.gruppe6.yatzy.entities.Spilldeltagelse;
 import no.gruppe6.yatzy.util.LoggInnUt;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.zip.ZipEntry;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -20,42 +23,33 @@ import javax.servlet.http.HttpSession;
 
 @WebServlet("/historikk")
 public class OversiktHistorikkServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	@EJB
-	private SpillDAO dbDao;
-   
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    @EJB
+    private SpillDAO dbDao;
 
-		HttpSession sesjon = request.getSession(false);
-		if (!LoggInnUt.isLoggedIn(request)){
-			response.sendRedirect("logginn?requiresLogin");
-		} else {
-			Bruker b = (Bruker) sesjon.getAttribute("bruker");
-			List<Spilldeltagelse> spilldeltagelser =  dbDao.hentSpillDeltagelserMedBrukerid(b);
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-			request.setAttribute("spilldeltagelser", spilldeltagelser);
+        HttpSession sesjon = request.getSession(false);
+        if (!LoggInnUt.isLoggedIn(request)) {
+            response.sendRedirect("logginn?requiresLogin");
+        } else {
+            Bruker b = (Bruker) sesjon.getAttribute("bruker");
+            List<Spilldeltagelse> liste = dbDao.hentSpillDeltagelserMedBrukerid(b);
 
-			for (Spilldeltagelse s: spilldeltagelser) {
-				System.out.println(s.getSpill().getNavn());
-			}
-			request.getRequestDispatcher("pages/historikk.jsp")
-					.forward(request, response);
-		}
+            List<Spilldeltagelse> spilldeltagelser = liste.stream()
+                    .filter(d -> d.getSpill().getSpillstatus().equals("avsluttet"))
+                    .collect(Collectors.toList());
 
+            request.setAttribute("spilldeltagelser", spilldeltagelser);
 
-
-
-	
-	}
-
-	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+            for (Spilldeltagelse s : spilldeltagelser) {
+                System.out.println(s.getSpill().getNavn());
+            }
+            request.getRequestDispatcher("pages/historikk.jsp")
+                    .forward(request, response);
+        }
 
 
-
-
-
-	}
-
+    }
 }

@@ -4,24 +4,43 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
+	<meta charset="UTF-8">
+	<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed&display=swap" rel="stylesheet" />
+	<link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet" />
+	<link rel="stylesheet" type="text/css" href="css/style.css" />
 <title>Delta</title>
 </head>
 
 <body>
-	<h2> Velg i listen under hvilket spill du ønsker å delta i </h2>
+
+<div id="logo">
+	<a href="startside">
+	<img src="pictures/logo.png" alt="logo" style='max-width:450px;'>
+	</a>
+</div>
+
+<div id="overskrift">Velg hvilket spill du ønsker å delta i</div>
 
 <c:forEach  var="d" items="${ledigeSpill}">
- <p>
  <form action="delta" method="post">
+	 <div id="listeknapp">
 	<input type="hidden" id="spill" name="spill" value="${d.id}">
-		${d.navn}
-	<input type = "submit" name ="" value= "Delta">
+	<input type = "submit" name ="" value= "${d.navn}">
+	 </div>
  </form>
-</p>
 </c:forEach>
-	<form action="startside" method="get">
-	<input type="submit" value="Tilbake til startsiden">
-	</form>
+
+<form action="LoggUtServlet" method="get">
+	<div id="loggutknapp">
+		<input type="submit" value="Logg ut" />
+	</div>
+</form>
+
+<form action="startside" method="get">
+	<div id="startsideknapp">
+		<input type="submit" value="Startside" />
+	</div>
+</form>
+
 	</body>
 </html>

@@ -27,8 +27,6 @@ public class SpillServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request,
                          HttpServletResponse response) throws ServletException, IOException {
-
-
         if (!LoggInnUt.isLoggedIn(request)) {
             response.sendRedirect("logginn?requiresLogin");
         } else {
@@ -38,35 +36,36 @@ public class SpillServlet extends HttpServlet {
             String ids = request.getParameter("spill");
             int id = Integer.parseInt(ids);
             Spill spill = spillDAO.hentSpill(id);
+            System.out.println(spill.getSpillstatus());
             request.setAttribute("spill", spill);
+            List<Spilldeltagelse> spilldeltagelser = spillDAO.hentSpillDeltagelseListe(spill);
+            request.setAttribute("spilldeltagelser", spilldeltagelser);
 
             if (spill.getSpillstatus().equals("ledig")) {
-                request.getRequestDispatcher("pages/venteside.jsp").forward(request, response);
+                if(spill.getBrukerTur().equals(bruker)){
+                    response.sendRedirect("Lobby?spill="+ spill.getId());
+                }else{
+                    request.getRequestDispatcher("pages/venteliste.jsp").forward(request, response);
+                }
+
             } else if (spill.getSpillstatus().equals("avsluttet")) {
-                //hent vinner + hele tabell
-                //send til avsluttet.jsp.
+                response.sendRedirect("enkelHistorikk?spillid=" + spill.getId());
             } else {
-
                 String forward = "pages/";
-                List<Spilldeltagelse> spilldeltagelser = spillDAO.hentSpillDeltagelseListe(spill);
-
-
                 Bruker tur = spill.getBrukerTur();
                 Spilldeltagelse spilldeltagelse = spillDAO.hentSpillDeltagelseBrukerSpill(tur, spill);
 
                 if (bruker.equals(tur)) {
                     forward += "spill.jsp";
-                } else if (spilldeltagelser.contains(bruker)) {
+                } else if (spilldeltagelser.contains(spilldeltagelse)) {
                     forward += "deltager.jsp";
                 } else {
-                    forward += "spectate.jsp";
+                    forward += "spectator.jsp"; //Spectate for dette spillet
 
                 }
 
-
                 request.setAttribute("rundenavn", YatzyUtil.rundeNavn(spilldeltagelse.getRunde()));
                 request.setAttribute("spilldeltagelse", spilldeltagelse);
-                request.setAttribute("spilldeltagelser", spilldeltagelser);
 
                 request.getRequestDispatcher(forward)
                         .forward(request, response);
@@ -95,7 +94,7 @@ public class SpillServlet extends HttpServlet {
             String[] checkedBokser = request.getParameterValues("terninger");
             boolean[] tester = new boolean[5];
 
-            if (checkedBokser != null && spilldeltagelse.getKast() > 0) {
+            if (checkedBokser != null && spilldeltagelse.getKast() < 3) {
                 for (int i = 0; i < checkedBokser.length; i++) {
                     tester[Integer.parseInt(checkedBokser[i])] = true;
                 }
@@ -107,23 +106,22 @@ public class SpillServlet extends HttpServlet {
 
             int res = YatzyUtil.sjekkKast(kopp, spilldeltagelse.getRunde());
 
-            spilldeltagelse.setKast(spilldeltagelse.getKast() + 1);
+            spilldeltagelse.setKast(spilldeltagelse.getKast() - 1);
 
 
-            if (spilldeltagelse.getKast() == 3) {
+            if (spilldeltagelse.getKast() == 0) {
                 YatzyUtil.oppdaterVerdi(res, spilldeltagelse.getRunde(), spilldeltagelse);
-                spilldeltagelse.setKast(0);
+                spilldeltagelse.setKast(3);
                 spilldeltagelse.setRunde(spilldeltagelse.getRunde() + 1);
 
                 List<Spilldeltagelse> spilldeltagelser = spillDAO.hentSpillDeltagelseListe(spill);
-                spill.setBrukerTur(YatzyUtil.finnNeste(spilldeltagelser));
+                spill.setBrukerTur(YatzyUtil.finnNeste(spilldeltagelser, spilldeltagelse));
             }
 
             Spilldeltagelse sd = spillDAO.hentSpillDeltagelseBrukerSpill(spill.getBrukerTur(), spill);
 
             if(sd.getRunde() >= 16){
                 spill.setSpillstatus("avsluttet");
-                //sett vinner?
             }
             spillDAO.lagreSpillDeltagelse(spilldeltagelse);
             spillDAO.lagreSpill(spill);

@@ -1,7 +1,9 @@
 package no.gruppe6.yatzy.servlets;
 
 import no.gruppe6.yatzy.dao.SpillDAO;
+import no.gruppe6.yatzy.entities.Bruker;
 import no.gruppe6.yatzy.entities.Spill;
+import no.gruppe6.yatzy.util.LoggInnUt;
 
 import javax.ejb.EJB;
 import javax.servlet.*;
@@ -23,13 +25,20 @@ public class StartServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        String id = request.getParameter("spillid");
-        System.out.println(id + "hei");
-        int ids = Integer.parseInt(id);
+        if(!LoggInnUt.isLoggedIn(request)){
+            response.sendRedirect("logginn?requiresLogin");
+        }else {
+            HttpSession sesjon = request.getSession(false);
+            Bruker bruker = (Bruker) sesjon.getAttribute("bruker");
+            String id = request.getParameter("spillid");
+            int ids = Integer.parseInt(id);
+            Spill spill = spillDAO.hentSpill(ids);
 
-        Spill spill = spillDAO.hentSpill(ids);
-        spill.setSpillstatus("aktiv");
-        spillDAO.lagreSpill(spill);
-        response.sendRedirect("spill?spill=" + spill.getId());
+            if(bruker.equals(spill.getBrukerTur())){
+                spill.setSpillstatus("aktiv");
+                spillDAO.lagreSpill(spill);
+            }
+            response.sendRedirect("spill?spill=" + spill.getId());
+        }
     }
 }

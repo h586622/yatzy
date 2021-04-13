@@ -1,5 +1,7 @@
 package no.gruppe6.yatzy.entities;
 
+import org.eclipse.persistence.annotations.CacheCoordinationType;
+
 import javax.persistence.*;
 
 @Entity
@@ -55,7 +57,7 @@ public class Spilldeltagelse {
         this.bruker = bruker;
         this.spill = spill;
         this.runde = 1;
-        this.kast = 0;
+        this.kast = 3;
     }
 
     /**
@@ -243,5 +245,12 @@ public class Spilldeltagelse {
 
     public void setSpill(Spill spill) {
         this.spill = spill;
+    }
+
+
+    @Override
+    public boolean equals(Object obj){
+        Spilldeltagelse spilldeltagelse = (Spilldeltagelse) obj;
+        return this.getId() == spilldeltagelse.getId();
     }
 }

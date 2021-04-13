@@ -31,42 +31,16 @@
         }
     </style>
 </head>
+
 <body>
+
 <div id="logo">
     <a href="startside">
         <img src="pictures/logo.png" alt="logo" style='max-width:450px;'>
     </a>
 </div>
-<div id="overskrift">Du er med i dette spillet: ${spill.navn}</div>
-
-<div id="runde">
-    <div id="spillboks">
-    <form action=spill method="post">
-
-    <!-- Bare for spillere som det er sin tur -->
-
-        <div id="vanligtekst">Antallkast: ${spilldeltagelse.kast}</div>
-        <div id="vanligtekst">${rundenavn}</div>
-        <div id="vanligtekst">Resultat av kast:</div>
-        <input type="checkbox" id="terning1" name="terninger" value="0">
-        <label for="terning1"> ${spill.kopp.terning1}</label><br>
-        <input type="checkbox" id="terning2" name="terninger" value="1">
-        <label for="terning2"> ${spill.kopp.terning2}</label><br>
-        <input type="checkbox" id="terning3" name="terninger" value="2">
-        <label for="terning3"> ${spill.kopp.terning3}</label><br>
-        <input type="checkbox" id="terning4" name="terninger" value="3">
-        <label for="terning4"> ${spill.kopp.terning4}</label><br>
-        <input type="checkbox" id="terning5" name="terninger" value="4">
-        <label for="terning5"> ${spill.kopp.terning5}</label><br>
-
-        <div id="terningknapp">
-        <input type="hidden" id="spill" name="spill" value="${spill.id}">
-        <input type="submit" value="Trill terninger">
-        </div>
-
-    </form>
-    </div>
-</div>
+<div id="overskrift"> Du er med i dette spillet: ${spill.navn} </div>
+<div id="overskrift">${spill.brukerTur.brukernavn} sin tur</div>
 
 <div id="poeng">
     <TABLE ID="spillbrett">
@@ -186,13 +160,31 @@
         </TR>
     </TABLE>
 </div>
-
-<form action="LoggUtServlet" method="get">
-    <div id="loggutknapp">
-        <input type="submit" value="Logg ut" />
+<div id="runde">
+    <div id="spillboks">
+    <!-- Bare for spillere som det er sin tur -->
+        <div id="vanligtekst">Antallkast: ${spilldeltagelse.kast}</div>
+        <div id="vanligtekst">${rundenavn}</div>
+        <div id="vanligtekst">Resultat av kast:</div>
+        <p>${spill.kopp.terning1}</p>
+        <p>${spill.kopp.terning2}</p>
+        <p>${spill.kopp.terning3}</p>
+        <p>${spill.kopp.terning4}</p>
+        <p>${spill.kopp.terning5}</p>
     </div>
+    </div>
+<div id="oppdaterknapp">
+    <form action="spill" method="get">
+        <input type="hidden" id="spill" name="spill" value="${spill.id}">
+        <input type="submit" value="Oppdater"/>
+    </form>
+</div>
+<div id="purreknapp">
+<form action="mail" method="get">
+    <input type="hidden" id="spill" name="spill" value="${spill.id}">
+    <input type="submit" value="Purr">
 </form>
-
+</div>
 
 </body>
 </html>

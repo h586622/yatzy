@@ -1,36 +1,45 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <head>
-<meta charset="ISO-8859-1">
+	<meta charset="UTF-8">
+	<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed&display=swap" rel="stylesheet" />
+	<link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet" />
+	<link rel="stylesheet" type="text/css" href="css/style.css" />
 <title>Historikk</title>
 </head>
 <body>
-	
-			<h2>Her kan du se dine tidligere spill</h2>	
-			
-			<fieldset>
+
+<div id="logo">
+	<a href="startside">
+		<img src="pictures/logo.png" alt="logo" style='max-width:450px;'>
+	</a>
+</div>
+
+<div id="overskrift">Her kan du se dine tidligere spill</div>
 
 				<c:forEach items="${spilldeltagelser}" var="s">
-					<p>${s.spill.navn} <form action="enkelHistorikk" method="get">
+					 <form action="enkelHistorikk" method="get">
+						 <div id="listeknapp">
 					<input type="hidden" name="spillid" value="${s.spill.id}">
-					<input type="submit" value="Vis"/>
+					<input type="submit" value="${s.spill.navn}"/>
+						 </div>
 				</form>
-					</p>
 				</c:forEach>
 
 				<!--
 				HER KOMMER LISTE MED SPILLNAVN
 				-->
 
+<form action="LoggUtServlet" method="get">
+	<div id="loggutknapp">
+		<input type="submit" value="Logg ut" />
+	</div>
+</form>
 
-			<p> statistikk </p>
-
-
-			
-			</fieldset>
-    
-<form action=startside method="get">
-	<input type="submit" value="Tilbake til startsiden">
-	</form>
-	
+<form action="startside" method="get">
+	<div id="startsideknapp">
+		<input type="submit" value="Startside" />
+	</div>
+</form>
 	
 </body>

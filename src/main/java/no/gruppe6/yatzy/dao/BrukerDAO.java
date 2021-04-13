@@ -37,6 +37,7 @@ public class BrukerDAO {
         return query.getResultList();
     }
 
+
     public void setEntityManager(EntityManager em) {
         this.em = em;
     }

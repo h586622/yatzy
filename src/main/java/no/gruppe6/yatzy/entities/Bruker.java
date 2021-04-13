@@ -21,6 +21,14 @@ public class Bruker {
     @OneToMany(mappedBy = "brukerTur")
     private List<Spill> spillTur;
 
+    /**
+     * Constructor
+     * @param brukernavn username
+     * @param fornavn   firstname
+     * @param etternavn lastname
+     * @param epost Email
+     * @param passord Password
+     */
     public Bruker(String brukernavn, String fornavn, String etternavn, String epost, Passord passord) {
         this.brukernavn = brukernavn;
         this.epost = epost;
@@ -29,6 +37,11 @@ public class Bruker {
         this.etternavn = etternavn;
     }
 
+    /**
+     * Constructor based on a form
+     * @param skjema refers to a registration form containing
+     *               username, firstname, lastname, password, password repeat, email
+     */
     public Bruker(Paameldingsskjema skjema){
         this.brukernavn = skjema.getBrukernavn();
         this.fornavn = skjema.getFornavn();
@@ -37,10 +50,17 @@ public class Bruker {
         this.passord = Passord.lagPassord(skjema.getPassord());
     }
 
+    /**
+     * default constructor
+     */
     public Bruker() {
 
     }
 
+    /**
+     * Getters and setters for the object variables
+     *
+     */
     public String getFornavn() {
         return fornavn;
     }
@@ -97,6 +117,11 @@ public class Bruker {
         this.passord = passord;
     }
 
+    /**
+     * This method checks if a user already exists
+     * @param obj refers to a user
+     * @return returns true/false depending of the existence of a user.
+     */
     @Override
     public boolean equals(Object obj) {
         Bruker b2 = (Bruker) obj;
