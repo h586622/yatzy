@@ -3,6 +3,7 @@ package no.gruppe6.yatzy.entities;
 import org.eclipse.persistence.annotations.CacheCoordinationType;
 
 import javax.persistence.*;
+import java.time.LocalTime;
 
 @Entity
 @Table(schema = "yatzydb")
@@ -31,6 +32,10 @@ public class Spilldeltagelse {
     private int sumbonus;
     private int runde;
     private int kast;
+    private int antallpurr;
+    private LocalTime purren;
+    private LocalTime purrto;
+    private LocalTime rundestart;
 
     @ManyToOne
     @JoinColumn(name = "brukernavn", referencedColumnName = "brukernavn")
@@ -49,6 +54,40 @@ public class Spilldeltagelse {
         this.spill = spill;
         this.runde = 1;
         this.kast = 3;
+        this.antallpurr = 0;
+    }
+
+    public int getAntallpurr() {
+        return antallpurr;
+    }
+
+    public LocalTime getPurren(){
+        return this.purren;
+    }
+
+    public LocalTime getPurrto(){
+        return this.purrto;
+    }
+
+    public LocalTime getRundestart(){
+        return this.rundestart;
+    }
+
+    public void setPurren(LocalTime lt){
+        this.purren = lt;
+    }
+
+    public void setPurrto(LocalTime lt){
+        this.purrto = lt;
+    }
+
+    public void setRundestart(LocalTime lt){
+        this.rundestart = lt;
+    }
+
+
+    public void setAntallpurr(int antallpurr) {
+        this.antallpurr = antallpurr;
     }
 
     public int getId() {

@@ -6,10 +6,13 @@ import no.gruppe6.yatzy.util.LoggInnUt;
 import no.gruppe6.yatzy.util.YatzyUtil;
 
 import java.io.IOException;
+import java.time.LocalTime;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.ejb.EJB;
+import javax.ejb.Local;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -115,7 +118,20 @@ public class SpillServlet extends HttpServlet {
                 spilldeltagelse.setRunde(spilldeltagelse.getRunde() + 1);
 
                 List<Spilldeltagelse> spilldeltagelser = spillDAO.hentSpillDeltagelseListe(spill);
-                spill.setBrukerTur(YatzyUtil.finnNeste(spilldeltagelser, spilldeltagelse));
+                Bruker nesteBruker = YatzyUtil.finnNeste(spilldeltagelser, spilldeltagelse);
+                spill.setBrukerTur(nesteBruker);
+
+                Spilldeltagelse nesteDeltagelse = null;
+
+                for (Spilldeltagelse s:spilldeltagelser) {
+                    if(s.getBruker().equals(nesteBruker))
+                     nesteDeltagelse = s;
+                }
+                nesteDeltagelse.setPurren(LocalTime.now());
+                nesteDeltagelse.setAntallpurr(0);
+                spillDAO.lagreSpillDeltagelse(nesteDeltagelse);
+
+
             }
 
             Spilldeltagelse sd = spillDAO.hentSpillDeltagelseBrukerSpill(spill.getBrukerTur(), spill);

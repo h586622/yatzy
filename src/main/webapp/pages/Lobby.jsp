@@ -32,8 +32,8 @@
 
 <form action="start" method="post">
     <div id="inputogknapp">
-    <input type="hidden" id="spillid" name="spillid" value="${spill.id}">
-    <input type="submit" value="Start spill">
+        <input type="hidden" id="spillid" name="spillid" value="${spill.id}">
+        <input type="submit" value="Start spill">
     </div>
 </form>
 </div>

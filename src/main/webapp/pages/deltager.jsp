@@ -180,7 +180,7 @@
     </form>
 </div>
 <div id="purreknapp">
-<form action="mail" method="get">
+<form action="mail" method="post">
     <input type="hidden" id="spill" name="spill" value="${spill.id}">
     <input type="submit" value="Purr">
 </form>

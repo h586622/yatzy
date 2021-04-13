@@ -3,13 +3,17 @@ package no.gruppe6.yatzy.servlets;
 import no.gruppe6.yatzy.dao.SpillDAO;
 import no.gruppe6.yatzy.entities.Bruker;
 import no.gruppe6.yatzy.entities.Spill;
+import no.gruppe6.yatzy.entities.Spilldeltagelse;
+import no.gruppe6.yatzy.util.JavaMailUtil;
 import no.gruppe6.yatzy.util.LoggInnUt;
 
 import javax.ejb.EJB;
+import javax.mail.MessagingException;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
+import java.time.LocalTime;
 
 @WebServlet("/start")
 public class StartServlet extends HttpServlet {
@@ -35,10 +39,25 @@ public class StartServlet extends HttpServlet {
             Spill spill = spillDAO.hentSpill(ids);
 
             if(bruker.equals(spill.getBrukerTur())){
+
+                Spilldeltagelse spilldeltagelse = spillDAO.hentSpillDeltagelseBrukerSpill(bruker, spill);
+                spilldeltagelse.setPurren(LocalTime.now());
+                spilldeltagelse.setAntallpurr(0);
+                spillDAO.lagreSpillDeltagelse(spilldeltagelse);
+
+                try {
+                    JavaMailUtil.gameStartMail(spillDAO.hentSpillDeltagelseListe(spill), spill.getNavn());
+                } catch (MessagingException e) {
+                    e.printStackTrace();
+                }
                 spill.setSpillstatus("aktiv");
                 spillDAO.lagreSpill(spill);
+
+
+
             }
-            response.sendRedirect("spill?spill=" + spill.getId());
+                response.sendRedirect("spill?spill=" + spill.getId());
+
         }
     }
 }

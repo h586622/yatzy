@@ -1,7 +1,12 @@
 package no.gruppe6.yatzy.util;
 
+import no.gruppe6.yatzy.dao.SpillDAO;
+import no.gruppe6.yatzy.entities.Spilldeltagelse;
+
+import java.util.List;
 import java.util.Properties;
 
+import javax.ejb.EJB;
 import javax.mail.Authenticator;
 import javax.mail.Message;
 import javax.mail.MessagingException;
@@ -12,6 +17,9 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
 public class JavaMailUtil {
+
+    @EJB
+    private SpillDAO spillDao;
 
     public static void setupMail(String mottaker, String emne, String tekst) throws MessagingException {
         System.out.println("Klargjør melding");
@@ -55,6 +63,14 @@ public class JavaMailUtil {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public static void gameStartMail(List<Spilldeltagelse> spilldeltagelse, String spillnavn) throws MessagingException {
+
+        for (Spilldeltagelse s: spilldeltagelse) {
+            setupMail(s.getBruker().getEpost(),"Yatzy App","Spillet " + spillnavn + " har startet, logg deg inn og bli med på morroa!");
+        }
+
     }
 
 }
