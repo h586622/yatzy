@@ -21,17 +21,16 @@ public class JavaMailUtil {
     @EJB
     private SpillDAO spillDao;
 
-    public static void setupMail(String mottaker, String emne, String tekst) throws MessagingException {
-    private static Message message;
 
     /**
      * A method to set up
+     *
      * @param recepient is the receiver of the mail, as a String
-     * @param subject is the subject of the mail to be sent
-     * @param text is the content of the mail
+     * @param subject   is the subject of the mail to be sent
+     * @param text      is the content of the mail
      * @throws MessagingException
      */
-    public static void setupMail(String recepient, String subject, String text) throws MessagingException {
+    public static void setupMail(String mottaker, String emne, String tekst) throws MessagingException {
         System.out.println("Klargjør melding");
 
         Properties properties = new Properties();
@@ -44,7 +43,7 @@ public class JavaMailUtil {
         String senderMail = "erlendmatch@gmail.com";
         String password = "RomvesenTelefon8111";
 
-        Session session = Session.getInstance(properties, new Authenticator() {
+        Session sesjon = Session.getInstance(properties, new Authenticator() {
             @Override
             protected PasswordAuthentication getPasswordAuthentication() {
                 return new PasswordAuthentication(senderMail, password);
@@ -77,10 +76,12 @@ public class JavaMailUtil {
 
     public static void gameStartMail(List<Spilldeltagelse> spilldeltagelse, String spillnavn) throws MessagingException {
 
-        for (Spilldeltagelse s: spilldeltagelse) {
-            setupMail(s.getBruker().getEpost(),"Yatzy App","Spillet " + spillnavn + " har startet, logg deg inn og bli med på morroa!");
+        for (Spilldeltagelse s : spilldeltagelse) {
+            setupMail(s.getBruker().getEpost(), "Yatzy App", "Spillet " + spillnavn + " har startet, logg deg inn og bli med på morroa!");
         }
 
     }
 
 }
+
+
