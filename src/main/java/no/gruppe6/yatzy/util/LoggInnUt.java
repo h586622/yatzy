@@ -5,7 +5,9 @@ import no.gruppe6.yatzy.entities.Bruker;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-
+/**
+ * This class implements the logic for log in log out
+ */
 public class LoggInnUt {
 
 	/**

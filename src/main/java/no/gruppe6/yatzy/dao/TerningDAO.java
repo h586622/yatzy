@@ -5,6 +5,9 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
 
+/**
+ * This DAO access the database for the user's dice throws
+ */
 @Stateless
 public class TerningDAO {
 
@@ -20,13 +23,16 @@ public class TerningDAO {
     /**
      *  This method saves the sum of all throws
       * @param liste is the list of the throws represented by Integer
-     */
-    public void registrerSum (List<Integer> liste) {
-            int resultat = 0;
 
-            for (Integer integer : liste) {
-                resultat += integer;
-            }
-            em.persist(resultat);
-        }
+
+     * public void registrerSum (List<Integer> liste) {
+     *             int resultat = 0;
+     *
+     *             for (Integer integer : liste) {
+     *                 resultat += integer;
+     *             }
+     *             em.persist(resultat);
+     *         }
+     */
+
 }

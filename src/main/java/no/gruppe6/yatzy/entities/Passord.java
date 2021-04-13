@@ -4,7 +4,9 @@ import no.gruppe6.yatzy.util.Passordhjelper;
 
 import javax.persistence.Embeddable;
 
-
+/**
+ * This class implements the logic for handling a password to a user
+ */
 @Embeddable
 public class Passord {
 

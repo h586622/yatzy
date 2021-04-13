@@ -8,6 +8,9 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 
+/**
+ * This class contains the logic behind hashing and validating of the passwords
+ */
 public class Passordhjelper {
 	
 	private static final int SALT_LENGTH = 16;

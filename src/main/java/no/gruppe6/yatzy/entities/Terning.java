@@ -1,5 +1,8 @@
 package no.gruppe6.yatzy.entities;
 
+/**
+ * This class handles the logic behind the dices in a yatzy game
+ */
 public class Terning {
 	
 	private int verdi;

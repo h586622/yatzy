@@ -9,6 +9,9 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
 
+/**
+ * This DAO access the database for the overall games and it's players
+ */
 @Stateless
 public class SpillDAO {
 

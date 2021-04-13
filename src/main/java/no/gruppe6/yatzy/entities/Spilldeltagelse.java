@@ -4,6 +4,9 @@ import org.eclipse.persistence.annotations.CacheCoordinationType;
 
 import javax.persistence.*;
 
+/**
+ * This class handles the implementation of the logic for a user who is playing yatzy
+ */
 @Entity
 @Table(schema = "yatzydb")
 public class Spilldeltagelse {

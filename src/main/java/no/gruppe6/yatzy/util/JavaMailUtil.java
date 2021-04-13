@@ -11,6 +11,9 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
+/**
+ * This class consists of the logic behind the mail util
+ */
 public class JavaMailUtil {
 
     private static Message message;

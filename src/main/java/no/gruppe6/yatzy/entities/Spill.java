@@ -2,7 +2,9 @@ package no.gruppe6.yatzy.entities;
 
 import javax.persistence.*;
 
-
+/**
+ * This class handles the logic of a yatzy game that is being played
+ */
 @Entity
 @Table(schema = "yatzydb")
 public class Spill {

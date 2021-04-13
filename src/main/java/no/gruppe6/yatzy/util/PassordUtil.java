@@ -10,14 +10,13 @@ import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
 
 /**
- * @author Lars-Petter Helland
+ * This class implements the logic for Password Util
  */
 public class PassordUtil {
     
     /*
      * Man kunne godt gjort denne klassen mer fleksibel ved å bytte ut 
-     * konstanter med konstruktørparametre. På den annen side: MAN MÅ BRUKE
-     * SAMME OPPSETT OVERALT I EN APPLIKASJON.
+     * konstanter med konstruktørparametre.
      */
     
     private static final int SALT_LENGTH = 24;
@@ -36,12 +35,6 @@ public class PassordUtil {
      * Denne metoden genererer en passordstreng for sikker lagring av passord.
      * Passordstrengen inneholder både saltet som ble brukt i hashingen og 
      * resultatet (digest-et) av hashingen.
-     * 
-     * Det er ikke noen spesiell grunn til at salt og digest bør slås sammen
-     * til én streng. De kunne godt vært returnert som to verdier (som et par).
-     * Det er gjort slik fordi det gjorde API-et enkelt å bruke, en verdi inn,
-     * en verdi ut.
-     * 
      * @param passord Passord som skal krypteres
      * @return (salt + digest) kodet som en base64-streng. 
      */
@@ -71,9 +64,6 @@ public class PassordUtil {
         byte[] salt = hentUtSaltFraKryptertStreng(kryptert);
         return krypterMedSalt(salt, passord).equals(kryptert);
     }
-    
-    /*--- Private hjelpemetoder ---*/
-
 
     /**
      * Denne metoden krypterer passordet og saltet

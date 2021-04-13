@@ -1,5 +1,8 @@
 package no.gruppe6.yatzy.util;
 
+/**
+ * This class contains the logic behind the validating of registering a user
+ */
 public class Validator {
 
     private static final String GYLDIG_FORNAVN = "^[A-ZÆØÅ][-a-zA-ZæøåÆØÅ ]{1,19}$";
