@@ -146,7 +146,7 @@ public class SpillServlet extends HttpServlet {
                     if(s.getBruker().equals(nesteBruker))
                      nesteDeltagelse = s;
                 }
-                nesteDeltagelse.setPurren(LocalTime.now());
+                nesteDeltagelse.setPurretid(LocalTime.now());
                 nesteDeltagelse.setAntallpurr(0);
                 spillDAO.lagreSpillDeltagelse(nesteDeltagelse);
 

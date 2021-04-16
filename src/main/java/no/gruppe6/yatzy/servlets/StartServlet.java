@@ -51,7 +51,7 @@ public class StartServlet extends HttpServlet {
             if(bruker.equals(spill.getBrukerTur())){
 
                 Spilldeltagelse spilldeltagelse = spillDAO.hentSpillDeltagelseBrukerSpill(bruker, spill);
-                spilldeltagelse.setPurren(LocalTime.now());
+                spilldeltagelse.setPurretid(LocalTime.now());
                 spilldeltagelse.setAntallpurr(0);
                 spillDAO.lagreSpillDeltagelse(spilldeltagelse);
 

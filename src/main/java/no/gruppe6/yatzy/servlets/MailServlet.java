@@ -55,7 +55,7 @@ public class MailServlet extends HttpServlet {
         // params for å sjekke antall purr og tiden mellom hver purr
         Spilldeltagelse sdt = spillDao.hentSpillDeltagelseBrukerSpill(brukertur, spill);
         int antallpurr = sdt.getAntallpurr();
-        LocalTime purren = sdt.getPurren();
+        LocalTime purren = sdt.getPurretid();
         String emne = "Det er din tur i Yatzy-spillet";
         String tekst = "";
 
@@ -66,34 +66,36 @@ public class MailServlet extends HttpServlet {
             switch (antallpurr){
                 case 0:
                     sdt.setAntallpurr(1);
-                    sdt.setPurren(LocalTime.now());
+                    sdt.setPurretid(LocalTime.now());
                     tekst = "Dette er den første purringen.";
                     break;
                 case 1:
                     sdt.setAntallpurr(2);
-                    sdt.setPurren(LocalTime.now());
+                    sdt.setPurretid(LocalTime.now());
                     tekst = "Dette er den andre purringen.";
                     break;
                 case 2:
+                    sdt.setAntallpurr(3);
                    emne = "Du er blitt fjernet fra spillet";
                    tekst = "Grunnet inaktivitet er du fjernet fra spillet";
                    break;
-                default: System.out.println("Bunnen av switch case");
+                default:
+                    break;
             }
 
             spillDao.lagreSpillDeltagelse(sdt);
-            try {
-                JavaMailUtil.setupMail(epost, emne, tekst);
-                System.out.println("purremail sendt");
-            } catch (MessagingException e) {
-                e.printStackTrace();
+            if(antallpurr < 3) {
+                try {
+                    JavaMailUtil.setupMail(epost, emne, tekst);
+                    System.out.println("purremail sendt");
+                } catch (MessagingException e) {
+                    e.printStackTrace();
+                }
             }
         }
         response.sendRedirect("spill?spill=" + spillid);
 
     }
-
-
 
     }
 

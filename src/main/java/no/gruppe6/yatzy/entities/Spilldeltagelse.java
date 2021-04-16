@@ -36,9 +36,8 @@ public class Spilldeltagelse {
     private int runde;
     private int kast;
     private int antallpurr;
-    private LocalTime purren;
-    private LocalTime purrto;
-    private LocalTime rundestart;
+    private LocalTime purretid;
+
 
     @ManyToOne
     @JoinColumn(name = "brukernavn", referencedColumnName = "brukernavn")
@@ -73,29 +72,17 @@ public class Spilldeltagelse {
         return antallpurr;
     }
 
-    public LocalTime getPurren(){
-        return this.purren;
+    public LocalTime getPurretid(){
+        return this.purretid;
     }
 
-    public LocalTime getPurrto(){
-        return this.purrto;
+
+
+    public void setPurretid(LocalTime lt){
+        this.purretid = lt;
     }
 
-    public LocalTime getRundestart(){
-        return this.rundestart;
-    }
 
-    public void setPurren(LocalTime lt){
-        this.purren = lt;
-    }
-
-    public void setPurrto(LocalTime lt){
-        this.purrto = lt;
-    }
-
-    public void setRundestart(LocalTime lt){
-        this.rundestart = lt;
-    }
 
 
     public void setAntallpurr(int antallpurr) {
