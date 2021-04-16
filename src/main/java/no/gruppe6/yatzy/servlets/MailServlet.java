@@ -33,19 +33,20 @@ public class MailServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-       int spillid = Integer.parseInt(request.getParameter("spill"));
-       String handling = request.getParameter("mail");
-        response.sendRedirect("mail?mail="+handling+"&spill=" + spillid);
+        int spillid = Integer.parseInt(request.getParameter("spill"));
+        String handling = request.getParameter("mail");
+        response.sendRedirect("mail?mail=" + handling + "&spill=" + spillid);
 
     }
 
 
     /**
      * this method notify the user by email when its their turn in an active game.
-     * @param request is an object which is being passed as an argument to the servlet's service methods
+     *
+     * @param request  is an object which is being passed as an argument to the servlet's service methods
      * @param response is an object for HttpServlets to return information to the client
      * @throws ServletException Defines a general exception a servlet can throw when it encounters difficulty.
-     * @throws IOException It provides information to the caller of the method about the exception.
+     * @throws IOException      It provides information to the caller of the method about the exception.
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -64,45 +65,45 @@ public class MailServlet extends HttpServlet {
         //Duration duration = Duration.between(LocalTime.now(),purren);
         //boolean tid = duration.getSeconds() >= 20;
 
-        if(true) {
-            switch (antallpurr){
+        if (true) {
+            switch (antallpurr) {
                 case 0:
                     sdt.setAntallpurr(1);
                     sdt.setPurretid(LocalTime.now());
+                    spillDao.lagreSpillDeltagelse(sdt);
                     tekst = "Dette er den første purringen.";
                     break;
                 case 1:
                     sdt.setAntallpurr(2);
                     sdt.setPurretid(LocalTime.now());
+                    spillDao.lagreSpillDeltagelse(sdt);
                     tekst = "Dette er den andre purringen.";
                     break;
                 case 2:
                     sdt.setAntallpurr(3);
-                   emne = "Du er blitt fjernet fra spillet";
-                   tekst = "Grunnet inaktivitet er du fjernet fra spillet";
-                   List<Spilldeltagelse> spilldeltagelser = spillDao.hentSpillDeltagelseListe(spill);
-                   spill.setBrukerTur(YatzyUtil.finnNeste(spilldeltagelser, sdt));
-                    spillDao.fjernSpillDeltagelse(sdt);
+                    emne = "Du er blitt fjernet fra spillet";
+                    tekst = "Grunnet inaktivitet er du fjernet fra spillet";
+                    List<Spilldeltagelse> spilldeltagelser = spillDao.hentSpillDeltagelseListe(spill);
+                    spill.setBrukerTur(YatzyUtil.finnNeste(spilldeltagelser, sdt));
                     spillDao.lagreSpill(spill);
-                   break;
+                    spillDao.fjernSpillDeltagelse(sdt);
+                    break;
                 default:
                     break;
             }
 
 
-            if(antallpurr < 3) {
-                spillDao.lagreSpillDeltagelse(sdt);
-                try {
-                    JavaMailUtil.setupMail(epost, emne, tekst);
-                    System.out.println("purremail sendt");
-                } catch (MessagingException e) {
-                    e.printStackTrace();
-                }
+            try {
+                JavaMailUtil.setupMail(epost, emne, tekst);
+                System.out.println("purremail sendt");
+            } catch (MessagingException e) {
+                e.printStackTrace();
             }
+
         }
         response.sendRedirect("spill?spill=" + spillid);
 
     }
 
-    }
+}
 
