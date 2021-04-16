@@ -34,7 +34,7 @@ class validator {
     }
 
     epostSjekk(){
-        if (epost.value.match("^\\S+@\\S+$")){
+        if (epost.value.match("^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$")){
             epost.classList.remove("formcontroller_redBorder")
             epost.classList.add("formcontroller_greenBorder")
         } else {
@@ -44,7 +44,7 @@ class validator {
     }
 
     brukernavnSjekk() {
-        if (brukernavn.value.match("^[A-ZÆØÅ][A-Za-zÆØÅæøå\\-]{2,19}$")) {
+        if (brukernavn.value.match("^[a-zA-Z0-9_]{1,}[a-zA-Z]+[0-9]*$")) {
 
             brukernavn.classList.remove("formcontroller_redBorder")
             brukernavn.classList.add("formcontroller_greenBorder")
