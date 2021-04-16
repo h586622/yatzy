@@ -31,7 +31,6 @@ public class JavaMailUtil {
      * @throws MessagingException
      */
     public static void setupMail(String mottaker, String emne, String tekst) throws MessagingException {
-        System.out.println("Klargjør melding");
 
         Properties properties = new Properties();
 
@@ -55,7 +54,6 @@ public class JavaMailUtil {
 
         Transport.send(melding);
 
-        System.out.println("Melding sendt");
 
     }
 
