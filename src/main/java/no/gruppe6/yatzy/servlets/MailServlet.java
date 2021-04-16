@@ -6,6 +6,7 @@ import no.gruppe6.yatzy.entities.Bruker;
 import no.gruppe6.yatzy.entities.Spill;
 import no.gruppe6.yatzy.entities.Spilldeltagelse;
 import no.gruppe6.yatzy.util.JavaMailUtil;
+import no.gruppe6.yatzy.util.YatzyUtil;
 
 import javax.ejb.EJB;
 import javax.mail.MessagingException;
@@ -16,6 +17,7 @@ import java.io.IOException;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.List;
 
 /**
  * Servlet implements class MailServlet
@@ -78,13 +80,18 @@ public class MailServlet extends HttpServlet {
                     sdt.setAntallpurr(3);
                    emne = "Du er blitt fjernet fra spillet";
                    tekst = "Grunnet inaktivitet er du fjernet fra spillet";
+                   List<Spilldeltagelse> spilldeltagelser = spillDao.hentSpillDeltagelseListe(spill);
+                   spill.setBrukerTur(YatzyUtil.finnNeste(spilldeltagelser, sdt));
+                    spillDao.fjernSpillDeltagelse(sdt);
+                    spillDao.lagreSpill(spill);
                    break;
                 default:
                     break;
             }
 
-            spillDao.lagreSpillDeltagelse(sdt);
+
             if(antallpurr < 3) {
+                spillDao.lagreSpillDeltagelse(sdt);
                 try {
                     JavaMailUtil.setupMail(epost, emne, tekst);
                     System.out.println("purremail sendt");
