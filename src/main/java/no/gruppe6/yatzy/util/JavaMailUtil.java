@@ -25,9 +25,9 @@ public class JavaMailUtil {
     /**
      * A method to set up
      *
-     * @param recepient is the receiver of the mail, as a String
-     * @param subject   is the subject of the mail to be sent
-     * @param text      is the content of the mail
+     * @param mottaker is the receiver of the mail, as a String
+     * @param emne   is the subject of the mail to be sent
+     * @param tekst     is the content of the mail
      * @throws MessagingException
      */
     public static void setupMail(String mottaker, String emne, String tekst) throws MessagingException {

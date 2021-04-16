@@ -13,11 +13,7 @@ import javax.crypto.spec.PBEKeySpec;
  * This class implements the logic for Password Util
  */
 public class PassordUtil {
-    
-    /*
-     * Man kunne godt gjort denne klassen mer fleksibel ved å bytte ut 
-     * konstanter med konstruktørparametre.
-     */
+
     
     private static final int SALT_LENGTH = 24;
     private static final int HASH_ITERATIONS = 1000;

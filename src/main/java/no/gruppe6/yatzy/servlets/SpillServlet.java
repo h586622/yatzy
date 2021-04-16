@@ -52,7 +52,6 @@ public class SpillServlet extends HttpServlet {
             String ids = request.getParameter("spill");
             int id = Integer.parseInt(ids);
             Spill spill = spillDAO.hentSpill(id);
-            System.out.println(spill.getSpillstatus());
             request.setAttribute("spill", spill);
             List<Spilldeltagelse> spilldeltagelser = spillDAO.hentSpillDeltagelseListe(spill);
             request.setAttribute("spilldeltagelser", spilldeltagelser);
@@ -110,7 +109,6 @@ public class SpillServlet extends HttpServlet {
             int id = Integer.parseInt(request.getParameter("spill"));
             Bruker bruker = (Bruker) sesjon.getAttribute("bruker");
             Spill spill = spillDAO.hentSpill(id);
-            System.out.println(spill.getId());
             Spilldeltagelse spilldeltagelse = spillDAO.hentSpillDeltagelseBrukerSpill(bruker, spill);
 
             Kopp kopp = spill.getKopp();

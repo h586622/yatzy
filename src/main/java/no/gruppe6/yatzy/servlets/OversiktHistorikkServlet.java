@@ -52,10 +52,6 @@ public class OversiktHistorikkServlet extends HttpServlet {
                     .collect(Collectors.toList());
 
             request.setAttribute("spilldeltagelser", spilldeltagelser);
-
-            for (Spilldeltagelse s : spilldeltagelser) {
-                System.out.println(s.getSpill().getNavn());
-            }
             request.getRequestDispatcher("pages/historikk.jsp")
                     .forward(request, response);
         }
